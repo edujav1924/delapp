@@ -14,6 +14,9 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
+from django.http import Http404
+from rest_framework import status
+
 class consulta(APIView):
     def get(self, request):
         return render(request,'prueba.html')
@@ -52,16 +55,32 @@ class pedidosaceptados(APIView):
 
 
 class modeloclienteview(generics.ListCreateAPIView):
-    queryset = modelocliente.objects.all()
+    queryset = modelocliente.objects.filter(cliente_status=False)
     serializer_class = modeloclienteSerializer
 
 class modeloencargadoview(generics.ListCreateAPIView):
     queryset = modeloencargado.objects.all()
     serializer_class = modeloencargadoSerializer
 
-class pedidocliente(generics.ListCreateAPIView):
-    queryset = modelodespachopedido.objects.all()
-    serializer_class = modelopedidoSerializer
+class pedidocliente(APIView):
+    def get(self, request, format=None):
+        queryset = modelodespachopedido.objects.all()
+        serializer_class = modelopedidoSerializer
+
+    def post(self,request,format=None):
+        serializer = modelopedidoSerializer(data=request.data)
+        print request.data
+        if serializer.is_valid():
+            serializer.save()
+            try:
+                p = modelocliente.objects.get(cliente_id=request.data.get('pedido_id'))
+                p.cliente_status = True
+                p.save()
+            except:
+                print "error feroz"
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        print 'error'
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = modelocliente.objects.all()

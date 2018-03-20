@@ -5,6 +5,7 @@ from django.conf.urls import include
 
 urlpatterns = [
     url(r'^consulta/$', views.consulta.as_view()),
+    url(r'^pedidosweb/$', views.pedidocliente.as_view()),
     url(r'^pedidos/$', views.modeloclienteview.as_view()),
     url(r'^encargados/$', views.modeloencargadoview.as_view()),
     url(r'^pedidos/(?P<pk>[0-9]+)/$', views.SnippetDetail.as_view()),

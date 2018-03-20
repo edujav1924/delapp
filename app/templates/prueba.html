@@ -12,9 +12,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
   </head>
   <body>
-    <div ng-app="myApp" ng-controller="customersCtrl">
+    <div id="hola" ng-app="myApp" ng-controller="customersCtrl" class="ng-scope">
       {%verbatim%}
-    <table style="text-align:center;" class="table table-sm">
+    <table  style="text-align:center;" class="table table-sm">
        <thead class="thead-dark">
       <tr>
       <th scope="col">nombre</th>
@@ -22,20 +22,25 @@
       <th scope="col">ubicacion</th>
       <th scope="col">encargado</th>
       <th scope="col">Estado</th>
-      </tr
+    </tr>
       </thead>
-      <tr ng-repeat="x in names">
-        <td>{{x.cliente_nombre}}</td>
-        <td>{{x.cliente_pedido}}</td>
-        <td>{{x.cliente_ubicacion}}</td>
-        <td>
-          <select class="custom-select" style="width:150px;" ng-model="selectedName" ng-options="x.nombre for x in otro">
-          </select>
-        </td>
-        <td> <button type="button" class="btn btn-outline-primary">Aceptar</button> </td>
-      </tr>
+      <tbody id="result">
+        <tr id="{{$index}}tr" ng-repeat="x in names">
+          <td >{{x.cliente_nombre}}</td>
+          <td>{{x.cliente_pedido}}</td>
+          <td>{{x.cliente_ubicacion}}</td>
+          <td>
+            <select id="{{$index}}-select"style="width:150px;" class="custom-select">
+              <option value=0>--seleccione--</option>
+              <option ng-repeat='y in otro' value="{{y.nombre}}">{{y.nombre}}</option>
+            </select>
+          </td>
+          <td>
+            <button ng-controller='boton' type="button" class="btn btn-outline-primary" ng-click=myFunc($index)>Aceptar</button>
+          </td>
+        </tr>
+      </tbody>
     </table>
-
     </div>
     {% endverbatim %}
     <script>
@@ -43,14 +48,45 @@
     app.controller('customersCtrl', function($scope, $http) {
         $http.get("http://127.0.0.1:8000/pedidos.json")
         .then(function (response) {
-          $scope.names = response.data
-          ;});
+          $scope.names = response.data;
+        });
         $http.get("http://127.0.0.1:8000/encargados.json")
         .then(function (response1) {
           $scope.otro = response1.data;
         });
     });
-    </script>
+    app.controller('boton', ['$scope','$http', function($scope,$http, CSRF_TOKEN) {
+          $scope.myFunc = function($index) {
+            var e = document.getElementById($index+"-select");
+            console.log(e.selectedIndex);
+            if (e.selectedIndex==0) {
+              console.log('si');
+              document.getElementById($index+'-select').style.borderColor = "red";
+            }
+            else {
+              $http({
+                url : 'http://127.0.0.1:8000/pedidosweb/',
+                method: 'POST',
+                data: {
+                'pedido_id':$index+1,
+                'encargado':  $scope.otro[e.selectedIndex-1].nombre,
+                'pedido_cliente' : $scope.names[$index].cliente_pedido,
+                'pedido_cliente_nombre': $scope.names[$index].cliente_nombre
+              },
+              headers: {
+                'Content-Type':'application/json'
+              }
+            }).then(function successCallback(response) {
+              console.log('enviado');
+              document.getElementById($index+'tr').style.display = 'none';
+            }, function errorCallback(response) {
+              console.log('error');
+            });
+          }
 
+      };
+
+  }]);
+    </script>
   </body>
 </html>
