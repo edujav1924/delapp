@@ -16,14 +16,14 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.http import Http404
 from rest_framework import status
+import json
 
 class consulta(APIView):
     def get(self, request):
         return render(request,'prueba.html')
-
 class ProfileList(APIView):
     renderer_classes = [TemplateHTMLRenderer]
-    template_name = 'ini.html'
+    template_name = 'otraprueba.html'
 
     def get(self, request):
         queryset = modelocliente.objects.filter(cliente_status=False)
@@ -44,24 +44,18 @@ class ProfileList(APIView):
         p.cliente_status = True
         p.save()
         return redirect('/pedidosrecientes/')
-
 class pedidosaceptados(APIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'confirmados.html'
     def get(self,request):
         pedidosconfirmados = modelodespachopedido.objects.all()
-        print pedidosconfirmados
         return Response({'pedidosconfirmados':pedidosconfirmados})
-
-
 class modeloclienteview(generics.ListCreateAPIView):
     queryset = modelocliente.objects.filter(cliente_status=False)
     serializer_class = modeloclienteSerializer
-
 class modeloencargadoview(generics.ListCreateAPIView):
     queryset = modeloencargado.objects.all()
     serializer_class = modeloencargadoSerializer
-
 class pedidocliente(APIView):
     def get(self, request, format=None):
         queryset = modelodespachopedido.objects.all()
@@ -77,11 +71,14 @@ class pedidocliente(APIView):
                 p.cliente_status = True
                 p.save()
             except:
-                print "error feroz"
+                print "error"
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         print 'error'
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = modelocliente.objects.all()
     serializer_class =  modeloclienteSerializer
+
+class clienteview(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'cliente.html'

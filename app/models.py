@@ -22,6 +22,7 @@ class modeloempresa(models.Model):
     def __str__(self):
         return '%s' % (self.empresa_nombre)
 
+
 class modelodespachopedido(models.Model):
     pedido_id = models.AutoField(primary_key=True)
     encargado = models.CharField(max_length=30,blank=True)
