@@ -1,21 +1,27 @@
+from app.models import *
 from rest_framework import serializers
-from app.models import modelocliente,modeloencargado,modelodespachopedido,modeloempresa
-class modelopedidoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = modelodespachopedido
-        fields =('pedido_id','encargado','pedido_cliente','pedido_cliente_nombre')
 
-class modeloclienteSerializer(serializers.ModelSerializer):
+class productoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = modelocliente
-        fields = ('cliente_pedido','cliente_nombre','cliente_ubicacion')
+        model = modelo_producto
+        fields = ('producto','precio')
 
-class modeloempresaSerializer(serializers.ModelSerializer):
+class pedidoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = modeloempresa
-        fields = ('nombre')
+        model = modelo_pedido
+        fields = ('tipo', 'cantidad')
 
-class modeloencargadoSerializer(serializers.ModelSerializer):
+class clienteSerializer(serializers.ModelSerializer):
+    pedidos = pedidoSerializer(many=True)
+
     class Meta:
-        model = modeloencargado
-        fields = ('nombre','telefono')
+        model = modelo_cliente
+        fields = ('nombre', 'apellido', 'celular','pedidos')
+
+    def create(self, validated_data):
+        pedidos_data = validated_data.pop('pedidos')
+        print pedidos_data
+        cliente_1 = modelo_cliente.objects.create(**validated_data)
+        for pedido in pedidos_data:
+            modelo_pedido.objects.create(cliente=cliente_1, **pedido)
+        return cliente_1
