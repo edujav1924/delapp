@@ -23,9 +23,22 @@ class consulta(APIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'otraprueba.html'
     def get(self, request):
-        queryset = modelo_prueba.objects.filter()
+        queryset = modelo_prueba.objects.all()
         queryset2 = modelo_encargado.objects.all()
         return Response({'datos': queryset,'encargados':queryset2})
+
+    def post (self,request):
+        print request.data.get('id')
+        id_local = request.data.get('id')
+        print request.data.get('comando')
+        if(request.data.get('comando')!='eliminar'):
+            query = modelo_prueba.objects.get(id=id_local)
+            modelo_prueba_final.objects.create(nombre=query.nombre,apellido=query.apellido,celular=query.celular,producto=query.producto\
+                                          ,cantidad=query.cantidad,encargado=request.data.get('encargado'))
+        else:
+            print "entre"
+            query = modelo_prueba.objects.get(id=id_local).delete()
+        return Response(status=status.HTTP_201_CREATED)
 
 
 """

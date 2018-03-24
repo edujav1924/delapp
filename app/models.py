@@ -10,6 +10,14 @@ class modelo_prueba(models.Model):
     producto = models.CharField(max_length=30, blank=True,null=True)
     cantidad = models.IntegerField(blank=True,null=True)
 
+class modelo_prueba_final(models.Model):
+    nombre = models.CharField(max_length=30,blank=True,default='')
+    apellido = models.CharField(max_length=30,blank=True,default='')
+    celular = models.IntegerField(blank=True,null=True)
+    producto = models.CharField(max_length=30, blank=True,null=True)
+    cantidad = models.IntegerField(blank=True,null=True)
+    encargado = models.CharField(max_length=30)
+
 class modelo_producto(models.Model):
     producto = models.CharField(max_length=30)
     precio = models.PositiveIntegerField()

@@ -1,63 +1,68 @@
+<!DOCTYPE html>
 <html>
-<body id="result">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="crossorigin="anonymous"></script>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="crossorigin="anonymous"></script>
 
-    <h1>Pedidos</h1>
-    <div id='hola'>
-      {% if datos %}
-          <table class="table">
-           <thead>
-             <tr>
-               <th scope="col">id</th>
-               <th scope="col">Nombre</th>
-               <th scope="col">Apellido</th>
-               <th scope="col">Celular</th>
-               <th scope="col">producto</th>
-               <th scope="col">cantidad</th>
-               <th scope="col">encargado</th>
-               <th scope="col">Aceptar</th>
-               <th scope="col">Cancelar</th>
-             </tr>
-           </thead>
-            <tbody>
-               {% for dato in datos %}
-              <tr>
-                <th scope="row">{{dato.id}}</th>
-                <td>{{dato.nombre}}</td>
-                <td>{{dato.apellido}}</td>
-                <td>{{dato.celular}}</td>
-                <td>{{dato.producto}}</td>
-                <td>{{dato.cantidad}}</td>
-                <td><div class="">
-                  <select style="width:150px;" class="custom-select">
-                  <option value="">--seleccione--</option>
-                  {%for e in encargados %}
-                      <option value={{e.nombre}}>{{e.nombre}}</option>
-                  {%endfor%}
-                  </select>
-                </div>
-                <span></span>
-                </td>
-                <td>
-                    <button id='aceptar' type="button" class="btn btn-primary">Aceptar</button>
-                </td>
-                <td>
-                    <button id='rechazar' type="button" class="btn btn-danger">Eliminar</button>
-                </td>
-              </tr>
-              {% endfor %}
-            </tbody>
-         </table>
-      {% else %}
-          <p>no hay pedidos disponibles</p>
-      {% endif %}
-    </table>
-    </div>
-    {% load staticfiles%}
-    <script type="text/javascript" src='{% static "hola.js" %}'></script>
+    </head>
+    <body>
+        <h1>Pedidos</h1>
+        <div id='hola'>
+              <table id="mytable" class="table">
+                  {% if datos %}
+               <thead>
+                 <tr>
+                   <th scope="col">id</th>
+                   <th scope="col">Nombre</th>
+                   <th scope="col">Apellido</th>
+                   <th scope="col">Celular</th>
+                   <th scope="col">producto</th>
+                   <th scope="col">cantidad</th>
+                   <th scope="col">encargado</th>
+                   <th scope="col">Aceptar</th>
+                   <th scope="col">Cancelar</th>
+                 </tr>
+               </thead>
+                <tbody>
+                   {% for dato in datos %}
+                  <tr id=row-{{dato.id}}>
+                    <th scope="row" name="id">{{dato.id}}</th>
+                    <td id={{dato.id}}-name>{{dato.nombre}}</td>
+                    <td id={{dato.id}}-apellido>{{dato.apellido}}</td>
+                    <td id={{dato.id}}-telefono>{{dato.celular}}</td>
+                    <td id={{dato.id}}-producto>{{dato.producto}}</td>
+                    <td id={{dato.id}}-cantidad>{{dato.cantidad}}</td>
+                    <td><div class="">
+                      <select id={{dato.id}}-encargado style="width:150px;" class="custom-select">
+                      <option value="value">--seleccione--</option>
+                      {%for e in encargados %}
+                          <option value={{e.nombre}}>{{e.nombre}}</option>
+                      {%endfor%}
+                      </select>
+                    </div>
+                    <span></span>
+                    </td>
+                    <td>
+                        <button id='aceptar-{{dato.id}}' type="button" class="btn btn-primary confirm">Aceptar</button>
+                    </td>
+                    <td>
+                        <button id='rechazar-{{dato.id}}' type="button" class="btn btn-danger delete">Eliminar</button>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+             </table>
+          {% else %}
+              <p>no hay pedidos disponibles</p>
+          {% endif %}
+        </table>
+        </div>
+        {% load static %}
+        <script type="text/javascript" src="{% static "scripts.js" %}"></script>
     </body>
-    </html>
+</html>
