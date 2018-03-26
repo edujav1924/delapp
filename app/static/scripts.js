@@ -5,7 +5,6 @@ $(document).ready(function() {
             texto = texto.split("-");
             seleccion = $('#'+texto[1]+'-encargado'+' option:selected').val();
             if (seleccion.localeCompare("value")==0) {
-                console.log("distinto");
                 document.getElementById(texto[1]+'-encargado').style.borderColor = "red";
             }else {
                 if (texto[0].localeCompare("aceptar")==0) {
@@ -17,7 +16,7 @@ $(document).ready(function() {
                 console.log(formData);
                 $.ajax({
         			type 		: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-        			url 		: 'http://127.0.0.1:8000/consulta/', // the url where we want to POST
+        			url 		: 'http://192.168.43.158:8000/consulta/', // the url where we want to POST
         			data 		: formData, // our data object // what type of data do we expect back from the server
         			encode 		: true,
         		}).done(function() {

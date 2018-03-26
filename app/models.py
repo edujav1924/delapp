@@ -25,18 +25,22 @@ class modelo_producto(models.Model):
         return '%s %d' % (self.producto, self.precio)
 
 class modelo_cliente(models.Model):
+    cliente_id =models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=30,blank=True,default='')
     apellido = models.CharField(max_length=30,blank=True,default='')
     celular = models.IntegerField(blank=True,null=True)
+    ubicacion = models.CharField(max_length=100,blank=True,null=True)
+    encargado = models.CharField(max_length=30,blank=True,null=True)
+    status = models.BooleanField(default=False)
     def __unicode__(self):
-        return '%s %s' % (self.nombre, self.apellido)
+        return '%s %s %d %s' % (self.nombre, self.apellido,self.celular,self.ubicacion)
 
 class modelo_pedido(models.Model):
     cliente = models.ForeignKey(modelo_cliente, related_name='pedidos', on_delete=models.CASCADE)
-    tipo = models.CharField(max_length=30, blank=True,null=True)
+    producto = models.CharField(max_length=30, blank=True,null=True)
     cantidad = models.IntegerField(blank=True,null=True)
     def __unicode__(self):
-        return '%s %s %d' % (self.cliente, self.tipo, self.cantidad)
+        return '%s %s %d' % (self.cliente, self.producto, self.cantidad)
 
 class modelo_encargado(models.Model):
     nombre = models.CharField(max_length=30)

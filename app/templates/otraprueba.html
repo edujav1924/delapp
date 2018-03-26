@@ -23,6 +23,7 @@
                    <th scope="col">Celular</th>
                    <th scope="col">producto</th>
                    <th scope="col">cantidad</th>
+                   <th scope="col">ubicacion</th>
                    <th scope="col">encargado</th>
                    <th scope="col">Aceptar</th>
                    <th scope="col">Cancelar</th>
@@ -30,28 +31,39 @@
                </thead>
                 <tbody>
                    {% for dato in datos %}
-                  <tr id=row-{{dato.id}}>
-                    <th scope="row" name="id">{{dato.id}}</th>
-                    <td id={{dato.id}}-name>{{dato.nombre}}</td>
-                    <td id={{dato.id}}-apellido>{{dato.apellido}}</td>
-                    <td id={{dato.id}}-telefono>{{dato.celular}}</td>
-                    <td id={{dato.id}}-producto>{{dato.producto}}</td>
-                    <td id={{dato.id}}-cantidad>{{dato.cantidad}}</td>
+                  <tr id=row-{{dato.cliente_id}}>
+                    <th scope="row" name="id">{{dato.cliente_id}}</th>
+                    <td id={{dato.cliente_id}}-name>{{dato.nombre}}</td>
+                    <td id={{dato.cliente_id}}-apellido>{{dato.apellido}}</td>
+                    <td id={{dato.cliente_id}}-telefono>{{dato.celular}}</td>
+                    <td id={{dato.cliente_id}}-producto>
+                    <ul>
+                        {%for y in dato.pedidos%}
+                            <li>{{y.producto}}</li>
+                        {%endfor%}
+                    </ul>
+                    </td>
+                    <td id={{dato.cliente_id}}-cantidad>
+                        {%for z in dato.pedidos%}
+                            <li>{{z.cantidad}} unidades</li>
+                        {%endfor%}
+                    </td>
+                    <td><a id={{dato.cliente_id}}-ubicacion href={{dato.ubicacion}} target="_blank" >Ubicacion</a></td>
                     <td><div class="">
-                      <select id={{dato.id}}-encargado style="width:150px;" class="custom-select">
+                      <select id={{dato.cliente_id}}-encargado style="width:150px;" class="custom-select">
                       <option value="value">--seleccione--</option>
                       {%for e in encargados %}
                           <option value={{e.nombre}}>{{e.nombre}}</option>
                       {%endfor%}
                       </select>
                     </div>
-                    <span></span>
+                    </td>
+
+                    <td>
+                        <button id='aceptar-{{dato.cliente_id}}' type="button" class="btn btn-primary confirm">Aceptar</button>
                     </td>
                     <td>
-                        <button id='aceptar-{{dato.id}}' type="button" class="btn btn-primary confirm">Aceptar</button>
-                    </td>
-                    <td>
-                        <button id='rechazar-{{dato.id}}' type="button" class="btn btn-danger delete">Eliminar</button>
+                        <button id='rechazar-{{dato.cliente_id}}' type="button" class="btn btn-danger delete">Eliminar</button>
                     </td>
                   </tr>
                   {% endfor %}

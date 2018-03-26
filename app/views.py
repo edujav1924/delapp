@@ -14,6 +14,20 @@ from django.shortcuts import redirect
 from django.http import Http404
 from rest_framework import status
 import json
+from rest_framework.renderers import JSONRenderer
+from json import loads,dumps
+from django.http import JsonResponse
+
+class cliente(APIView):
+    def post(self,request):
+        a=clienteSerializer(data=request.data)
+        print request.data
+        print(a.is_valid())
+        if(a.is_valid()):
+            a.save()
+            return JsonResponse({'status':'exitoso'})
+        return JsonResponse({'status':'error'})
+
 
 class productos(generics.ListCreateAPIView):
     queryset = modelo_producto.objects.all()
@@ -23,22 +37,31 @@ class consulta(APIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'otraprueba.html'
     def get(self, request):
-        queryset = modelo_prueba.objects.all()
+        r = modelo_cliente.objects.filter(status=False)
+        a = clienteSerializer(instance=r,many=True)
+        json = loads(dumps(a.data))
+        #print json[0]
         queryset2 = modelo_encargado.objects.all()
-        return Response({'datos': queryset,'encargados':queryset2})
+        return Response({'datos': a.data ,'encargados':queryset2})
 
     def post (self,request):
-        print request.data.get('id')
+        #print request.data.get('id')
         id_local = request.data.get('id')
         print request.data.get('comando')
-        if(request.data.get('comando')!='eliminar'):
-            query = modelo_prueba.objects.get(id=id_local)
-            modelo_prueba_final.objects.create(nombre=query.nombre,apellido=query.apellido,celular=query.celular,producto=query.producto\
-                                          ,cantidad=query.cantidad,encargado=request.data.get('encargado'))
-        else:
-            print "entre"
-            query = modelo_prueba.objects.get(id=id_local).delete()
-        return Response(status=status.HTTP_201_CREATED)
+        try:
+            if(request.data.get('comando')!='eliminar'):
+                print id_local
+                p = modelo_cliente.objects.get(cliente_id=id_local)
+                print p
+                p.status=True
+                p.encargado = request.data.get('encargado')
+                p.save()
+            else:
+                print "entre"
+                p = modelo_cliente.objects.get(cliente_id=id_local).delete()
+            return Response(status=status.HTTP_201_CREATED)
+        except:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 """

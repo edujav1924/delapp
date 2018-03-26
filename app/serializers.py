@@ -9,14 +9,14 @@ class productoSerializer(serializers.ModelSerializer):
 class pedidoSerializer(serializers.ModelSerializer):
     class Meta:
         model = modelo_pedido
-        fields = ('tipo', 'cantidad')
+        fields = ('producto', 'cantidad')
 
 class clienteSerializer(serializers.ModelSerializer):
     pedidos = pedidoSerializer(many=True)
 
     class Meta:
         model = modelo_cliente
-        fields = ('nombre', 'apellido', 'celular','pedidos')
+        fields = ('cliente_id','nombre', 'apellido', 'celular','pedidos','ubicacion','encargado','status')
 
     def create(self, validated_data):
         pedidos_data = validated_data.pop('pedidos')

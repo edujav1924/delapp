@@ -3,9 +3,19 @@ from app.models import *
 from app.serializers import *
 from collections import OrderedDict
 from json import loads,dumps
-user = modelo_cliente.objects.create(nombre="edu",apellido="gonzalez",celular=032)
-modelo_pedido.objects.create(cliente=user,tipo="hamburguesa",cantidad=5)
-modelo_pedido.objects.create(cliente=user,tipo="lomito",cantidad=2)
+user = modelo_cliente.objects.create(nombre="lety",apellido="gomez",celular=032)
+modelo_pedido.objects.create(cliente=user,producto="lomito",cantidad=5)
+modelo_pedido.objects.create(cliente=user,producto="coca",cantidad=2)
+modelo_pedido.objects.create(cliente=user,producto="coca 1ls",cantidad=2)
+serializer = clienteSerializer(instance=user)
+a = serializer.data
+b = loads(dumps(a))
+s = clienteSerializer(data=a)
+s.is_valid()
+user = modelo_cliente.objects.create(nombre="lucas",apellido="lopez",celular=032)
+modelo_pedido.objects.create(cliente=user,producto="lomito",cantidad=5)
+modelo_pedido.objects.create(cliente=user,producto="hamburguesa",cantidad=1)
+modelo_pedido.objects.create(cliente=user,producto="cerveza",cantidad=1)
 serializer = clienteSerializer(instance=user)
 a = serializer.data
 b = loads(dumps(a))
@@ -34,8 +44,8 @@ data = {
 {"nombre": "edu", "apellido": "gonzalez", "celular": 26, "cliente": [{"tipo": "hamburguesa", "cantidad": 5}, {"tipo": "lomito", "cantidad": 2}]}
 {'nombre': 'edu', 'celular': 26, 'apellido': 'gonzalez', 'cliente': [{'cantidad': 5, 'tipo': 'hamburguesa'}, {'cantidad': 2, 'tipo': 'lomito'}]}
 {'tracks': [OrderedDict([('order', 1), ('title', u'Public Service Announcement'), ('duration', 245)]), OrderedDict([('order', 1), ('title', u'Public Service Announcement'), ('duration', 245)]), OrderedDict([('order', 2), ('title', u'What More Can I Say'), ('duration', 264)])], 'album_name': u'The Grey Album', 'artist': u'Danger Mouse'}
-
-
+https://www.google.com/maps?q=-25.2454117,-57.4382988&z=17&hl=es
+https://www.google.com/maps?q=-25.280438333333336,-57.53782666666666=17&hl=es
 
 
 <script type="text/javascript">

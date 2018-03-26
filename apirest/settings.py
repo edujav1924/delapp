@@ -27,6 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['192.168.42.206','192.168.43.158','127.0.0.1',]
 
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    )
+}
 
 # Application definition
 
