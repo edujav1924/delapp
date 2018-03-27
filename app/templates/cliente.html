@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href={% static "otro/themes/custom.css"%}>
+    <link rel="stylesheet" href={% static "otro/themes/jquery.mobile.icons.min.css"%}>
+    <link rel="stylesheet" href={% static "otro/themes/micustom.css"%}>
+    <title></title>
+  </head>
+  <body>
+    <div data-role="header" role="banner" class="ui-header ui-bar-inherit">
+			<h1 class="ui-title" role="heading" aria-level="1">Encargados</h1>
+				<a href="#" class="ui-btn-right ui-btn ui-icon-refresh ui-btn-icon-right ui-btn-inline ui-corner-all ui-mini" data-role="button" role="button">Recargar</a>
+			</div>
+    {% if datos %}
+      {% for dato in datos %}
+      <div class="a">
+        <div class="h" data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-inset="false">
+            <h4>{{dato.encargado}}</h4>
+            <ul data-role="listview" data-inset="false">
+                <ul>
+                  <strong>Datos</strong>
+                  <li>{{dato.nombre}} {{dato.apellido}}</li>
+                  <li>{{dato.celular}}</li>
+                  <li><a id={{dato.cliente_id}}-ubicacion href={{dato.ubicacion}} target="_blank" >Ubicacion</a></li>
+                  <br>
+                  <strong>Pedidos</strong>
+                  <ul>
+                    {% for d in dato.pedidos %}
+                      <li>{{d.cantidad}} {{d.producto}}</li>
+                      {%endfor%}
+                  </ul>
+                </ul>
+              
+            </ul>
+        </div>
+      </div>
+
+        {% endfor %}
+      {% endif %}
+  </body>
+</html>

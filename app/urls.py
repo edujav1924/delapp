@@ -5,6 +5,7 @@ from django.conf.urls import include
 
 urlpatterns = [
     url(r'^productos/$', views.productos.as_view()),
+    url(r'^encargados/$', views.vista_encargados.as_view()),
     url(r'^consulta/$', views.consulta.as_view()),
     url(r'^cliente/$', views.cliente.as_view()),
 ]

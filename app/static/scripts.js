@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  var ip = 'http://192.168.43.158:8000/consulta/'
     $(function () {
         $('.confirm').on('click', function () {
             var texto = this.id;
@@ -16,7 +17,7 @@ $(document).ready(function() {
                 console.log(formData);
                 $.ajax({
         			type 		: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-        			url 		: 'http://192.168.43.158:8000/consulta/', // the url where we want to POST
+        			url 		:ip, // the url where we want to POST
         			data 		: formData, // our data object // what type of data do we expect back from the server
         			encode 		: true,
         		}).done(function() {
@@ -47,7 +48,7 @@ $(document).ready(function() {
         console.log(formData);
         $.ajax({
             type 		: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-            url 		: 'http://127.0.0.1:8000/consulta/', // the url where we want to POST
+            url 		: ip, // the url where we want to POST
             data 		: formData, // our data object // what type of data do we expect back from the server
             encode 		: true,
         }).done(function() {
@@ -56,10 +57,12 @@ $(document).ready(function() {
             $('#row-'+texto2[1]).hide(1000);
           })
           .fail(function() {
+              console.log("falla");
           })
           .always(function() {
           });
 
      };
-});
+   });
+   
 });

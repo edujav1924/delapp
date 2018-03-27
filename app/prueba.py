@@ -72,3 +72,18 @@ https://www.google.com/maps?q=-25.280438333333336,-57.53782666666666=17&hl=es
 });""
 
 </script>
+
+
+from rest_framework import *
+from app.models import *
+from app.serializers import *
+from collections import OrderedDict
+from json import loads,dumps
+modelo_producto.objects.create(producto="hamburguesa chica",precio="7000")
+modelo_producto.objects.create(producto="hamburguesa chica",precio="10000")
+modelo_producto.objects.create(producto="coca cola mediana",precio="5000")
+modelo_producto.objects.create(producto="coca cola grande",precio="10000")
+modelo_producto.objects.create(producto="lomito",precio="12000")
+modelo_encargado.objects.create(nombre="AZUL",telefono="0")
+modelo_encargado.objects.create(nombre="VERDE",telefono="1")
+modelo_encargado.objects.create(nombre="ROJO",telefono="2")

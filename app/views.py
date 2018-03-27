@@ -18,6 +18,17 @@ from rest_framework.renderers import JSONRenderer
 from json import loads,dumps
 from django.http import JsonResponse
 
+class vista_encargados(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'cliente.html'
+    def get(self,request):
+        r = modelo_cliente.objects.filter(status=True).order_by('encargado')
+        a = clienteSerializer(instance=r,many=True)
+        json = loads(dumps(a.data))
+        print json
+        return Response({'datos': a.data})
+
+#responde a solicitud de android
 class cliente(APIView):
     def post(self,request):
         a=clienteSerializer(data=request.data)
@@ -27,15 +38,21 @@ class cliente(APIView):
             a.save()
             return JsonResponse({'status':'exitoso'})
         return JsonResponse({'status':'error'})
+    def get(self,request):
+        r = modelo_cliente.objects.filter(status=False)
+        a = clienteSerializer(instance=r,many=True)
+        json = loads(dumps(a.data))
+        #print json[0]
+        return Response(json)
 
 
 class productos(generics.ListCreateAPIView):
     queryset = modelo_producto.objects.all()
     serializer_class = productoSerializer
-
+#levanta pagina web de consulta admin
 class consulta(APIView):
     renderer_classes = [TemplateHTMLRenderer]
-    template_name = 'otraprueba.html'
+    template_name = 'ini.html'
     def get(self, request):
         r = modelo_cliente.objects.filter(status=False)
         a = clienteSerializer(instance=r,many=True)
