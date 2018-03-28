@@ -2,6 +2,7 @@ $(document).ready(function() {
   var ip = 'http://192.168.43.158:8000/consulta/'
     $(function () {
         $('.confirm').on('click', function () {
+          console.log("holaaa");
             var texto = this.id;
             texto = texto.split("-");
             seleccion = $('#'+texto[1]+'-encargado'+' option:selected').val();
@@ -64,5 +65,5 @@ $(document).ready(function() {
 
      };
    });
-   
+ /* */
 });

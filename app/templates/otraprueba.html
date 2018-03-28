@@ -29,8 +29,8 @@
                    <th scope="col">Cancelar</th>
                  </tr>
                </thead>
+               {% for dato in datos %}
                 <tbody>
-                   {% for dato in datos %}
                   <tr id=row-{{dato.cliente_id}}>
                     <th scope="row" name="id">{{dato.cliente_id}}</th>
                     <td id={{dato.cliente_id}}-name>{{dato.nombre}}</td>

@@ -6,19 +6,20 @@
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
+    <script type="text/javascript" src={% static "otro/themes/customjs.js" %}></script>
     <link rel="stylesheet" href={% static "otro/themes/custom.css"%}>
     <link rel="stylesheet" href={% static "otro/themes/jquery.mobile.icons.min.css"%}>
     <link rel="stylesheet" href={% static "otro/themes/micustom.css"%}>
     <title></title>
   </head>
-  <body>
+  <body id="body">
     <div data-role="header" role="banner" class="ui-header ui-bar-inherit">
 			<h1 class="ui-title" role="heading" aria-level="1">Encargados</h1>
-				<a href="#" class="ui-btn-right ui-btn ui-icon-refresh ui-btn-icon-right ui-btn-inline ui-corner-all ui-mini" data-role="button" role="button">Recargar</a>
+				<a id="button" href="#" class="ui-btn-right ui-btn ui-icon-refresh ui-btn-icon-right ui-btn-inline ui-corner-all ui-mini" data-role="button" role="button">Actualizar</a>
 			</div>
-    {% if datos %}
-      {% for dato in datos %}
-      <div class="a">
+      <div id="table" >
+        {% if datos %}
+          {% for dato in datos %}
         <div class="h" data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-inset="false">
             <h4>{{dato.encargado}}</h4>
             <ul data-role="listview" data-inset="false">
@@ -35,12 +36,15 @@
                       {%endfor%}
                   </ul>
                 </ul>
-              
             </ul>
         </div>
-      </div>
+        <div >
 
+        </div>
         {% endfor %}
+        {% else %}
+        <p>Aun no hay pedidos confirmados.</p>
       {% endif %}
+    </div>
   </body>
 </html>
