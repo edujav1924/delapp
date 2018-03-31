@@ -7,8 +7,10 @@ urlpatterns = [
     url(r'^productos/$', views.productos.as_view()),
     url(r'^encargados/$', views.vista_encargados.as_view()),
     url(r'^consulta/$', views.consulta.as_view()),
-    url(r'^cliente/$', views.cliente.as_view()),
+    url(r'^nuevo/$', views.agregar_nuevo.as_view()),
+    url(r'^cliente/$', views.cliente.as_view(), name="hola"),
     url(r'^otro/$', views.otro.as_view()),
+    url(r'^en/$', views.encargado.as_view()),
 
 ]
 

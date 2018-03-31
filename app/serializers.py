@@ -11,6 +11,10 @@ class pedidoSerializer(serializers.ModelSerializer):
         model = modelo_pedido
         fields = ('producto', 'cantidad')
 
+class encargadoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = modelo_encargado
+        fields = ('nombre', 'telefono')
 class clienteSerializer(serializers.ModelSerializer):
     pedidos = pedidoSerializer(many=True)
 

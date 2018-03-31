@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    {% include 'includes.html' %}
+  </head>
+  <body>
+    <div class="container">
+      <div class="card text-white bg-info mb-12" >
+        <div class="card-header row">
+          <div align=left class="col">
+            <h3>Agregar nuevo pedido</h3>
+          </div>
+          <div align=right class="col">
+            <button  class="btn btn-primary" id='agregar' type="button" name="button">agregar pedido</button>
+            <button id='eliminar' class="btn btn-danger" type="button" name="button">eliminar pedido</button>
+
+          </div>
+        </div>
+        <div class="card-body">
+          <form id="form" class="needs-validation" novalidate>
+            <div class="form-row">
+              <div class="col-md-4 mb-3">
+                <label for="validationCustom01">First name</label>
+                <input type="text" name="nombre" class="form-control" id="validationCustom01" placeholder="Nombre" value="" required>
+                <div class="invalid-feedback">
+                  Por favor complete este campo
+                </div>
+              </div>
+                <div class="col-md-4 mb-3">
+                  <label for="validationCustom02">Apellido</label>
+                  <input type="text" name="apellido" class="form-control" id="validationCustom02" placeholder="Apellido" value="" required>
+                  <div class="invalid-feedback">
+                    Por favor complete este campo
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="validationCustom03">Telefono</label>
+                  <input type="number" name="telefono" class="form-control" id="validationCustom03" placeholder="Telefono" value="" required>
+                  <div class="invalid-feedback">
+                    Por favor complete este campo
+                  </div>
+                </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-4 mb-3">
+                    <label for="validationCustom04">Ubicacion</label>
+                    <input type="text" name="ubicacion" class="form-control" id="validationCustom04" placeholder="Ubicacion" value="" required>
+                    <div class="invalid-feedback">
+                      Por favor complete este campo
+                    </div>
+                  </div>
+                  <div id="encargado" class="col-md-4 mb-3">
+                    <label for="validationCustom05">Encargado</label>
+                    <div class="invalid-feedback">
+                      Por favor complete este campo
+                    </div>
+                  </div>
+                </div>
+                <div id="select" class="form-row">
+                    <div id="productos-col" class="col">
+                      <select name="producto" id="producto-0" class="custom-select" name="" required="">
+                        <option value="">--seleccione--</option>
+                        {% for producto in productos%}
+                        <option value="{{producto.producto}}">{{producto.producto}}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div id="cantidad-col" class="col">
+                      <input type="number" class="form-control" name="cantidad" id="cantidad-0" placeholder="Cantidad" value="" required>
+
+                    </div>
+                </div>
+                <button id="submit" class="btn btn-primary" type="submit">Enviar</button>
+            
+            </form>
+              <div id="alerta" style="align-text:center;" class="alert alert-success" role="alert">
+                Pedido enviado!
+              </div>
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+</html>

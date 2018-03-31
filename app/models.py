@@ -23,7 +23,7 @@ class modelo_cliente(models.Model):
 class modelo_pedido(models.Model):
     cliente = models.ForeignKey(modelo_cliente, related_name='pedidos', on_delete=models.CASCADE)
     producto = models.CharField(max_length=30, blank=True,null=True)
-    cantidad = models.IntegerField(blank=True,null=True)
+    cantidad = models.CharField(max_length=30, blank=True,null=True)
     def __unicode__(self):
         return '%s %s %d' % (self.cliente, self.producto, self.cantidad)
 
