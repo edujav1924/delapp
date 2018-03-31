@@ -46,8 +46,7 @@ function education_fields() {
     divtest.setAttribute("class","form-control");
     divtest.setAttribute("id","cantidad-"+room);
     divtest.setAttribute("name","cantidad");
-      divtest.setAttribute("value",4);
-    divtest.setAttribute("placeholder","cantidad-"+room);
+    divtest.setAttribute("placeholder","cantidad");
     divtest.setAttribute("style","text-align:center;");
     divtest.setAttribute("type","number");
     divtest.setAttribute("required","");

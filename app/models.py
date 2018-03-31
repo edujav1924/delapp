@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from datetime import datetime
 from django.db import models
-
 class modelo_producto(models.Model):
     producto = models.CharField(max_length=30)
     precio = models.PositiveIntegerField()
@@ -17,6 +16,8 @@ class modelo_cliente(models.Model):
     ubicacion = models.CharField(max_length=100,blank=True,null=True)
     encargado = models.CharField(max_length=30,blank=True,null=True)
     status = models.BooleanField(default=False)
+    fecha_y_hora = models.DateTimeField(auto_now_add=True, blank=True)
+    hora = models.TimeField(auto_now_add=True)
     def __unicode__(self):
         return '%s %s %d %s' % (self.nombre, self.apellido,self.celular,self.ubicacion)
 

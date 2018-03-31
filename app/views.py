@@ -38,8 +38,8 @@ class vista_encargados(generics.ListCreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'cliente.html'
     def get(self,request):
-        r = modelo_cliente.objects.filter(status=True).order_by('encargado')
 
+        r = modelo_cliente.objects.filter(status=True).order_by('encargado')
         a = clienteSerializer(instance=r,many=True)
         json = loads(dumps(a.data))
         return Response({'datos': a.data})
@@ -52,7 +52,6 @@ class otro(generics.ListCreateAPIView):
 class cliente(APIView):
     def post(self,request):
         a=clienteSerializer(data=request.data)
-        print request.data
         if(a.is_valid()):
             a.save()
             return JsonResponse({'status':'exitoso'})

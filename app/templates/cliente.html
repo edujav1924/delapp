@@ -21,7 +21,7 @@
         {% if datos %}
           {% for dato in datos %}
         <div class="h" data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-inset="false">
-            <h4>{{dato.encargado}}</h4>
+            <h4>{{dato.encargado}} hora: {{ dato.hora }}</h4>
             <ul data-role="listview" data-inset="false">
                 <ul>
                   <strong>Datos</strong>
