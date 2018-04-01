@@ -81,10 +81,26 @@ function education_fields() {
           console.log("listo");
 
           var b = [];
+          var c =0;
+          var nuevo=true;
           for (var i = 0; i <=room; i++) {
-            b[i]={'producto':$('#producto-'+i+ ' option:selected').val(),'cantidad':$('#cantidad-'+i).val()};
+            var prod = $('#producto-'+i+ ' option:selected').val();
+            var cant = $('#cantidad-'+i).val();
+            for (var j = 0; j < b.length; j++) {
+              var aux = prod.localeCompare(b[j]['producto'])  ;
+              if (aux==0) {
+                c++;
+                b[j]['cantidad'] = parseInt(b[j]['cantidad']) +parseInt(cant);
+                nuevo = false;
+              }
+            }
+            if (nuevo===true) {
+              b[i]={'producto':prod,'cantidad':parseInt(cant)};
+            }
+            else {
+              nuevo=true;
+            }
           }
-
           var formData = {
             'nombre'            : $('input[name=nombre]').val(),
             'apellido'          : $('input[name=apellido]').val(),
@@ -93,7 +109,6 @@ function education_fields() {
             'ubicacion'         : $('input[name=ubicacion]').val(),
             'encargado'         : $('#select-encargado' + ' option:selected').val(),
             'status'            : true,
-
           };
             console.log(formData);
             $.ajax({

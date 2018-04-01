@@ -1,6 +1,7 @@
 from django.conf.urls import url
 from rest_framework.urlpatterns import format_suffix_patterns
 from app import views
+from app.views import base_de_datos
 from django.conf.urls import include
 
 urlpatterns = [
@@ -11,7 +12,8 @@ urlpatterns = [
     url(r'^cliente/$', views.cliente.as_view(), name="hola"),
     url(r'^otro/$', views.otro.as_view()),
     url(r'^en/$', views.encargado.as_view()),
-
+    url(r'^guardado/$', views.base_de_datos.as_view()),
+    url(r'^cliente_2/$', views.cliente_2.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

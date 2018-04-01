@@ -17,6 +17,18 @@ import json
 from rest_framework.renderers import JSONRenderer
 from json import loads,dumps
 from django.http import JsonResponse
+from django.shortcuts import render
+
+class base_de_datos(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'base_de_datos.html'
+    def get(self,request):
+        r = modelo_cliente.objects.filter(status=True)
+        a = clienteSerializer(instance=r,many=True)
+        json = loads(dumps(a.data))
+        return Response({'clientes': a.data})
+
+
 class encargado(APIView):
     def get(self,request):
         encargado = modelo_encargado.objects.all()
@@ -39,7 +51,7 @@ class vista_encargados(generics.ListCreateAPIView):
     template_name = 'cliente.html'
     def get(self,request):
 
-        r = modelo_cliente.objects.filter(status=True).order_by('encargado')
+        r = modelo_cliente.objects.filter(status=True).order_by('-hora')
         a = clienteSerializer(instance=r,many=True)
         json = loads(dumps(a.data))
         return Response({'datos': a.data})
@@ -58,12 +70,15 @@ class cliente(APIView):
         return JsonResponse({'status':'error'})
     def get(self,request):
         r = modelo_cliente.objects.filter(status=False)
-
         a = clienteSerializer(instance=r,many=True)
         json = loads(dumps(a.data))
         #print json[0]
         return Response(json)
 
+
+class cliente_2(generics.ListCreateAPIView):
+    queryset = modelo_cliente.objects.all()
+    serializer_class = clienteSerializer
 
 class productos(generics.ListCreateAPIView):
     queryset = modelo_producto.objects.all()
