@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <title></title>
     {% include 'includes.html' %}
+    {% load static %}
+    <script type="text/javascript" src="{% static "modal.js" %}"></script>
   </head>
   <body>
     <div class="container">
@@ -23,7 +25,7 @@
           <form id="form" class="needs-validation" novalidate>
             <div class="form-row">
               <div class="col-md-4 mb-3">
-                <label for="validationCustom01">First name</label>
+                <label for="validationCustom01">Nombre</label>
                 <input type="text" name="nombre" class="form-control" id="validationCustom01" placeholder="Nombre" value="" required>
                 <div class="invalid-feedback">
                   Por favor complete este campo

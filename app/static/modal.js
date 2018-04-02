@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  // agregar nuevo
   $('#alerta').hide();
   var a ='<option value="">--seleccione--</option>';
   var b = a;

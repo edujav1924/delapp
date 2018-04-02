@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  //para actualizacion de notificacion
   var myFunction = function() {
     $.ajax({
           type: "GET",

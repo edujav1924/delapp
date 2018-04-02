@@ -5,15 +5,17 @@ from app.views import base_de_datos
 from django.conf.urls import include
 
 urlpatterns = [
-    url(r'^productos/$', views.productos.as_view()),
-    url(r'^encargados/$', views.vista_encargados.as_view()),
-    url(r'^consulta/$', views.consulta.as_view()),
-    url(r'^nuevo/$', views.agregar_nuevo.as_view()),
-    url(r'^cliente/$', views.cliente.as_view(), name="hola"),
-    url(r'^otro/$', views.otro.as_view()),
-    url(r'^en/$', views.encargado.as_view()),
-    url(r'^guardado/$', views.base_de_datos.as_view()),
-    url(r'^cliente_2/$', views.cliente_2.as_view()),
+    url(r'^home/login/$', views.vista_encargados.as_view()),
+    url(r'^home/encargados/$', views.vista_encargados.as_view()),
+    url(r'^home/$', views.vista_consulta.as_view()),
+    url(r'^home/nuevo/$', views.vista_agregar_nuevo.as_view()),
+    url(r'^home/datos/$', views.base_de_datos.as_view()),
+
+    url(r'^cliente/$', views.api_cliente.as_view(), name="hola"),
+    url(r'^otro/$', views.api_otro.as_view()),
+    url(r'^cliente_2/$', views.api_cliente_2.as_view()),
+    url(r'^productos/$', views.api_productos.as_view()),
+    url(r'^en/$', views.api_encargado.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

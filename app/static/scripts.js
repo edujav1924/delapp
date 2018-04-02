@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  //pagina inicial
   var ip = 'http://192.168.43.158:8000/consulta/'
   $(function() {
     $('.confirm').on('click', function() {

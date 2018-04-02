@@ -4,6 +4,11 @@
 <head>
   {% include 'includes.html'%}
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% load static %}
+  <script type="text/javascript" src="{% static "mas.js" %}"></script>
+  <script type="text/javascript" src="{% static "scripts.js" %}"></script>
+  <script type="text/javascript" src="{% static "otro.js" %}"></script>
+
 </head>
 
 <body>
@@ -21,7 +26,10 @@
             </button>
           </div>
           <div id="header" class="col-sm" align="center">
-            <input  onclick="window.open('http://192.168.43.158:8000/nuevo')" type="button"  class="btn btn-outline-warning" value="+ Nuevo Pedido" />
+            <input  onclick="window.open('http://192.168.43.158:8000/home/nuevo')" type="button"  class="btn btn-outline-warning" value="+ Nuevo Pedido" />
+            <input  onclick="window.open('http://192.168.43.158:8000/home/encargados')" type="button"  class="btn btn-outline-warning" value="Encargados" />
+            <input  onclick="window.open('http://192.168.43.158:8000/home/datos')" type="button"  class="btn btn-outline-warning" value="Datos almacenados" />
+
           </div>
         </div>
       </div>

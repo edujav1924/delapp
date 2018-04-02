@@ -29,15 +29,15 @@ class base_de_datos(APIView):
         return Response({'clientes': a.data})
 
 
-class encargado(APIView):
+class api_encargado(APIView):
     def get(self,request):
         encargado = modelo_encargado.objects.all()
         producto = modelo_producto.objects.all()
         a = productoSerializer(producto, many=True)
         b = encargadoSerializer(encargado, many=True)
         return JsonResponse({'productos':loads(dumps(a.data)),'encargados':loads(dumps(b.data))})
-
-class agregar_nuevo(APIView):
+#nuevo desde web
+class vista_agregar_nuevo(APIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'agregar_nuevo.html'
     def get (self,request):
@@ -56,12 +56,12 @@ class vista_encargados(generics.ListCreateAPIView):
         json = loads(dumps(a.data))
         return Response({'datos': a.data})
 
-class otro(generics.ListCreateAPIView):
+class api_otro(generics.ListCreateAPIView):
     queryset = modelo_cliente.objects.filter(status=False).order_by('encargado')
     serializer_class = clienteSerializer
 
 #responde a solicitud de android
-class cliente(APIView):
+class api_cliente(APIView):
     def post(self,request):
         a=clienteSerializer(data=request.data)
         if(a.is_valid()):
@@ -76,16 +76,16 @@ class cliente(APIView):
         return Response(json)
 
 
-class cliente_2(generics.ListCreateAPIView):
+class api_cliente_2(generics.ListCreateAPIView):
     queryset = modelo_cliente.objects.all()
     serializer_class = clienteSerializer
 
-class productos(generics.ListCreateAPIView):
+class api_productos(generics.ListCreateAPIView):
     queryset = modelo_producto.objects.all()
     serializer_class = productoSerializer
 
 #levanta pagina web de consulta admin
-class consulta(APIView):
+class vista_consulta(APIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'ini.html'
     def get(self, request):
