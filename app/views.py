@@ -18,16 +18,24 @@ from rest_framework.renderers import JSONRenderer
 from json import loads,dumps
 from django.http import JsonResponse
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_protect
+from django.http import HttpResponse
+from rest_framework.decorators import api_view
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 
-class base_de_datos(APIView):
-    renderer_classes = [TemplateHTMLRenderer]
-    template_name = 'base_de_datos.html'
-    def get(self,request):
+def logout_view(request):
+    logout(request)
+    return redirect('/home/')
+
+@api_view(['GET', 'POST'])
+@login_required(login_url='/login/')
+def base_de_datos(request):
+    if request.method == 'GET':
         r = modelo_cliente.objects.filter(status=True)
         a = clienteSerializer(instance=r,many=True)
         json = loads(dumps(a.data))
-        return Response({'clientes': a.data})
-
+        return render(request,'base_de_datos.html',{'clientes': a.data})
 
 class api_encargado(APIView):
     def get(self,request):
@@ -85,18 +93,19 @@ class api_productos(generics.ListCreateAPIView):
     serializer_class = productoSerializer
 
 #levanta pagina web de consulta admin
-class vista_consulta(APIView):
-    renderer_classes = [TemplateHTMLRenderer]
-    template_name = 'ini.html'
-    def get(self, request):
+@api_view(['GET', 'POST'])
+@login_required(login_url='/login/')
+def vista_consulta(request):
+    if request.method == 'GET':
         r = modelo_cliente.objects.filter(status=False)
         a = clienteSerializer(instance=r,many=True)
         json = loads(dumps(a.data))
         #print json[0]
         queryset2 = modelo_encargado.objects.all()
-        return Response({'datos': a.data ,'encargados':queryset2,'valor':r.count()})
-
-    def post (self,request):
+        return render(request,'ini.html',{'datos': a.data ,'encargados':queryset2,'valor':r.count()})
+        #return Response({'datos': a.data ,'encargados':queryset2,'valor':r.count()})
+        #preguntar si user es autenticado
+    if request.method == 'POST':
         #print request.data.get('id')
         id_local = request.data.get('id')
         print request.data.get('comando')
@@ -114,7 +123,6 @@ class vista_consulta(APIView):
             return Response(status=status.HTTP_201_CREATED)
         except:
             return Response(status=status.HTTP_404_NOT_FOUND)
-
 
 """
 class consulta(APIView):

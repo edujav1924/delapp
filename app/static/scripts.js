@@ -1,9 +1,10 @@
 $(document).ready(function() {
   //pagina inicial
-  var ip = 'http://192.168.43.158:8000/consulta/'
+  var ip = 'http://192.168.43.158:8000/home/'
+
   $(function() {
     $('.confirm').on('click', function() {
-      console.log("holaaa");
+
       var texto = this.id;
       texto = texto.split("-");
       seleccion = $('#' + texto[1] + '-encargado' + ' option:selected').val();
@@ -20,8 +21,9 @@ $(document).ready(function() {
           $.ajax({
               type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
               url: ip, // the url where we want to POST
-              data: formData, // our data object // what type of data do we expect back from the server
+              data:formData, // our data object // what type of data do we expect back from the server
               encode: true,
+
             }).done(function() {
               console.log('#row-' + texto[1]);
               //document.getElementById('row-'+texto[1]).style.display = 'none';
@@ -68,5 +70,4 @@ $(document).ready(function() {
     location.reload()
   });
   /* */
-
 });

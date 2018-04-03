@@ -87,3 +87,90 @@ modelo_producto.objects.create(producto="lomito",precio=12000)
 modelo_encargado.objects.create(nombre="AZUL",telefono=0)
 modelo_encargado.objects.create(nombre="VERDE",telefono=1)
 modelo_encargado.objects.create(nombre="ROJO",telefono=2)
+
+
+
+
+
+  <div class="container-fluid">
+    {% csrf_token %}
+    <div class="card">
+      <div class="card-header card text-white bg-dark mb-3">
+        <div class="row">
+          <div id="header" class="col-sm" align="center">
+            <h2>Pedidos</h2>
+          </div>
+          <div id="header" class="col-sm" align="center">
+            <button id="btn-noti" type="button" class="btn btn-warning">
+              Nuevos Pedidos <span id="noti" class="badge badge-light"></span>
+            </button>
+          </div>
+          <div id="header" class="col-sm" align="center">
+            <input  onclick="window.open('http://192.168.43.158:8000/home/nuevo')" type="button"  class="btn btn-outline-warning" value="+ Nuevo Pedido" />
+            <input  onclick="window.open('http://192.168.43.158:8000/home/encargados')" type="button"  class="btn btn-outline-warning" value="Encargados" />
+            <input  onclick="window.open('http://192.168.43.158:8000/home/datos')" type="button"  class="btn btn-outline-warning" value="Datos almacenados" />
+            <label for="[object Object]">{{user.username}}</label>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table id="example" class="table table-striped table-bordered " style="text-align: center;">
+            {% if datos %}
+            <thead>
+
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Celular</th>
+                <th scope="col">producto</th>
+                <th scope="col">ubicacion</th>
+                <th scope="col">encargado</th>
+                <th scope="col">Aceptar</th>
+                <th>Cancelar</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for dato in datos %}
+
+              <tr id=row-{{dato.cliente_id}}>
+                <div>
+                  <td data-priority="1" id={{dato.cliente_id}}-name>{{dato.nombre}} {{dato.apellido}}</td>
+                  <td id={{dato.cliente_id}}-telefono>{{dato.celular}}</td>
+                  <td id={{dato.cliente_id}}-producto>
+                    <ul>
+                      {%for y in dato.pedidos%}
+                      <li style="text-align:left;"> <strong>{{y.cantidad}}</strong> {{y.producto}}</li>
+                      {%endfor%}
+                    </ul>
+                  </td>
+                  <td><a id={{dato.cliente_id}}-ubicacion href={{dato.ubicacion}} target="_blank">Ubicacion</a></td>
+                  <td>
+                    <div class="">
+                      <select id={{dato.cliente_id}}-encargado style="width:150px;" class="custom-select">
+                        <option value="value">--seleccione--</option>
+                        {%for e in encargados %}
+                        <option value={{e.nombre}}>{{e.nombre}}</option>
+                        {%endfor%}
+                      </select>
+                    </div>
+                  </td>
+                  <td>
+                    <button id='aceptar-{{dato.cliente_id}}' type="button" class="btn btn-primary confirm">Aceptar</button>
+                  </td>
+                  <td>
+                    <button id='rechazar-{{dato.cliente_id}}' type="button" class="btn btn-danger delete">Eliminar</button>
+                  </td>
+                </div>
+              </tr>
+              {% endfor %}
+              <span id="jola" hidden>{{valor}}</span>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+</div>
+    {% else %}
+    <p>no hay pedidos disponibles</p>
+    {% endif %}
+  </body>

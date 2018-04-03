@@ -1,15 +1,16 @@
 from django.conf.urls import url
 from rest_framework.urlpatterns import format_suffix_patterns
 from app import views
+from app.views import vista_consulta,logout_view
 from app.views import base_de_datos
 from django.conf.urls import include
 
 urlpatterns = [
-    url(r'^home/login/$', views.vista_encargados.as_view()),
+    url(r'^home/logout/$',logout_view,name='logout'),
     url(r'^home/encargados/$', views.vista_encargados.as_view()),
-    url(r'^home/$', views.vista_consulta.as_view()),
+    url(r'^home/$', vista_consulta),
     url(r'^home/nuevo/$', views.vista_agregar_nuevo.as_view()),
-    url(r'^home/datos/$', views.base_de_datos.as_view()),
+    url(r'^home/datos/$', base_de_datos),
 
     url(r'^cliente/$', views.api_cliente.as_view(), name="hola"),
     url(r'^otro/$', views.api_otro.as_view()),

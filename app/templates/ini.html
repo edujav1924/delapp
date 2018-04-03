@@ -2,6 +2,7 @@
 <html class="ui-mobile">
 
 <head>
+  {% include 'bootstrap.html'%}
   {% include 'includes.html'%}
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% load static %}
@@ -13,7 +14,35 @@
 
 <body>
 
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://192.168.43.158:8000/home/encargados" target="_blank">Despacho pedidos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://192.168.43.158:8000/home/datos" target="_blank">Datos almacenados</a>
+        </li>
+
+      </ul>
+      <form  action="{% url 'logout' %}" class="form-inline">
+        <label class="col-sm-8" style="color:white;"><b> Usuario: </b> {{user.username}}</label>
+        <button class="btn btn-outline-light col-sm-4" type="submit">Salir</button>
+      </form>
+    </div>
+  </nav>
+
+
   <div class="container-fluid">
+    {% csrf_token %}
     <div class="card">
       <div class="card-header card text-white bg-dark mb-3">
         <div class="row">
@@ -27,9 +56,6 @@
           </div>
           <div id="header" class="col-sm" align="center">
             <input  onclick="window.open('http://192.168.43.158:8000/home/nuevo')" type="button"  class="btn btn-outline-warning" value="+ Nuevo Pedido" />
-            <input  onclick="window.open('http://192.168.43.158:8000/home/encargados')" type="button"  class="btn btn-outline-warning" value="Encargados" />
-            <input  onclick="window.open('http://192.168.43.158:8000/home/datos')" type="button"  class="btn btn-outline-warning" value="Datos almacenados" />
-
           </div>
         </div>
       </div>
