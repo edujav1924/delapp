@@ -1,0 +1,12 @@
+
+{% block title %}Login{% endblock %}
+{% include 'bootstrap.html'%}
+{% block content %}
+  <h2>Login</h2>
+  <form method="post">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Username">
+    <input type="password" name="password" placeholder="Password">
+    <button type="submit">iniciar</button>
+  </form>
+{% endblock %}
