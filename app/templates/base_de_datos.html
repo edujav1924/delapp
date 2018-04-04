@@ -19,7 +19,14 @@
     <script type="text/javascript" src="{% static 'table.js' %}"></script>
   </head>
   <body>
+  {% if error %}
+  <div class="alert alert-success">
+      <a class="close" href="#" data-dismiss="alert">×</a>
 
+      {{ error }}
+
+  </div>
+  {%else%}
     <div class="container-fluid">
       <div class="card">
         <div class="card-header card text-white bg-dark mb-3">
@@ -34,7 +41,6 @@
             <table id="example" class="table table-striped table-bordered nowrap" style="text-align:center;" style="width:100%">
               {% if clientes %}
               <thead>
-
                 <tr>
                   <th scope="col">Nombre</th>
                   <th scope="col">Celular</th>
@@ -79,5 +85,5 @@
       <p>no hay pedidos disponibles</p>
       {% endif %}
     </body>
-
+{%endif%}
 </html>

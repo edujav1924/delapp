@@ -2,6 +2,8 @@
 from __future__ import unicode_literals
 from datetime import datetime
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+
 class modelo_producto(models.Model):
     producto = models.CharField(max_length=30)
     precio = models.PositiveIntegerField()

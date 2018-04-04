@@ -6,5 +6,4 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('app.urls')),
-    url(r'^api-auth/', include('rest_framework.urls')),
 ]

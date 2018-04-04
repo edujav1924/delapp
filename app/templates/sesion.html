@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    {% load static %}
+    {% include 'bootstrap.html'%}
+    <script type="text/javascript" src="{% static "encargados.js"%}"></script>
+    <h1>usted a cerrado sesion</h1>
+      <a id="button" href="{% url "login" %}" rel="external">login</a>
+  </body>
+</html>

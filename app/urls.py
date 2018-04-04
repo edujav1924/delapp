@@ -6,8 +6,8 @@ from app.views import base_de_datos,vista_agregar_nuevo,vista_encargados
 from django.conf.urls import include
 
 urlpatterns = [
-    url(r'^home/logout/$',logout_view,name='logout'),
-    url(r'^encargados/$', vista_encargados),
+    url(r'^logout/$',logout_view,name='logout'),
+    url(r'^home/encargados/$', vista_encargados),
     url(r'^home/$', vista_consulta),
     url(r'^home/nuevo/$',vista_agregar_nuevo),
     url(r'^home/datos/$', base_de_datos),
