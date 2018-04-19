@@ -4,7 +4,13 @@ from datetime import datetime
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+class modelo_empresa(models.Model):
+    empresa = models.CharField(max_length=30)
+    latitud = models.CharField(max_length=20)
+    longitud = models.CharField(max_length=20)
+
 class modelo_producto(models.Model):
+    empresa = models.ForeignKey(modelo_empresa,related_name='productos',on_delete=models.CASCADE)
     producto = models.CharField(max_length=30)
     precio = models.PositiveIntegerField()
     def __unicode__(self):

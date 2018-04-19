@@ -88,10 +88,6 @@ modelo_encargado.objects.create(nombre="AZUL",telefono=0)
 modelo_encargado.objects.create(nombre="VERDE",telefono=1)
 modelo_encargado.objects.create(nombre="ROJO",telefono=2)
 
-
-
-
-
   <div class="container-fluid">
     {% csrf_token %}
     <div class="card">
@@ -174,3 +170,38 @@ modelo_encargado.objects.create(nombre="ROJO",telefono=2)
     <p>no hay pedidos disponibles</p>
     {% endif %}
   </body>
+from rest_framework import *
+from app.models import *
+from app.serializers import *
+from collections import OrderedDict
+from json import loads,dumps
+empr = modelo_empresa.objects.create(empresa="tiolucas",longitud="-25.289938",latitud="-57.513948")
+modelo_producto.objects.create(empresa=empr,producto="hamburguesa grande",precio=10000)
+modelo_producto.objects.create(empresa=empr,producto="coca cola mediana",precio=5000)
+modelo_producto.objects.create(empresa=empr,producto="lomito",precio=12000)
+s = empresaSerializer(instance=empr)
+empr = modelo_empresa.objects.create(empresa="tioR",longitud="-25.283612",latitud="-57.499013")
+modelo_producto.objects.create(empresa=empr,producto="empanada",precio=2000)
+modelo_producto.objects.create(empresa=empr,producto="pancho",precio=3000)
+modelo_producto.objects.create(empresa=empr,producto="asadito",precio=5000)
+s = empresaSerializer(instance=empr)
+empr = modelo_empresa.objects.create(empresa="tioRsds",longitud="-25.276589",latitud="-57.485495")
+modelo_producto.objects.create(empresa=empr,producto="cerveza1",precio=10000)
+modelo_producto.objects.create(empresa=empr,producto="cerveza2",precio=12000)
+modelo_producto.objects.create(empresa=empr,producto="cerveza3",precio=13000)
+modelo_producto.objects.create(empresa=empr,producto="cerveza3",precio=14000)
+empr = modelo_empresa.objects.create(empresa="asra",longitud="-25.292231",latitud="-57.501037")
+modelo_producto.objects.create(empresa=empr,producto="item1",precio=10000)
+modelo_producto.objects.create(empresa=empr,producto="item2",precio=12000)
+modelo_producto.objects.create(empresa=empr,producto="item3",precio=13000)
+modelo_producto.objects.create(empresa=empr,producto="item3",precio=14000)
+s = empresaSerializer(instance=empr)
+empr = modelo_empresa.objects.create(empresa="erer",longitud="-25.337084",latitud="-57.510713")
+modelo_producto.objects.create(empresa=empr,producto="item4",precio=10000)
+modelo_producto.objects.create(empresa=empr,producto="item5",precio=12000)
+modelo_producto.objects.create(empresa=empr,producto="item6",precio=13000)
+modelo_producto.objects.create(empresa=empr,producto="item7",precio=14000)
+s = empresaSerializer(instance=empr)
+modelo_encargado.objects.create(nombre="AZUL",telefono=0)
+modelo_encargado.objects.create(nombre="VERDE",telefono=1)
+modelo_encargado.objects.create(nombre="ROJO",telefono=2)

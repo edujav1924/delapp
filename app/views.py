@@ -151,6 +151,10 @@ class api_productos(generics.ListCreateAPIView):
     queryset = modelo_producto.objects.all()
     serializer_class = productoSerializer
 
+class api_empresa(generics.ListCreateAPIView):
+    queryset = modelo_empresa.objects.all()
+    serializer_class = empresaSerializer
+
 #levanta pagina web de consulta admin
 
 """
