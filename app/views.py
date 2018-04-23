@@ -39,10 +39,10 @@ def login_view(request):
         if user is not None:
             login(request, user)
             permissions = levelpermissions(user)
-            print permissions
-            if permissions>1:
+
+            if permissions['level']>1:
                 return HttpResponseRedirect('/home/')
-            elif permissions==1:
+            elif permissions['level']==1:
                 return HttpResponseRedirect('/home/encargados/')
             else:
                 return render(request,'login.html',{'error':'usuario o contrasenha no valida'})
@@ -50,7 +50,8 @@ def login_view(request):
             return render(request,'login.html',{'error':'usuario o contrasenha no valida'})
 
     elif request.method == 'GET':
-        return render(request,'login.html',)
+        empresas = modelo_empresa.objects.all()
+        return render(request,'login.html',{'empresas':empresas})
 
 @api_view(['GET'])
 @login_required(login_url='/login/')
