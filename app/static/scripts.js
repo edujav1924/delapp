@@ -1,7 +1,7 @@
 $(document).ready(function() {
   //pagina inicial
-  var ip = 'http://192.168.43.158:8000/home/'
-
+  var ip = 'http://192.168.43.158:8000/home/'+document.getElementById("page").innerHTML;
+  console.log(  document.getElementById("page").innerHTML);
   $(function() {
     $('.confirm').on('click', function() {
 

@@ -21,13 +21,14 @@ class modelo_cliente(models.Model):
     nombre = models.CharField(max_length=30,blank=True,default='')
     apellido = models.CharField(max_length=30,blank=True,default='')
     celular = models.IntegerField(blank=True,null=True)
+    empresa = models.CharField(max_length=30,blank=True,null=True)
     ubicacion = models.CharField(max_length=100,blank=True,null=True)
     encargado = models.CharField(max_length=30,blank=True,null=True)
     status = models.BooleanField(default=False)
     fecha = models.DateField(auto_now_add=True, blank=True)
     hora = models.TimeField(auto_now_add=True)
     def __unicode__(self):
-        return '%s %s %d %s' % (self.nombre, self.apellido,self.celular,self.ubicacion)
+        return '%s %s %d %s %s' % (self.nombre, self.apellido,self.celular,self.ubicacion,self.empresa)
 
 class modelo_pedido(models.Model):
     cliente = models.ForeignKey(modelo_cliente, related_name='pedidos', on_delete=models.CASCADE)

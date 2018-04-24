@@ -24,7 +24,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.contrib.auth import authenticate, login
 from django.http import *
-from custompermissions import levelpermissions
+from custompermissions import levelpermissions,credentials
 
 def logout_view(request):
     logout(request)
@@ -39,11 +39,11 @@ def login_view(request):
         if user is not None:
             login(request, user)
             permissions = levelpermissions(user)
-
+            print permissions
             if permissions['level']>1:
-                return HttpResponseRedirect('/home/')
+                return HttpResponseRedirect('/home/'+str(permissions['page']))
             elif permissions['level']==1:
-                return HttpResponseRedirect('/home/encargados/')
+                return HttpResponseRedirect('/home/encargados/'+str(permissions['page']))
             else:
                 return render(request,'login.html',{'error':'usuario o contrasenha no valida'})
         else:
@@ -51,7 +51,7 @@ def login_view(request):
 
     elif request.method == 'GET':
         empresas = modelo_empresa.objects.all()
-        return render(request,'login.html',{'empresas':empresas})
+        return render(request,'login.html')
 
 @api_view(['GET'])
 @login_required(login_url='/login/')
@@ -67,33 +67,37 @@ def base_de_datos(request):
 
 @api_view(['GET', 'POST'])
 @login_required(login_url='/login/')
-def vista_consulta(request):
-    if levelpermissions(request.user)>1:
-        if request.method == 'GET':
-            r = modelo_cliente.objects.filter(status=False)
-            a = clienteSerializer(instance=r,many=True)
-            json = loads(dumps(a.data))
-            #print json[0]
-            queryset2 = modelo_encargado.objects.all()
-            return render(request,'ini.html',{'datos': a.data ,'encargados':queryset2,'valor':r.count()})
-            #return Response({'datos': a.data ,'encargados':queryset2,'valor':r.count()})
-            #preguntar si user es autenticado
-        if request.method == 'POST':
-        #print request.data.get('id')
-            id_local = request.data.get('id')
-            try:
-                if(request.data.get('comando')!='eliminar'):
-                    p = modelo_cliente.objects.get(cliente_id=id_local)
-                    p.status=True
-                    p.encargado = request.data.get('encargado')
-                    p.save()
-                else:
-                    p = modelo_cliente.objects.get(cliente_id=id_local).delete()
-                return Response(status=status.HTTP_201_CREATED)
-            except:
-                return Response(status=status.HTTP_404_NOT_FOUND)
-    else:
-        return render(request,'error.html')
+def vista_consulta(request,offset):
+   credenciales = credentials(request.user,offset)
+   print offset
+   if credenciales['conexion'] and int(credenciales['level'])>1:
+      print 'entre'
+      if request.method == 'GET':
+         r = modelo_cliente.objects.filter(status=False,empresa=credenciales['empresa'])
+         a = clienteSerializer(instance=r,many=True)
+      #print json[0]
+         queryset2 = modelo_encargado.objects.all()
+         return render(request,'ini.html',{'datos': a.data ,'encargados':queryset2,'valor':r.count(),'page':credenciales['page']})
+      #return Response({'datos': a.data ,'encargados':queryset2,'valor':r.count()})
+      #preguntar si user es autenticado
+      if request.method == 'POST':
+      #print request.data.get('id')
+         id_local = request.data.get('id')
+         try:
+            if(request.data.get('comando')!='eliminar'):
+               p = modelo_cliente.objects.get(cliente_id=id_local)
+               p.status=True
+               p.encargado = request.data.get('encargado')
+               p.save()
+            else:
+               p = modelo_cliente.objects.get(cliente_id=id_local).delete()
+            return Response(status=status.HTTP_201_CREATED)
+         except:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+   else:
+      print "error"
+      return render(request,'error.html')
+
 
 
 @api_view(['GET'])
@@ -110,12 +114,16 @@ def vista_agregar_nuevo(request):
 
 @api_view(['GET'])
 @login_required(login_url='/login/')
-def vista_encargados(request):
-    if request.method == 'GET':
-        r = modelo_cliente.objects.filter(status=True).order_by('-hora')
-        a = clienteSerializer(instance=r,many=True)
-        json = loads(dumps(a.data))
-        return render(request,'cliente.html',{'datos': a.data})
+def vista_encargados(request,offset):
+
+   if request.method == 'GET':
+      credential = credentials(request.user,offset)
+      if credential['conexion']==True:
+         r = modelo_cliente.objects.filter(status=True,empresa=credential['empresa']).order_by('-hora')
+         a = clienteSerializer(instance=r,many=True)
+         return render(request,'cliente.html',{'datos': a.data})
+      else:
+         return render(request,'error.html')
 
 class api_otro(generics.ListCreateAPIView):
     queryset = modelo_cliente.objects.filter(status=False).order_by('encargado')

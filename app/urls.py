@@ -7,8 +7,8 @@ from django.conf.urls import include
 
 urlpatterns = [
     url(r'^logout/$',logout_view,name='logout'),
-    url(r'^home/encargados/$', vista_encargados),
-    url(r'^home/$', vista_consulta),
+    url(r'^home/encargados/(\d{1,2})$', vista_encargados),
+    url(r'^home/(\d{1,2})$', vista_consulta),
     url(r'^home/nuevo/$',vista_agregar_nuevo),
     url(r'^home/datos/$', base_de_datos),
     url(r'^login/$',login_view,name='login'),

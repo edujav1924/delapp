@@ -5,16 +5,37 @@ from app.models import *
 
 def levelpermissions(user):
     if user.is_superuser:
-        return 10
+        return {'level':10}
     elif user.is_staff:
-        return 2
+        group = Group.objects.filter(user=user)
+        group = str(group[0])
+        flag = group.find('_')
+        empresa = group[:flag]
+        cargo = group[flag+1:]
+        print empresa
+        print cargo
+        if (cargo == "supervisor"):
+            res = modelo_empresa.objects.get(empresa=empresa)
+            print res.empresa
+            return {'level':2,'page':res.id,'empresa':res.empresa}
     elif user.is_active:
         group = Group.objects.filter(user=user)
-        if (str(group[0]) == "encargados"):
-            emp = str(group[1])
-            a = emp.find("_")
-            b = emp[a+1:]
-            print b
-            res = modelo_empresa.objects.get(empresa=b)
-            return {'level':1,'page':res}
-        return 0
+        group = str(group[0])
+        flag = group.find('_')
+        empresa = group[:flag]
+        cargo = group[flag+1:]
+        if (cargo == "encargado"):
+            print empresa
+            res = modelo_empresa.objects.get(empresa=empresa)
+            print res
+            return {'level':1,'page':res.id,'empresa':res.empresa}
+
+
+def credentials(user,offset):
+    permisos = levelpermissions(user)
+    if(int(permisos['page'])==int(offset)):
+        print True
+        return {'level':permisos['level'],'page':permisos['page'],'conexion':True,'empresa':permisos['empresa']}
+    else:
+        print False
+        return {'conexion':False}
