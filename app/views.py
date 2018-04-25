@@ -55,21 +55,20 @@ def login_view(request):
 
 @api_view(['GET'])
 @login_required(login_url='/login/')
-def base_de_datos(request):
-    print request.method
-    if request.method == 'GET':
-        if levelpermissions(request.user)>1:
-            r = modelo_cliente.objects.filter(status=True)
+def base_de_datos(request,offset):
+    permisos = credentials(request.user,offset)
+    if(permisos['level']>1 and permisos['conexion']==True):
+        if request.method == 'GET':
+            r = modelo_cliente.objects.filter(status=True,empresa=permisos['empresa'])
             a = clienteSerializer(instance=r,many=True)
             json = loads(dumps(a.data))
             return render(request,'base_de_datos.html',{'clientes': a.data})
-        return render(request,'base_de_datos.html',{'error': "disculpe, no tiene permisos suficientes para acceder a esta pantalla"})
+    return render(request,'base_de_datos.html',{'error': "disculpe, no tiene permisos suficientes para acceder a esta pantalla"})
 
 @api_view(['GET', 'POST'])
 @login_required(login_url='/login/')
 def vista_consulta(request,offset):
    credenciales = credentials(request.user,offset)
-   print offset
    if credenciales['conexion'] and int(credenciales['level'])>1:
       print 'entre'
       if request.method == 'GET':
@@ -102,14 +101,15 @@ def vista_consulta(request,offset):
 
 @api_view(['GET'])
 @login_required(login_url='/login/')
-def vista_agregar_nuevo(request):
-    if levelpermissions(request.user)>1:
-        if request.method == 'GET':
-            encargados = modelo_encargado.objects.all()
-            productos = modelo_producto.objects.all()
-            return render(request,'agregar_nuevo.html',{'encargados':encargados,'productos':productos})
-    else:
-        return render(request,'error.html')
+def vista_agregar_nuevo(request,offset):
+   credenciales = credentials(request.user,offset)
+   if credenciales['conexion'] and int(credenciales['level'])>1:
+      if request.method == 'GET':
+         encargados = modelo_encargado.objects.all()
+         productos = modelo_producto.objects.all()
+         return render(request,'agregar_nuevo.html',{'encargados':encargados,'productos':productos})
+   else:
+      return render(request,'error.html')
 
 
 @api_view(['GET'])

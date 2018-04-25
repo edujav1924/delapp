@@ -28,14 +28,12 @@ def levelpermissions(user):
             print empresa
             res = modelo_empresa.objects.get(empresa=empresa)
             print res
-            return {'level':1,'page':res.id,'empresa':res.empresa}
+            return {'level':1,'page':int(res.id),'empresa':res.empresa}
 
 
 def credentials(user,offset):
     permisos = levelpermissions(user)
     if(int(permisos['page'])==int(offset)):
-        print True
         return {'level':permisos['level'],'page':permisos['page'],'conexion':True,'empresa':permisos['empresa']}
     else:
-        print False
-        return {'conexion':False}
+        return {'level':0,'conexion':False}
