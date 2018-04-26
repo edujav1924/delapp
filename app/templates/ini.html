@@ -6,9 +6,9 @@
     {% include 'includes.html'%}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
           {% load static %}
-    <script type="text/javascript" src="{% static "mas.js" %}"></script>
-    <script type="text/javascript" src="{% static "scripts.js" %}"></script>
-    <script type="text/javascript" src="{% static "otro.js" %}"></script>
+    <script type="text/javascript" src="{% static "script_home2.js" %}"></script>
+    <script type="text/javascript" src="{% static "script_home.js" %}"></script>
+    <script type="text/javascript" src="{% static "script_home3.js" %}"></script>
     <title>Home</title>
   </head>
 
@@ -26,12 +26,11 @@
           <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://192.168.43.193:8000/home/encargados/{{page}}" target="_blank">Despacho pedidos</a>
+          <a class="nav-link" href="http://192.168.43.158:8000/home/encargados/{{page}}" target="_blank">Despacho pedidos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://192.168.43.193:8000/home/datos/{{page}}" target="_blank">Datos almacenados</a>
+          <a class="nav-link" href="http://192.168.43.158:8000/home/datos/{{page}}" target="_blank">Datos almacenados</a>
         </li>
-
       </ul>
       <form  action="{% url 'logout' %}" class="form-inline">
         <label class="col-sm-8" style="color:white;"><b> Usuario: </b> {{user.username}}</label>
@@ -55,7 +54,7 @@
             </button>
           </div>
           <div id="header" class="col-sm" align="center">
-            <input  onclick="window.open('http://192.168.43.193:8000/home/nuevo/{{page}}')" type="button"  class="btn btn-outline-warning" value="+ Nuevo Pedido" />
+            <input  onclick="window.open('http://192.168.43.158:8000/home/nuevo/{{page}}')" type="button"  class="btn btn-outline-warning" value="+ Nuevo Pedido" />
           </div>
         </div>
       </div>
@@ -64,13 +63,11 @@
           <table id="example" class="table table-striped table-bordered " style="text-align: center;">
             {% if datos %}
             <thead>
-
               <tr>
                 <th scope="col">Nombre</th>
-                <th scope="col">Celular</th>
                 <th scope="col">producto</th>
+                <th scope="col">distancia</th>
                 <th scope="col">empresa</th>
-                <th scope="col">ubicacion</th>
                 <th scope="col">encargado</th>
                 <th scope="col">Aceptar</th>
                 <th>Cancelar</th>
@@ -78,7 +75,6 @@
             </thead>
             <tbody>
               {% for dato in datos %}
-
               <tr id=row-{{dato.cliente_id}}>
                 <div>
                   <td data-priority="1" id={{dato.cliente_id}}-name>{{dato.nombre}} {{dato.apellido}}</td>
@@ -91,7 +87,6 @@
                     </ul>
                   </td>
                   <td id={{dato.cliente_id}}-empresa>{{dato.empresa}}</td>
-                  <td><a id={{dato.cliente_id}}-ubicacion href={{dato.ubicacion}} target="_blank">Ubicacion</a></td>
                   <td>
                     <div class="">
                       <select id={{dato.cliente_id}}-encargado style="width:150px;" class="custom-select">
@@ -112,8 +107,6 @@
               </tr>
               {% endfor %}
               <span id="jola" hidden>{{valor}}</span>
-              <span id="page" hidden>{{page}}</span>
-
             </tbody>
           </table>
         </div>
@@ -123,6 +116,7 @@
     {% else %}
     <p>no hay pedidos disponibles</p>
     {% endif %}
+      <span id="page" hidden>{{page}}</span>
   </body>
 
   </html>

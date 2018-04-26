@@ -107,7 +107,7 @@ def vista_agregar_nuevo(request,offset):
       if request.method == 'GET':
          encargados = modelo_encargado.objects.all()
          productos = modelo_producto.objects.all()
-         return render(request,'agregar_nuevo.html',{'encargados':encargados,'productos':productos})
+         return render(request,'agregar_nuevo.html',{'encargados':encargados,'productos':productos,'empresa':credenciales['empresa']})
    else:
       return render(request,'error.html')
 

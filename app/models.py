@@ -21,6 +21,7 @@ class modelo_cliente(models.Model):
     nombre = models.CharField(max_length=30,blank=True,default='')
     apellido = models.CharField(max_length=30,blank=True,default='')
     celular = models.IntegerField(blank=True,null=True)
+    distancia = models.CharField(max_length=10,blank=True,null=True)
     empresa = models.CharField(max_length=30,blank=True,null=True)
     ubicacion = models.CharField(max_length=100,blank=True,null=True)
     encargado = models.CharField(max_length=30,blank=True,null=True)

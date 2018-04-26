@@ -8,7 +8,7 @@
     {% include 'includes.html' %}
 
     {% load static %}
-    <script type="text/javascript" src="{% static "modal.js" %}"></script>
+    <script type="text/javascript" src="{% static "agregar_nuevo.js" %}"></script>
   </head>
   <body>
     <div class="container">
@@ -16,6 +16,7 @@
         <div class="card-header row">
           <div align=left class="col">
             <h3>Agregar nuevo pedido</h3>
+            <span>Empresa:</span>  <span id="empresa">{{empresa}}</span>
           </div>
           <div align=right class="col">
             <button  class="btn btn-primary" id='agregar' type="button" name="button">agregar pedido</button>

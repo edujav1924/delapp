@@ -1,6 +1,7 @@
 $(document).ready(function() {
   // agregar nuevo
   $('#alerta').hide();
+  console.log($('#empresa').text());
   var a ='<option value="">--seleccione--</option>';
   var b = a;
   $.get( "http://192.168.43.158:8000/en", function( data ) {
@@ -106,6 +107,7 @@ function education_fields() {
             'nombre'            : $('input[name=nombre]').val(),
             'apellido'          : $('input[name=apellido]').val(),
             'celular'          : $('input[name=telefono]').val(),
+            'empresa'           :$('#empresa').text(),
             'pedidos'           : b,
             'ubicacion'         : $('input[name=ubicacion]').val(),
             'encargado'         : $('#select-encargado' + ' option:selected').val(),
