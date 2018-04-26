@@ -31,6 +31,8 @@ REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
+        'dynamic_rest.renderers.DynamicBrowsableAPIRenderer',
+
 
     ),
     'DATETIME_FORMAT': "%m/%d/%Y %H:%M:%S",
@@ -48,6 +50,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'app.apps.AppConfig',
+    'dynamic_rest',
+
 ]
 
 MIDDLEWARE = [

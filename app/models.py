@@ -39,6 +39,7 @@ class modelo_pedido(models.Model):
         return '%s %s %d' % (self.cliente, self.producto, self.cantidad)
 
 class modelo_encargado(models.Model):
+    empresa = models.ForeignKey(modelo_empresa,related_name='encargado',on_delete=models.CASCADE)
     nombre = models.CharField(max_length=30)
     telefono = models.IntegerField(blank=True)
     def __str__(self):

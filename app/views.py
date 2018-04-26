@@ -106,8 +106,8 @@ def vista_agregar_nuevo(request,offset):
    if credenciales['conexion'] and int(credenciales['level'])>1:
       if request.method == 'GET':
          encargados = modelo_encargado.objects.all()
-         productos = modelo_producto.objects.all()
-         return render(request,'agregar_nuevo.html',{'encargados':encargados,'productos':productos,'empresa':credenciales['empresa']})
+         productos = modelo_producto.objects.filter(empresa_id=credenciales['page'])
+         return render(request,'agregar_nuevo.html',{'encargados':encargados,'productos':productos,'empresa':credenciales['empresa'],'page':credenciales['page']})
    else:
       return render(request,'error.html')
 
@@ -130,12 +130,12 @@ class api_otro(generics.ListCreateAPIView):
     serializer_class = clienteSerializer
 
 class api_encargado(APIView):
-    def get(self,request):
-        encargado = modelo_encargado.objects.all()
-        producto = modelo_producto.objects.all()
-        a = productoSerializer(producto, many=True)
-        b = encargadoSerializer(encargado, many=True)
-        return JsonResponse({'productos':loads(dumps(a.data)),'encargados':loads(dumps(b.data))})
+    def get(self,request,pk):
+      encargado = modelo_encargado.objects.filter(empresa_id=pk)
+      producto = modelo_producto.objects.filter(empresa_id=pk)
+      a = productoSerializer(producto, many=True)
+      b = encargadoSerializer(encargado, many=True)
+      return JsonResponse({'productos':loads(dumps(a.data)),'encargados':loads(dumps(b.data))})
 #responde a solicitud de android
 class api_cliente(APIView):
     def post(self,request):

@@ -4,7 +4,8 @@ $(document).ready(function() {
   console.log($('#empresa').text());
   var a ='<option value="">--seleccione--</option>';
   var b = a;
-  $.get( "http://192.168.43.158:8000/en", function( data ) {
+  $.get( "http://192.168.43.158:8000/en/"+document.getElementById("page").innerHTML, function( data ) {
+    console.log(data);
      $.each(data, function(index, element) {
         $.each(element, function(indea,value) {
            if (index.localeCompare("productos")==0) {

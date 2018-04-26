@@ -17,7 +17,7 @@ urlpatterns = [
     url(r'^cliente_2/$', views.api_cliente_2.as_view()),
     url(r'^productos/$', views.api_productos.as_view()),
     url(r'^empresa/$', views.api_empresa.as_view()),
-    url(r'^en/$', views.api_encargado.as_view()),
+    url(r'^en/(?P<pk>[0-9]+)/$', views.api_encargado.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
