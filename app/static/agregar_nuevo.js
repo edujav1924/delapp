@@ -4,7 +4,7 @@ $(document).ready(function() {
   console.log($('#empresa').text());
   var a ='<option value="">--seleccione--</option>';
   var b = a;
-  $.get( "http://192.168.43.158:8000/en/"+document.getElementById("page").innerHTML, function( data ) {
+  $.get( "https://delivery.simplelectronica.com:8000/en/"+document.getElementById("page").innerHTML, function( data ) {
     console.log(data);
      $.each(data, function(index, element) {
         $.each(element, function(indea,value) {
@@ -117,7 +117,7 @@ function education_fields() {
             console.log(formData);
             $.ajax({
                 type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                url: 'http://192.168.43.158:8000/cliente/', // the url where we want to POST
+                url: 'https://delivery.simplelectronica.com:8000/cliente/', // the url where we want to POST
                 encode: true,
                 contentType: 'application/json',
                 data: JSON.stringify( formData)

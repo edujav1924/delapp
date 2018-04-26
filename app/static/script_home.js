@@ -1,6 +1,6 @@
 $(document).ready(function() {
   //pagina inicial
-  var ip = 'http://192.168.43.158:8000/home/'+document.getElementById("page").innerHTML;
+  var ip = 'https://delivery.simplelectronica.com:8000/home/'+document.getElementById("page").innerHTML;
   console.log(ip);
   $(function() {
     $('.confirm').on('click', function() {

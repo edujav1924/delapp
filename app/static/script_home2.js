@@ -3,7 +3,7 @@ $(document).ready(function() {
   var myFunction = function() {
     $.ajax({
       type: "GET",
-      url: "http://192.168.43.158:8000/otro.json",
+      url: "https://delivery.simplelectronica.com:8000/otro.json",
       success: function(data) {
         console.log(data.length);
         console.log(document.getElementById("jola").innerHTML);
