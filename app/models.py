@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from datetime import datetime
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from fcm_django.models import FCMDevice
 
 class modelo_empresa(models.Model):
     empresa = models.CharField(max_length=30)
@@ -11,7 +12,7 @@ class modelo_empresa(models.Model):
 
 class modelo_producto(models.Model):
     empresa = models.ForeignKey(modelo_empresa,related_name='productos',on_delete=models.CASCADE)
-    producto = models.CharField(max_length=30)
+    producto = models.CharField(max_length=30)  
     precio = models.PositiveIntegerField()
     def __unicode__(self):
         return '%s %d' % (self.producto, self.precio)
@@ -28,8 +29,17 @@ class modelo_cliente(models.Model):
     status = models.BooleanField(default=False)
     fecha = models.DateField(auto_now_add=True, blank=True)
     hora = models.TimeField(auto_now_add=True)
+    token=models.CharField(max_length=200)
     def __unicode__(self):
         return '%s %s %d %s %s' % (self.nombre, self.apellido,self.celular,self.ubicacion,self.empresa)
+    def save(self, *args, **kwargs):
+        if(self.encargado!=""):
+            print "notificatio"
+            e =  FCMDevice.objects.create(name=self.nombre,active='True',registration_id=self.token,type='android')
+            e.send_message(title="DeliveryOn", body="Pedido aceptado")
+        super(modelo_cliente, self).save(*args, **kwargs)
+
+
 
 class modelo_pedido(models.Model):
     cliente = models.ForeignKey(modelo_cliente, related_name='pedidos', on_delete=models.CASCADE)

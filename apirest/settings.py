@@ -50,10 +50,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'app.apps.AppConfig',
-    'dynamic_rest',
-
+    'fcm_django',
 ]
-
+FCM_DJANGO_SETTINGS = {
+        "FCM_SERVER_KEY":"AAAA5Gz-YNA:APA91bE6V7GiseQU0a2zGSDwhDxaNRzGMdCe8U5OEEtKetNhbeoiDLE1ESZeqQ8WNXUBWUNOOfeBzU29E06jSPbbQEWCzQgGbICR71zMN1l_IIVwV6Y89kpZysa6YGYOQLE9qxUe2TYv",
+         # true if you want to have only one active device per registered user at a time
+         # default: False
+        "ONE_DEVICE_PER_USER": False,
+         # devices to which notifications cannot be sent,
+         # are deleted upon receiving error response from FCM
+         # default: False
+        "DELETE_INACTIVE_DEVICES": False,
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

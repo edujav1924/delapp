@@ -25,6 +25,8 @@ from django.contrib.auth import logout
 from django.contrib.auth import authenticate, login
 from django.http import *
 from custompermissions import levelpermissions,credentials
+from fcm_django.models import FCMDevice
+
 
 def logout_view(request):
     logout(request)
@@ -62,7 +64,7 @@ def base_de_datos(request,offset):
             r = modelo_cliente.objects.filter(status=True,empresa=permisos['empresa'])
             a = clienteSerializer(instance=r,many=True)
             json = loads(dumps(a.data))
-            return render(request,'base_de_datos.html',{'clientes': a.data})
+            return render(request,'base_de_datos.html',{'clientes': a.data,'ip':"http://192.168.43.193:8000"})
     return render(request,'base_de_datos.html',{'error': "disculpe, no tiene permisos suficientes para acceder a esta pantalla"})
 
 @api_view(['GET', 'POST'])
@@ -76,7 +78,7 @@ def vista_consulta(request,offset):
          a = clienteSerializer(instance=r,many=True)
       #print json[0]
          queryset2 = modelo_encargado.objects.all()
-         return render(request,'ini.html',{'datos': a.data ,'encargados':queryset2,'valor':r.count(),'page':credenciales['page']})
+         return render(request,'ini.html',{'datos': a.data ,'encargados':queryset2,'valor':r.count(),'page':credenciales['page'],'ip':"http://192.168.43.193:8000"})
       #return Response({'datos': a.data ,'encargados':queryset2,'valor':r.count()})
       #preguntar si user es autenticado
       if request.method == 'POST':

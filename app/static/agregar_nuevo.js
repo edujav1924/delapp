@@ -4,7 +4,7 @@ $(document).ready(function() {
   console.log($('#empresa').text());
   var a ='<option value="">--seleccione--</option>';
   var b = a;
-  $.get( "https://delivery.simplelectronica.com:8000/en/"+document.getElementById("page").innerHTML, function( data ) {
+  $.get( $('#ip').text()+"/en/"+document.getElementById("page").innerHTML, function( data ) {
     console.log(data);
      $.each(data, function(index, element) {
         $.each(element, function(indea,value) {
