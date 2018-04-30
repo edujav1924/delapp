@@ -25,7 +25,7 @@ SECRET_KEY = 'l-&rv#hckq#5k$oj!!6mp20gayzi2or8^o#w4awa8)bw1)ko47'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.42.206','192.168.43.158','127.0.0.1','192.168.0.13','192.168.43.193']
+ALLOWED_HOSTS = ['192.168.42.208','localhost','0.0.0.0','192.168.42.206','192.168.43.158','127.0.0.1','192.168.0.13','192.168.43.193']
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': (
@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'app.apps.AppConfig',
     'fcm_django',
+    "sslserver",
 ]
 FCM_DJANGO_SETTINGS = {
         "FCM_SERVER_KEY":"AAAA5Gz-YNA:APA91bE6V7GiseQU0a2zGSDwhDxaNRzGMdCe8U5OEEtKetNhbeoiDLE1ESZeqQ8WNXUBWUNOOfeBzU29E06jSPbbQEWCzQgGbICR71zMN1l_IIVwV6Y89kpZysa6YGYOQLE9qxUe2TYv",
@@ -141,3 +142,4 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')

@@ -12,11 +12,8 @@ def levelpermissions(user):
         flag = group.find('_')
         empresa = group[:flag]
         cargo = group[flag+1:]
-        print empresa
-        print cargo
         if (cargo == "supervisor"):
             res = modelo_empresa.objects.get(empresa=empresa)
-            print res.empresa
             return {'level':2,'page':res.id,'empresa':res.empresa}
     elif user.is_active:
         group = Group.objects.filter(user=user)
@@ -25,9 +22,7 @@ def levelpermissions(user):
         empresa = group[:flag]
         cargo = group[flag+1:]
         if (cargo == "encargado"):
-            print empresa
             res = modelo_empresa.objects.get(empresa=empresa)
-            print res
             return {'level':1,'page':int(res.id),'empresa':res.empresa}
 
 

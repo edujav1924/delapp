@@ -27,6 +27,20 @@ from django.http import *
 from custompermissions import levelpermissions,credentials
 from fcm_django.models import FCMDevice
 
+def manifest(request):
+   return JsonResponse({"gcm_sender_id": "103953800507"}) 
+
+def firebase_messaging_sw_js(request):
+    filename = '/static/firebase-messaging-sw.js'
+    jsfile = open('/home/edu/scripts/paginaweb/apirest/app/static/firebase-messaging-sw.js', 'rb')
+    response = HttpResponse(content=jsfile)
+    response['Content-Type'] = 'text/javascript'
+    response['Content-Disposition'] = 'attachment; filename="%s"'%('/home/edu/scripts/paginaweb/apirest/app/static/firebase-messaging-sw.js')
+    return response
+
+def vistaini(request):
+    if request.GET:
+        return render(request,'')
 
 def logout_view(request):
     logout(request)
