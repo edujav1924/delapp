@@ -13,7 +13,6 @@ class empresaSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         productos_data = validated_data.pop('productos')
-        print productos_data
         empresa_1 = modelo_empresa.objects.create(**validated_data)
         for p in productos_data:
             modelo_producto.objects.create(cliente=empresa_1, **p)
@@ -37,11 +36,10 @@ class clienteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = modelo_cliente
-        fields = ('cliente_id','nombre', 'apellido', 'celular','distancia','pedidos','ubicacion','empresa','encargado','status','fecha','hora','token')
+        fields = ('cliente_id','nombre', 'apellido', 'celular','distancia','pedidos','ubicacion','empresa','encargado','status','fecha','hora','token','empresa_id')
 
     def create(self, validated_data):
         pedidos_data = validated_data.pop('pedidos')
-        print pedidos_data
         cliente_1 = modelo_cliente.objects.create(**validated_data)
         for pedido in pedidos_data:
             modelo_pedido.objects.create(cliente=cliente_1, **pedido)

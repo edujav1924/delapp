@@ -57,11 +57,11 @@ FCM_DJANGO_SETTINGS = {
         "FCM_SERVER_KEY":"AAAA5Gz-YNA:APA91bE6V7GiseQU0a2zGSDwhDxaNRzGMdCe8U5OEEtKetNhbeoiDLE1ESZeqQ8WNXUBWUNOOfeBzU29E06jSPbbQEWCzQgGbICR71zMN1l_IIVwV6Y89kpZysa6YGYOQLE9qxUe2TYv",
          # true if you want to have only one active device per registered user at a time
          # default: False
-        "ONE_DEVICE_PER_USER": False,
+        "ONE_DEVICE_PER_USER": True,
          # devices to which notifications cannot be sent,
          # are deleted upon receiving error response from FCM
          # default: False
-        "DELETE_INACTIVE_DEVICES": False,
+        "DELETE_INACTIVE_DEVICES": True,
 }
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -140,6 +140,6 @@ USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
