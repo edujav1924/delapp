@@ -1,5 +1,6 @@
 $(document).ready(function() {
   // agregar nuevo
+  console.log(window.location.hostname);
   $('#alerta').hide();
   console.log($('#empresa').text());
   var a ='<option value="">--seleccione--</option>';
@@ -80,8 +81,7 @@ function education_fields() {
         }
         else {
           event.preventDefault();
-          event.stopPropagation();
-          console.log("listo");
+        event.stopPropagation();          console.log("listo");
 
           var b = [];
           var c =0;
@@ -110,16 +110,19 @@ function education_fields() {
             'celular'          : $('input[name=telefono]').val(),
             'empresa'           :$('#empresa').text(),
             'pedidos'           : b,
+            'distancia'         :'0',
             'ubicacion'         : $('input[name=ubicacion]').val(),
             'encargado'         : $('#select-encargado' + ' option:selected').val(),
             'status'            : true,
+            'fecha'             :' ',
+            'hora'              :'  ',
+            'token'             :'df',
           };
             console.log(formData);
             $.ajax({
                 type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                url: 'https://delivery.simplelectronica.com:8000/cliente/', // the url where we want to POST
-                encode: true,
-                contentType: 'application/json',
+                url: 'https://192.168.43.158:8000/cliente/', // the url where we want to POST
+                encode: true,                contentType: 'application/json',
                 data: JSON.stringify( formData)
               }).done(function() {
                 $('#alerta').show();

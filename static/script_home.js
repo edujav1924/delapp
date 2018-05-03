@@ -1,7 +1,6 @@
 $(document).ready(function() {
   //pagina inicial
-  console.log($('#ip').text());
-  var ip = $('#ip').text()+'/home/'+document.getElementById("page").innerHTML;
+  var ip ='https://192.168.43.158/home/1';
   console.log(ip);
   $(function() {
     $('.confirm').on('click', function() {
@@ -56,11 +55,13 @@ $(document).ready(function() {
           data: formData, // our data object // what type of data do we expect back from the server
           encode: true,
         }).done(function() {
+          console.log("enviado");
           console.log('#row-' + texto2[1]);
           //document.getElementById('row-'+texto[1]).style.display = 'none';
           $('#row-' + texto2[1]).hide(1000);
         })
-        .fail(function() {
+        .fail(function(dalla) {
+          console.log(dalla);
           console.log("falla");
         })
         .always(function() {});

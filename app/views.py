@@ -79,12 +79,11 @@ def base_de_datos(request,offset):
             r = modelo_cliente.objects.filter(status=True,empresa=permisos['empresa'])
             a = clienteSerializer(instance=r,many=True)
             json = loads(dumps(a.data))
-            return render(request,'base_de_datos.html',{'clientes': a.data,'ip':"https://192.168.43.158:8000"})
+            return render(request,'base_de_datos.html',{'clientes': a.data,'ip':"https://192.168.43.158"})
     return render(request,'base_de_datos.html',{'error': "disculpe, no tiene permisos suficientes para acceder a esta pantalla"})
 
 def respconsumer(device):
-   print device
-   device.send_message(title='title', body='message')
+   device.send_message(title='Delivery On',icon='/static/logito2.png', body='Pedido aceptado')
 @api_view(['GET', 'POST'])
 
 @login_required(login_url='/login/')
@@ -99,7 +98,7 @@ def vista_consulta(request,offset):
          a = clienteSerializer(instance=r,many=True)
       #print json[0]
          queryset2 = modelo_encargado.objects.filter(empresa_id=credenciales['page'])
-         return render(request,'ini.html',{'datos': a.data ,'encargados':queryset2,'valor':r.count(),'page':credenciales['page'],'ip':"https://192.168.43.158:8000"})
+         return render(request,'ini.html',{'datos': a.data ,'encargados':queryset2,'valor':r.count(),'page':credenciales['page'],'ip':"https://192.168.43.158"})
       #return Response({'datos': a.data ,'encargados':queryset2,'valor':r.count()})
       #preguntar si user es autenticado
       if request.method == 'POST':
@@ -188,7 +187,7 @@ class api_token(APIView):
          print "guardar"
       else:
          print 'actualizar'
-         a = FCMDevice.objects.get(name=request.user)
+         a = FCMDevice.objects.get(name=request.user,user_id=request.data.get('user_id'))
          a.registration_id = request.data.get('token')
          a.save()
 
@@ -200,22 +199,26 @@ class api_token(APIView):
 
 def enviar(device):
 
-   device.send_message(title='DeliveryOn',body='Nuevo Pedido')
+   device.send_message(title='Delivery On',icon='/static/logito2.png', body='Nuevo Pedido')
 
 class api_cliente(APIView):
 
 
    def post(self,request):
       a=clienteSerializer(data=request.data)
+      a.is_valid()
+      print a.errors
       if(a.is_valid()):
          a.save()
-         try:
-            device = FCMDevice.objects.filter(user_id=request.data.get('empresa_id'))
-            hilo = threading.Thread(target=enviar,args=device)
-            hilo.start()
-         except:
-            print "error fcm api_cliente"
-         return JsonResponse({'status':'exitoso'})
+         if request.is_ajax()==False:
+             try:
+                device = FCMDevice.objects.filter(user_id=request.data.get('empresa_id'))
+                hilo = threading.Thread(target=enviar,args=(device,))
+                hilo.start()
+                return JsonResponse({'status':'exitoso'})
+             except:
+                print "error fcm api_cliente"
+
       return JsonResponse({'status':'error'})
    def get(self,request):
       r = modelo_cliente.objects.filter(status=False)

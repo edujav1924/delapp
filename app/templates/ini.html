@@ -6,10 +6,13 @@
     {% include 'includes.html'%}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
           {% load static %}
+    <link rel="stylesheet" href="{% static "iziToast.css" %}">
     <link rel="manifest" href="/manifest.json">
     <script type="text/javascript" src="{% static "script_home2.js" %}"></script>
     <script type="text/javascript" src="{% static "script_home.js" %}"></script>
     <script type="text/javascript" src="{% static "script_home3.js" %}"></script>
+    <script type="text/javascript" src="{% static "iziToast.js" %}"></script>
+
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-messaging.js"></script>
@@ -25,7 +28,8 @@
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">Solutions S.A.</a>
+    <img src="/static/logito2.png" width="50px">
+    <a id="empresa" class="navbar-brand" href="#"> EMPRESA</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -130,6 +134,8 @@
       <span id='ip' hidden>{{ip}}</span>
   </body>
   <script>
+    var k = 0;
+    document.getElementById("noti").innerHTML = k;
     var config = {
       apiKey: "AIzaSyDvNc7ZjM4pZXHmtVGqPZHKX4bBv_Bv-rA",
       authDomain: "deliverynotifications-f1722.firebaseapp.com",
@@ -141,36 +147,39 @@
     const messaging = firebase.messaging();
     messaging.requestPermission()
     .then(function() {
-    console.log('Notification permission granted.');
-    // TODO(developer): Retrieve an Instance ID token for use with FCM.
-    // ...
+
+      console.log('Notification permission granted.');
+      messaging.getToken()
+      .then(function(currentToken) {
+      if (currentToken) {
+        console.log(currentToken);
+        sendTokenToServer(currentToken);
+      } else {
+        // Show permission request.
+        console.log('No Instance ID token available. Request permission to generate one.');
+        // Show permission UI.
+      }
+      })
+      .catch(function(err) {
+      console.log('An error occurred while retrieving token. ', err);
+
+      });
     })
     .catch(function(err) {
     console.log('Unable to get permission to notify.', err);
     });
-    messaging.getToken()
-    .then(function(currentToken) {
-    if (currentToken) {
-      sendTokenToServer(currentToken);
-      console.log(currentToken);
 
-    } else {
-      // Show permission request.
-      console.log('No Instance ID token available. Request permission to generate one.');
-      // Show permission UI.
-
-    }
-    })
-    .catch(function(err) {
-    console.log('An error occurred while retrieving token. ', err);
-
-    });
     messaging.onMessage(function(payload) {
       /*console.log("Message received. ", payload);
       a = JSON.parse(JSON.stringify(payload));
       console.log(a.notification.body);
       alert(a.notification.body);*/
-      $.notify("Pedido recibido", "verifique");
+      k=k+1
+      document.getElementById("noti").innerHTML = k;
+      iziToast.show({
+      title: 'Nuevo Pedido',
+      message: 'Agregado recientemente'
+    });
   });
   function sendTokenToServer(a){
     var formData = {
@@ -180,15 +189,15 @@
     };
     $.ajax({
         type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-        url: 'https://192.168.43.158:8000/token/', // the url where we want to POST\
+        url: 'https://192.168.43.158/token/', // the url where we want to POST\
 
         data: formData, // our data object // what type of data do we expect back from the server
         encode: true,
       }).done(function() {
-
+        console.log("envado");
       })
       .fail(function() {
-
+        console.log("faill");
       })
   }
   </script>

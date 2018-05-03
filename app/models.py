@@ -30,7 +30,6 @@ class modelo_cliente(models.Model):
     fecha = models.DateField(auto_now_add=True, blank=True)
     hora = models.TimeField(auto_now_add=True)
     token=models.CharField(max_length=200)
-    empresa_id = models.CharField(max_length=5)
     def __unicode__(self):
         return '%s %s %d %s %s' % (self.nombre, self.apellido,self.celular,self.ubicacion,self.empresa)
 

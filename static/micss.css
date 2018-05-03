@@ -21,9 +21,12 @@
 #encargado{
 padding-bottom: 2px;
 }
-#select-encargado{
-  height: 35px;
-  margin-bottom: -2px;
+#encargado{
+padding-bottom: 2px;
+}
+#empresa{
+  padding-left: 10px;
+
 }
 .custom-select,.form-control{
   margin-top: 2px;

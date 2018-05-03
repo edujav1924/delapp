@@ -2,7 +2,6 @@
 // Give the service worker access to Firebase Messaging.
 // Note that you can only use Firebase Messaging here, other Firebase libraries
 // are not available in the service worker.
-importScripts('/home/edu/scripts/paginaweb/apirest/app/static/manifest.json');
 importScripts('https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js');
 importScripts('https://www.gstatic.com/firebasejs/3.9.0/firebase-messaging.js');
 
@@ -22,13 +21,15 @@ const messaging = firebase.messaging();
 // background (Web app is closed or not in browser focus) then you should
 // implement this optional method.
 // [START background_handler]
+
 messaging.setBackgroundMessageHandler(function(payload) {
   console.log('[firebase-messaging-sw.js] Received background message ', payload);
-  // Customize notification here
-  const notificationTitle = 'Background Message Title';
+  console.log("nuevo pediso");
+  document.getElementById("noti").innerHTML = 1;
+  const notificationTitle = 'A recibido un mensaje';
   const notificationOptions = {
     body: 'Background Message body.',
-    icon: '/firebase-logo.png'
+    icon: '/delivery.png'
   };
 
   return self.registration.showNotification(notificationTitle,

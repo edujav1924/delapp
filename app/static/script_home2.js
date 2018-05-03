@@ -12,7 +12,6 @@ $(document).ready(function() {
         }
       }
     });
-      console.log("hols");
   };
   /*  myFunction();
     setInterval(myFunction, 120000);

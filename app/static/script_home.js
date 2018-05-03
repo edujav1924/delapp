@@ -1,7 +1,7 @@
 $(document).ready(function() {
   //pagina inicial
   console.log($('#ip').text());
-  var ip = 'https://192.168.43.158:8000/home/1';
+  var ip = $('#ip').text()+'/home/1';
   console.log(ip);
   $(function() {
     $('.confirm').on('click', function() {
