@@ -28,6 +28,8 @@ from custompermissions import levelpermissions,credentials
 from fcm_django.models import FCMDevice
 from django.contrib.auth.models import User
 import threading
+import logging
+logger = logging.getLogger(__name__)
 def manifest(request):
    return JsonResponse({"gcm_sender_id": "103953800507"})
 
@@ -39,10 +41,24 @@ def firebase_messaging_sw_js(request):
     response['Content-Disposition'] = 'attachment; filename="%s"'%('/home/edu/scripts/paginaweb/apirest/app/static/firebase-messaging-sw.js')
     return response
 
-def vistaini(request):
-    if request.GET:
-        return render(request,'')
+@api_view(['GET', 'POST'])
+def misproductoses(request,offset):
+   if request.method == 'GET':
+      productos = modelo_producto.objects.filter(empresa_id=int(offset))
+      return render(request,'misproductos.html',{'productos':productos})
+   elif request.method == 'POST':
+      print request.data.get('method')
+      if(request.data.get('method') == 'edit'):
+         print "entre"
+         extraer_producto = modelo_producto.objects.get(id=request.data.get('id'))
+         print extraer_producto.producto
+         extraer_producto.producto = request.data.get('producto')
+         extraer_producto.precio = request.data.get('precio')
+         extraer_producto.save()
 
+         return Response(status=status.HTTP_201_CREATED)
+      logger.debug('Something went wrong!')
+      return Response(status=statusself.HTTP_404_NOT_FOUND)
 def logout_view(request):
     logout(request)
     print "salio"
@@ -127,9 +143,6 @@ def vista_consulta(request,offset):
 
                hilo2 = threading.Thread(target=respconsumer,args=(device,))
                hilo2.start()
-
-
-
             else:
                p = modelo_cliente.objects.get(cliente_id=id_local).delete()
             return Response(status=status.HTTP_201_CREATED)

@@ -1,0 +1,1152 @@
+(0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '9fppnw1kwylcsmbkeh9tsmus3va9eilj' AND "django_session"."expire_date" > '2018-05-04 16:56:27.383361'); args=('9fppnw1kwylcsmbkeh9tsmus3va9eilj', u'2018-05-04 16:56:27.383361')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '9fppnw1kwylcsmbkeh9tsmus3va9eilj' AND "django_session"."expire_date" > '2018-05-04 17:01:53.811546'); args=('9fppnw1kwylcsmbkeh9tsmus3va9eilj', u'2018-05-04 17:01:53.811546')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '9fppnw1kwylcsmbkeh9tsmus3va9eilj' AND "django_session"."expire_date" > '2018-05-04 17:02:01.388583'); args=('9fppnw1kwylcsmbkeh9tsmus3va9eilj', u'2018-05-04 17:02:01.388583')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '9fppnw1kwylcsmbkeh9tsmus3va9eilj' AND "django_session"."expire_date" > '2018-05-04 17:02:21.500836'); args=('9fppnw1kwylcsmbkeh9tsmus3va9eilj', u'2018-05-04 17:02:21.500836')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '9fppnw1kwylcsmbkeh9tsmus3va9eilj' AND "django_session"."expire_date" > '2018-05-04 17:02:48.295267'); args=('9fppnw1kwylcsmbkeh9tsmus3va9eilj', u'2018-05-04 17:02:48.295267')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 12000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 12000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '9fppnw1kwylcsmbkeh9tsmus3va9eilj' AND "django_session"."expire_date" > '2018-05-04 17:03:07.439432'); args=('9fppnw1kwylcsmbkeh9tsmus3va9eilj', u'2018-05-04 17:03:07.439432')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 12000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 12000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '9fppnw1kwylcsmbkeh9tsmus3va9eilj' AND "django_session"."expire_date" > '2018-05-04 17:04:33.069288'); args=('9fppnw1kwylcsmbkeh9tsmus3va9eilj', u'2018-05-04 17:04:33.069288')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '9fppnw1kwylcsmbkeh9tsmus3va9eilj' AND "django_session"."expire_date" > '2018-05-04 17:05:26.467900'); args=('9fppnw1kwylcsmbkeh9tsmus3va9eilj', u'2018-05-04 17:05:26.467900')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '9fppnw1kwylcsmbkeh9tsmus3va9eilj' AND "django_session"."expire_date" > '2018-05-04 17:06:56.502514'); args=('9fppnw1kwylcsmbkeh9tsmus3va9eilj', u'2018-05-04 17:06:56.502514')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '9fppnw1kwylcsmbkeh9tsmus3va9eilj' AND "django_session"."expire_date" > '2018-05-04 17:07:07.286110'); args=('9fppnw1kwylcsmbkeh9tsmus3va9eilj', u'2018-05-04 17:07:07.286110')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 2; args=(2,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'coca cola mediana', "precio" = 5000 WHERE "app_modelo_producto"."id" = 2; args=(1, u'coca cola mediana', 5000, 2)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '9fppnw1kwylcsmbkeh9tsmus3va9eilj' AND "django_session"."expire_date" > '2018-05-04 17:07:12.604090'); args=('9fppnw1kwylcsmbkeh9tsmus3va9eilj', u'2018-05-04 17:07:12.604090')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 2; args=(2,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'coca cola mediana', "precio" = 5000 WHERE "app_modelo_producto"."id" = 2; args=(1, u'coca cola mediana', 5000, 2)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '9fppnw1kwylcsmbkeh9tsmus3va9eilj' AND "django_session"."expire_date" > '2018-05-04 17:07:23.092506'); args=('9fppnw1kwylcsmbkeh9tsmus3va9eilj', u'2018-05-04 17:07:23.092506')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '9fppnw1kwylcsmbkeh9tsmus3va9eilj' AND "django_session"."expire_date" > '2018-05-04 17:07:44.921723'); args=('9fppnw1kwylcsmbkeh9tsmus3va9eilj', u'2018-05-04 17:07:44.921723')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 12000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 12000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '9fppnw1kwylcsmbkeh9tsmus3va9eilj' AND "django_session"."expire_date" > '2018-05-04 17:08:35.502950'); args=('9fppnw1kwylcsmbkeh9tsmus3va9eilj', u'2018-05-04 17:08:35.502950')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '9fppnw1kwylcsmbkeh9tsmus3va9eilj' AND "django_session"."expire_date" > '2018-05-04 17:08:35.850740'); args=('9fppnw1kwylcsmbkeh9tsmus3va9eilj', u'2018-05-04 17:08:35.850740')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '9fppnw1kwylcsmbkeh9tsmus3va9eilj' AND "django_session"."expire_date" > '2018-05-04 17:08:42.195881'); args=('9fppnw1kwylcsmbkeh9tsmus3va9eilj', u'2018-05-04 17:08:42.195881')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '9fppnw1kwylcsmbkeh9tsmus3va9eilj' AND "django_session"."expire_date" > '2018-05-04 17:08:43.002036'); args=('9fppnw1kwylcsmbkeh9tsmus3va9eilj', u'2018-05-04 17:08:43.002036')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '9fppnw1kwylcsmbkeh9tsmus3va9eilj' AND "django_session"."expire_date" > '2018-05-04 17:08:43.714291'); args=('9fppnw1kwylcsmbkeh9tsmus3va9eilj', u'2018-05-04 17:08:43.714291')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '9fppnw1kwylcsmbkeh9tsmus3va9eilj' AND "django_session"."expire_date" > '2018-05-04 17:08:49.897135'); args=('9fppnw1kwylcsmbkeh9tsmus3va9eilj', u'2018-05-04 17:08:49.897135')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 200 365
+"GET /static/addprod.js HTTP/1.1" 200 2445
+"GET /static/ajax-setup.js HTTP/1.1" 200 2176
+(0.001) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 12000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 12000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 12000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 12000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.001) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.001) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.001) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 2; args=(2,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'coca cola mediana', "precio" = 5000 WHERE "app_modelo_producto"."id" = 2; args=(1, u'coca cola mediana', 5000, 2)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 2; args=(2,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'coca cola mediana', "precio" = 5000 WHERE "app_modelo_producto"."id" = 2; args=(1, u'coca cola mediana', 5000, 2)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 2; args=(2,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'coca cola mediana', "precio" = 5000 WHERE "app_modelo_producto"."id" = 2; args=(1, u'coca cola mediana', 5000, 2)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 2; args=(2,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'coca cola mediana', "precio" = 5000 WHERE "app_modelo_producto"."id" = 2; args=(1, u'coca cola mediana', 5000, 2)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 2; args=(2,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'coca cola mediana', "precio" = 5000 WHERE "app_modelo_producto"."id" = 2; args=(1, u'coca cola mediana', 5000, 2)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 2; args=(2,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'coca cola mediana', "precio" = 5000 WHERE "app_modelo_producto"."id" = 2; args=(1, u'coca cola mediana', 5000, 2)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 10000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 10000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 12000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 12000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 12000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 12000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 12000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 12000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 12000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 12000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 12000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 12000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.001) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 12000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 12000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 12000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 12000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 12000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 12000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 12000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 12000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 12000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 12000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 12000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 12000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 12000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 12000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 12000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 12000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 12000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 12000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 12000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 12000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.001) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 12000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 12000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 12000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 12000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 200 365
+"GET /static/addprod.js HTTP/1.1" 200 2445
+"GET /static/ajax-setup.js HTTP/1.1" 200 2176
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 2; args=(2,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'coca cola mediana', "precio" = 5000 WHERE "app_modelo_producto"."id" = 2; args=(1, u'coca cola mediana', 5000, 2)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/addprod.js HTTP/1.1" 200 2499
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2445
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2449
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2502
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2493
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2493
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2601
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2599
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2649
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2643
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 1211
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 1203
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2644
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2627
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2449
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2587
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.001) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2557
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2398
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = '', "precio" = 10000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'', 10000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4065
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2397
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 15000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 15000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2397
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.001) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/ajax-setup.js HTTP/1.1" 200 2176
+"GET /static/floating-labels.css HTTP/1.1" 200 365
+"GET /static/addprod.js HTTP/1.1" 200 2397
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/edu/python_2.7/local/lib/python2.7/site-packages/django/template/base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+VariableDoesNotExist: Failed lookup for key [name] in u'<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 7792
+(0.001) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 2; args=(2,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'coca cola mediana', "precio" = 3434 WHERE "app_modelo_producto"."id" = 2; args=(1, u'coca cola mediana', 3434, 2)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 200 365
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 2; args=(2,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'coca cola mediana', "precio" = 5000 WHERE "app_modelo_producto"."id" = 2; args=(1, u'coca cola mediana', 5000, 2)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 200 365
+"GET /static/addprod.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/addprod.js HTTP/1.1" 304 0
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/edu/python_2.7/local/lib/python2.7/site-packages/django/template/base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+VariableDoesNotExist: Failed lookup for key [name] in u'<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /home/
+"GET /home/ HTTP/1.1" 404 7774
+"GET /home/1 HTTP/1.1" 302 0
+Exception while resolving variable 'error' in template 'login.html'.
+Traceback (most recent call last):
+  File "/home/edu/python_2.7/local/lib/python2.7/site-packages/django/template/base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+VariableDoesNotExist: Failed lookup for key [error] in u"[{'False': False, 'None': None, 'True': True}, {u'csrf_token': <SimpleLazyObject: u'HdLIwY953uU93j96ui78aBafpNZBRUnJlcoFvnKBxHA3FHCpSY0QnNvUPnuDvqqd'>, 'user': <django.contrib.auth.models.AnonymousUser object at 0x7fa3d57216d0>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7fa3d56cf610>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40}, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7fa3d5721310>, u'request': <rest_framework.request.Request object at 0x7fa3d57215d0>}, {}]"
+"GET /login/?next=/home/1 HTTP/1.1" 200 1712
+"GET /static/signin.css HTTP/1.1" 200 902
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/edu/python_2.7/local/lib/python2.7/site-packages/django/template/base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+VariableDoesNotExist: Failed lookup for key [name] in u'<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 7792
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/edu/python_2.7/local/lib/python2.7/site-packages/django/template/base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+VariableDoesNotExist: Failed lookup for key [name] in u'<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 7792
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/edu/python_2.7/local/lib/python2.7/site-packages/django/template/base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+VariableDoesNotExist: Failed lookup for key [name] in u'<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /
+"GET / HTTP/1.1" 404 7741
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/edu/python_2.7/local/lib/python2.7/site-packages/django/template/base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+VariableDoesNotExist: Failed lookup for key [name] in u'<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 7792
+(0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'izqh4vdc9yjysfp6970opii00h3wqgwp' AND "django_session"."expire_date" > '2018-05-04 17:48:46.144770'); args=('izqh4vdc9yjysfp6970opii00h3wqgwp', u'2018-05-04 17:48:46.144770')
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4071
+"GET /static/floating-labels.css HTTP/1.1" 200 365
+"GET /static/addprod.js HTTP/1.1" 200 2397
+"GET /static/ajax-setup.js HTTP/1.1" 200 2176
+(0.001) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4146
+"GET /static/floating-labels.css HTTP/1.1" 200 365
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4146
+"GET /static/floating-labels.css HTTP/1.1" 200 365
+"GET /static/addprod.js HTTP/1.1" 200 2397
+(0.001) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 2; args=(2,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'coca cola mediana', "precio" = 5500 WHERE "app_modelo_producto"."id" = 2; args=(1, u'coca cola mediana', 5500, 2)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4146
+"GET /static/floating-labels.css HTTP/1.1" 200 365
+"GET /static/addprod.js HTTP/1.1" 200 2432
+"GET /static/ajax-setup.js HTTP/1.1" 200 2176
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 11000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 11000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4146
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 11000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 11000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 11000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 11000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 11000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 11000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 11000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 11000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.001) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4146
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2502
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.001) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4146
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.001) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 2; args=(2,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'coca cola mediana', "precio" = 5500 WHERE "app_modelo_producto"."id" = 2; args=(1, u'coca cola mediana', 5500, 2)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.001) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 2; args=(2,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'coca cola mediana', "precio" = 5500 WHERE "app_modelo_producto"."id" = 2; args=(1, u'coca cola mediana', 5500, 2)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4146
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2538
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 2; args=(2,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'coca cola mediana', "precio" = 5500 WHERE "app_modelo_producto"."id" = 2; args=(1, u'coca cola mediana', 5500, 2)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 2; args=(2,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'coca cola mediana', "precio" = 5500 WHERE "app_modelo_producto"."id" = 2; args=(1, u'coca cola mediana', 5500, 2)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 2; args=(2,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'coca cola mediana', "precio" = 5500 WHERE "app_modelo_producto"."id" = 2; args=(1, u'coca cola mediana', 5500, 2)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 2; args=(2,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'coca cola mediana', "precio" = 5500 WHERE "app_modelo_producto"."id" = 2; args=(1, u'coca cola mediana', 5500, 2)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4146
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2540
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.001) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 11000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 11000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4146
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2719
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4146
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2720
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 15000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 15000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4146
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2725
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 2; args=(2,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'coca cola mediana', "precio" = 5500 WHERE "app_modelo_producto"."id" = 2; args=(1, u'coca cola mediana', 5500, 2)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4146
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2726
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 11000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 11000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4251
+"GET /static/loader.css HTTP/1.1" 200 864
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2454
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4251
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 200 867
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4251
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 200 873
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4248
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 11000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 11000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4261
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4261
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4261
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 200 1398
+"GET /static/addprod.js HTTP/1.1" 304 0
+(0.001) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4261
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 200 1398
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4261
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 200 1397
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4261
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 200 1392
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.001) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4261
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 200 1393
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4261
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 200 1393
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4261
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 200 1396
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4298
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.001) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4246
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4276
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4276
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 200 1395
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.001) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4290
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4662
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4662
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 200 1473
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4662
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 200 1300
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4748
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4644
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4644
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 200 923
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4644
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 200 922
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4644
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 200 922
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4644
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 200 946
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4644
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 200 947
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4644
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 200 946
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4644
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 200 777
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4527
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 200 946
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4569
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4568
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.001) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4568
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2727
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4568
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4568
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2541
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4568
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4568
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4568
+"GET /static/loader.css HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4568
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4568
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4568
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4568
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4568
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.001) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4568
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4568
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4568
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4568
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4568
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4568
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4568
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4568
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4568
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4568
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4568
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4568
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4568
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2638
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4568
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2646
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4580
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2636
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 11000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 11000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 4; args=(4,)
+"GET /home/misproductos/4 HTTP/1.1" 200 4724
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2629
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 11; args=(11,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 4, "producto" = 'item1', "precio" = 10000 WHERE "app_modelo_producto"."id" = 11; args=(4, u'item1', 10000, 11)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.001) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 4; args=(4,)
+"GET /home/misproductos/4 HTTP/1.1" 200 4724
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2621
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.001) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 12; args=(12,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 4, "producto" = 'item2', "precio" = 12000 WHERE "app_modelo_producto"."id" = 12; args=(4, u'item2', 12000, 12)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 4; args=(4,)
+"GET /home/misproductos/4 HTTP/1.1" 200 4724
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2562
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 4; args=(4,)
+"GET /home/misproductos/4 HTTP/1.1" 200 4724
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2505
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 13; args=(13,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 4, "producto" = 'item3', "precio" = 13000 WHERE "app_modelo_producto"."id" = 13; args=(4, u'item3', 13000, 13)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4580
+"GET /static/addprod.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 15000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 15000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4573
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 304 0
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4573
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2564
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 11000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 11000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 11000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 11000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4573
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2614
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 11000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 11000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4582
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2609
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 2; args=(2,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'coca cola mediana', "precio" = 5500 WHERE "app_modelo_producto"."id" = 2; args=(1, u'coca cola mediana', 5500, 2)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4582
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2611
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.001) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 15000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 15000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.001) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 3; args=(3,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'lomito', "precio" = 15000 WHERE "app_modelo_producto"."id" = 3; args=(1, u'lomito', 15000, 3)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4582
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2743
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 1; args=(1,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'hamburguesa grande', "precio" = 11000 WHERE "app_modelo_producto"."id" = 1; args=(1, u'hamburguesa grande', 11000, 1)
+"POST /home/misproductos/1 HTTP/1.1" 201 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."empresa_id" = 1; args=(1,)
+"GET /home/misproductos/1 HTTP/1.1" 200 4604
+"GET /static/floating-labels.css HTTP/1.1" 304 0
+"GET /static/loader.css HTTP/1.1" 304 0
+"GET /static/addprod.js HTTP/1.1" 200 2740
+"GET /static/ajax-setup.js HTTP/1.1" 304 0
+(0.000) SELECT "app_modelo_producto"."id", "app_modelo_producto"."empresa_id", "app_modelo_producto"."producto", "app_modelo_producto"."precio" FROM "app_modelo_producto" WHERE "app_modelo_producto"."id" = 2; args=(2,)
+(0.000) BEGIN; args=None
+(0.000) UPDATE "app_modelo_producto" SET "empresa_id" = 1, "producto" = 'coca cola mediana', "precio" = 5500 WHERE "app_modelo_producto"."id" = 2; args=(1, u'coca cola mediana', 5500, 2)
+"POST /home/misproductos/1 HTTP/1.1" 201 0

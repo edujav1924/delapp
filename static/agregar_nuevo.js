@@ -81,7 +81,8 @@ function education_fields() {
         }
         else {
           event.preventDefault();
-        event.stopPropagation();          console.log("listo");
+        event.stopPropagation();
+        console.log("listo");
 
           var b = [];
           var c =0;
@@ -121,7 +122,7 @@ function education_fields() {
             console.log(formData);
             $.ajax({
                 type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                url: 'https://192.168.43.158:8000/cliente/', // the url where we want to POST
+                url: 'https://192.168.43.158/cliente/', // the url where we want to POST
                 encode: true,                contentType: 'application/json',
                 data: JSON.stringify( formData)
               }).done(function() {
@@ -129,10 +130,11 @@ function education_fields() {
                 myFunction();
                 $(":input").prop('disabled', true);
                 $("#form")[0].reset();
-
               })
-              .fail(function() {})
-              .always(function() {});
+              .fail(function() {
+                console.log("falla");
+              })
+              .always(function() {console.log("verificar");});
         }
         form.classList.add('was-validated');
       }, false);

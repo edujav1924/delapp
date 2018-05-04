@@ -30,7 +30,7 @@ $(document).ready(function() {
               $('#row-' + texto[1]).hide(1000);
               document.getElementById("jola").innerHTML=document.getElementById("jola").innerHTML-1
             })
-            .fail(function() {})
+            .fail(function() {console.log("falla");})
             .always(function() {});
 
         };
