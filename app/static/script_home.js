@@ -1,7 +1,7 @@
 $(document).ready(function() {
   //pagina inicial
-  console.log($('#ip').text());
-  var ip = $('#ip').text()+'/home/1';
+  var ip = window.location.href;
+  console.log(window.location.origin);
   console.log(ip);
   $(function() {
     $('.confirm').on('click', function() {

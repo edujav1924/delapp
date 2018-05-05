@@ -121,7 +121,7 @@ function education_fields() {
             console.log(formData);
             $.ajax({
                 type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                url: 'https://192.168.43.158:8000/cliente/', // the url where we want to POST
+                url: window.location.origin+'/cliente/', // the url where we want to POST
                 encode: true,                contentType: 'application/json',
                 data: JSON.stringify( formData)
               }).done(function() {

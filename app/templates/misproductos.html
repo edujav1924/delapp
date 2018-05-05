@@ -13,76 +13,60 @@
   {% load static %}
   <link rel="stylesheet" href="{% static "floating-labels.css" %}">
   <link rel="stylesheet" href="{% static "loader.css" %}">
-
+  <script type="text/javascript" src="{%static "users.js"%}"></script>
   <script type="text/javascript" src="{%static "addprod.js"%}"></script>
   <script type="text/javascript" src="{%static "ajax-setup.js"%}"></script>
   </head>
   <body>
   <div class="container">
+    <section>
+      <div class="table-responsive">
+        <table id="example" class="table table-striped table-bordered " style="text-align:center;">
+          <thead>
+            <tr>
+              <th scope="col">producto</th>
+              <th scope="col">precio</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for producto in productos %}
+            <tr id={{producto.id}}>
+              <td id={{producto.id}}-prod>{{producto.producto}}</td>
+              <td ><span id={{producto.id}}-prec>{{producto.precio}} </span> <span>Gs.</span> </td>
+            </tr>
+            {%endfor%}
+          </tbody>
+        </table>
+      </div>
+      {%include 'modal.html'%}
+    </section>
+    <br><br>
+    <section>
     <div class="table-responsive">
-      <table id="example" class="table table-striped table-bordered " style="text-align:center;">
+      <table id="user-table" class="table table-striped table-bordered " style="text-align:center;">
         <thead>
           <tr>
-            <th scope="col">producto</th>
-            <th scope="col">precio</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Cargo</th>
           </tr>
         </thead>
         <tbody>
-          {% for producto in productos %}
-          <tr id={{producto.id}}>
-            <td id={{producto.id}}-prod>{{producto.producto}}</td>
-            <td ><span id={{producto.id}}-prec>{{producto.precio}} </span> <span>Gs.</span> </td>
+          {% for encargado in encargados %}
+          <tr id={{encargado.id}}>
+            <td id={{encargado.id}}-name>{{encargado.username}}</td>
+            <td id={{encargado.id}}-cargo>Encargado delivery</td>
+          </tr>
+          {%endfor%}
+          {% for supervisor in supervisores %}
+          <tr id={{supervisor.id}}>
+            <td id={{supervisor.id}}-name>{{supervisor.username}}</td>
+            <td id={{supervisor.id}}-cargo>Supervisor</td>
           </tr>
           {%endfor%}
         </tbody>
       </table>
     </div>
-    <!-- Modal -->
-    <button id="editar" type="button" class="btn btn-primary">editar</button>
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Producto</h5>
-
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-        <form class="form-signin" >
-          <div class="text-center mb-4">
-            <h1 class="h3 mb-3 font-weight-normal">Detalles</h1>
-          </div>
-            <div class="form-group">
-              <input type="text" id="selectprod" class="form-control" required>
-              <label class="form-control-placeholder" for="selectprod">Producto</label>
-            </div>
-            <div class="form-group">
-              <input type="number" name='producto' id="selectprec" class="form-control" required>
-              <label class="form-control-placeholder" name='precio' for="selectprec">Precio (Gs.)</label>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" id="submit" class="btn btn-primary">Guardar</button>
-        </div>
-    <div id='loader' class="preloader-1">
-      <div id="env" style="display:none;">Enviando
-        <span class="line line-1"></span>
-        <span class="line line-2"></span>
-        <span class="line line-3"></span>
-        <span class="line line-4"></span>
-        <span class="line line-5"></span>
-        <span class="line line-6"></span>
-        <span class="line line-7"></span>
-
-    </div>
-    </div>
-    </div>
-    </div>
+    </section>
   </div>
-</div>
   </body>
 </html>

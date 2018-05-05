@@ -1,6 +1,7 @@
 $(document).ready(function() {
   //pagina inicial
-  var ip ='https://192.168.43.158/home/1';
+  var ip = window.location.href;
+  console.log(window.location.origin);
   console.log(ip);
   $(function() {
     $('.confirm').on('click', function() {
@@ -30,7 +31,7 @@ $(document).ready(function() {
               $('#row-' + texto[1]).hide(1000);
               document.getElementById("jola").innerHTML=document.getElementById("jola").innerHTML-1
             })
-            .fail(function() {console.log("falla");})
+            .fail(function() {})
             .always(function() {});
 
         };
@@ -55,13 +56,11 @@ $(document).ready(function() {
           data: formData, // our data object // what type of data do we expect back from the server
           encode: true,
         }).done(function() {
-          console.log("enviado");
           console.log('#row-' + texto2[1]);
           //document.getElementById('row-'+texto[1]).style.display = 'none';
           $('#row-' + texto2[1]).hide(1000);
         })
-        .fail(function(dalla) {
-          console.log(dalla);
+        .fail(function() {
           console.log("falla");
         })
         .always(function() {});

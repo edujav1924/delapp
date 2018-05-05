@@ -3,7 +3,7 @@ $(document).ready(function() {
   var myFunction = function() {
     $.ajax({
       type: "GET",
-      url: $('#ip').text()+"/otro.json",
+      url: window.location.origin+"/otro.json",
       success: function(data) {
         console.log(data.length);
         console.log(document.getElementById("jola").innerHTML);

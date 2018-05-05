@@ -29,6 +29,9 @@ from fcm_django.models import FCMDevice
 from django.contrib.auth.models import User
 import threading
 import logging
+from django.contrib.auth import models
+from django.contrib.auth import models
+
 logger = logging.getLogger(__name__)
 def manifest(request):
    return JsonResponse({"gcm_sender_id": "103953800507"})
@@ -42,23 +45,54 @@ def firebase_messaging_sw_js(request):
     return response
 
 @api_view(['GET', 'POST'])
+@login_required(login_url='/login/')
 def misproductoses(request,offset):
+   encargado = ""
+   supervisor = ""
+   print request.user
+   permisos = credentials(request.user,offset)
    if request.method == 'GET':
-      productos = modelo_producto.objects.filter(empresa_id=int(offset))
-      return render(request,'misproductos.html',{'productos':productos})
-   elif request.method == 'POST':
-      print request.data.get('method')
-      if(request.data.get('method') == 'edit'):
-         print "entre"
-         extraer_producto = modelo_producto.objects.get(id=request.data.get('id'))
-         print extraer_producto.producto
-         extraer_producto.producto = request.data.get('producto')
-         extraer_producto.precio = request.data.get('precio')
-         extraer_producto.save()
+      if(permisos['level']>1) and permisos['conexion']==True:
+         empresa = modelo_empresa.objects.get(id=offset)
+         namegroup = models.Group.objects.filter(name__startswith=empresa.empresa)
+         for i in range(0,namegroup.count()):
+            group = models.Group.objects.get(name=namegroup[i])
+            users = group.user_set.all()
+            a = group.name.find('_')
+            cargo = group.name[a+1:]
+            if(cargo=='supervisor'):
+               supervisor = users
 
-         return Response(status=status.HTTP_201_CREATED)
-      logger.debug('Something went wrong!')
-      return Response(status=statusself.HTTP_404_NOT_FOUND)
+            if(cargo=='encargado'):
+               encargado = users
+
+         print supervisor
+         print encargado
+         productos = modelo_producto.objects.filter(empresa_id=int(offset))
+         return render(request,'misproductos.html',{'productos':productos,'supervisores':supervisor,'encargados':encargado})
+      return render(request,"error.html")
+
+   elif request.method == 'POST':
+      if(permisos['level']>1) and permisos['conexion']==True:
+         print request.data
+         if(request.data.get('method') == 'edit'):
+            extraer_producto = modelo_producto.objects.get(id=request.data.get('id'))
+            extraer_producto.producto = request.data.get('producto')
+            extraer_producto.precio = request.data.get('precio')
+            extraer_producto.save()
+            return Response(status=status.HTTP_202_ACCEPTED)
+         elif (request.data.get('method') == 'new'):
+            modelo_producto.objects.create(empresa_id=int(offset),producto=request.data.get('producto'),precio=request.data.get('precio'))
+            return Response(status=status.HTTP_201_CREATED)
+
+         elif (request.data.get('method') == 'delete'):
+            elemento = modelo_producto.objects.get(id=request.data.get('id'))
+            elemento.delete()
+            return Response(status=status.HTTP_201_CREATED)
+         return Response(status=status.HTTP_400_BAD_REQUEST)
+      print("no autorizado")
+      return Response(status=status.HTTP_401_UNAUTHORIZED)
+
 def logout_view(request):
     logout(request)
     print "salio"
@@ -72,7 +106,6 @@ def login_view(request):
         if user is not None:
             login(request, user)
             permissions = levelpermissions(user)
-            print permissions
             if permissions['level']>1:
                 return HttpResponseRedirect('/home/'+str(permissions['page']))
             elif permissions['level']==1:
@@ -83,8 +116,16 @@ def login_view(request):
             return render(request,'login.html',{'error':'usuario o contrasenha no valida'})
 
     elif request.method == 'GET':
-        empresas = modelo_empresa.objects.all()
-        return render(request,'login.html')
+      if(request.user.is_anonymous):
+         empresas = modelo_empresa.objects.all()
+         return render(request,'login.html')
+      else:
+         permissions = levelpermissions(request.user)
+         if permissions['level']>1:
+             return HttpResponseRedirect('/home/'+str(permissions['page']))
+         elif permissions['level']==1:
+             return HttpResponseRedirect('/home/encargados/'+str(permissions['page']))
+
 
 @api_view(['GET'])
 @login_required(login_url='/login/')
@@ -95,7 +136,7 @@ def base_de_datos(request,offset):
             r = modelo_cliente.objects.filter(status=True,empresa=permisos['empresa'])
             a = clienteSerializer(instance=r,many=True)
             json = loads(dumps(a.data))
-            return render(request,'base_de_datos.html',{'clientes': a.data,'ip':"https://192.168.43.158"})
+            return render(request,'base_de_datos.html',{'clientes': a.data})
     return render(request,'base_de_datos.html',{'error': "disculpe, no tiene permisos suficientes para acceder a esta pantalla"})
 
 def respconsumer(device):
@@ -106,15 +147,12 @@ def respconsumer(device):
 def vista_consulta(request,offset):
    credenciales = credentials(request.user,offset)
    if credenciales['conexion'] and int(credenciales['level'])>1:
-      print 'entre'
-      print credenciales['empresa']
       if request.method == 'GET':
          r = modelo_cliente.objects.filter(status=False,empresa=credenciales['empresa'])
-         print r
          a = clienteSerializer(instance=r,many=True)
       #print json[0]
          queryset2 = modelo_encargado.objects.filter(empresa_id=credenciales['page'])
-         return render(request,'ini.html',{'datos': a.data ,'encargados':queryset2,'valor':r.count(),'page':credenciales['page'],'ip':"https://192.168.43.158"})
+         return render(request,'ini.html',{'datos': a.data ,'encargados':queryset2,'valor':r.count(),'page':credenciales['page']})
       #return Response({'datos': a.data ,'encargados':queryset2,'valor':r.count()})
       #preguntar si user es autenticado
       if request.method == 'POST':
@@ -253,50 +291,3 @@ class api_productos(generics.ListCreateAPIView):
 class api_empresa(generics.ListCreateAPIView):
     queryset = modelo_empresa.objects.all()
     serializer_class = empresaSerializer
-
-#levanta pagina web de consulta admin
-
-"""
-class consulta(APIView):
-    def get(self, request):
-        return render(request,'prueba.html')
-
-class pedidosaceptados(APIView):
-    renderer_classes = [TemplateHTMLRenderer]
-    template_name = 'confirmados.html'
-    def get(self,request):
-        pedidosconfirmados = modelodespachopedido.objects.all()
-        return Response({'pedidosconfirmados':pedidosconfirmados})
-class modeloclienteview(generics.ListCreateAPIView):
-    queryset = modelocliente.objects.filter(cliente_status=False)
-    serializer_class = modeloclienteSerializer
-class modeloencargadoview(generics.ListCreateAPIView):
-    queryset = modeloencargado.objects.all()
-    serializer_class = modeloencargadoSerializer
-class pedidocliente(APIView):
-    def get(self, request, format=None):
-        queryset = modelodespachopedido.objects.all()
-        serializer_class = modelopedidoSerializer
-
-    def post(self,request,format=None):
-        serializer = modelopedidoSerializer(data=request.data)
-        print request.data
-        if serializer.is_valid():
-            serializer.save()
-            try:
-                p = modelocliente.objects.get(cliente_id=request.data.get('pedido_id'))
-                p.cliente_status = True
-                p.save()
-            except:
-                print "error"
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        print 'error'
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = modelocliente.objects.all()
-    serializer_class =  modeloclienteSerializer
-
-class clienteview(APIView):
-    renderer_classes = [TemplateHTMLRenderer]
-    template_name = 'cliente.html'
-"""
