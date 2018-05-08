@@ -6,6 +6,7 @@ from django.conf.urls import include
 
 urlpatterns = [
     url(r'^logout/$',logout_view,name='logout'),
+    url(r'^admin_site/$',admin_site),
     url(r'^home/encargados/(\d{1,2})$', vista_encargados),
     url(r'^home/(\d{1,2})$', vista_consulta),
     url(r'^home/nuevo/(\d{1,2})$',vista_agregar_nuevo),
@@ -21,14 +22,6 @@ urlpatterns = [
     url(r'^empresa/$', views.api_empresa.as_view()),
     url(r'^en/(?P<pk>[0-9]+)/$', views.api_encargado.as_view()),
     url(r'^token/$', views.api_token.as_view()),
-
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
-"""url(r'^consulta/$', views.consulta.as_view()),
-url(r'^pedidosweb/$', views.pedidocliente.as_view()),
-url(r'^pedidos/$', views.modeloclienteview.as_view()),
-url(r'^encargados/$', views.modeloencargadoview.as_view()),
-url(r'^pedidos/(?P<pk>[0-9]+)/$', views.SnippetDetail.as_view()),
-url(r'^pedidosrecientes/$', views.ProfileList.as_view(),name='pedidosrecientes'),
-url(r'^pedidosaceptados/$', views.pedidosaceptados.as_view(),name='pedidosaceptados'),"""

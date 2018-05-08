@@ -18,11 +18,12 @@
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-messaging.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
     <script type="text/javascript" src="{% static "notify.js" %}"></script>
-
-
-
-
-    <title>Home</title>
+    <title>Inicio</title>
+    <style>
+      .ul{
+        padding-bottom: 0.3em;
+      }
+    </style>
   </head>
 
 <body>
@@ -37,16 +38,16 @@
     <div class="collapse navbar-collapse" id="navbarColor02">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/home/{{page}}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/home/encargados/{{page}}" target="_blank">Despacho pedidos</a>
+          <a class="nav-link" href="/home/encargados/{{page}}">Despacho pedidos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/home/datos/{{page}}" target="_blank">Datos almacenados</a>
+          <a class="nav-link" href="/home/datos/{{page}}">Datos almacenados</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/home/misproductos/{{page}}" target="_blank">Mis productos</a>
+          <a class="nav-link" href="/home/misproductos/{{page}}">Mis productos</a>
         </li>
       </ul>
       <form  action="{% url 'logout' %}" class="form-inline">
@@ -60,17 +61,14 @@
   <div class="container-fluid">
     {% csrf_token %}
     <div class="card">
-      <div class="card-header card text-white bg-dark mb-3">
+      <div class="card-header card text-white bg-dark ">
         <div class="row">
-          <div id="header" class="col-sm" align="center">
-            <h2>Pedidos</h2>
-          </div>
-          <div id="header" class="col-sm" align="center">
+          <div id="header2" class="col ul" align="center">
             <button id="btn-noti" type="button" class="btn btn-warning">
               Nuevos Pedidos <span id="noti" class="badge badge-light"></span>
             </button>
           </div>
-          <div id="header" class="col-sm" align="center">
+          <div id="header" class="col" align="center">
             <input  onclick="window.open('/home/nuevo/{{page}}')" type="button"  class="btn btn-outline-warning" value="+ Nuevo Pedido" />
           </div>
         </div>
@@ -84,7 +82,6 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">producto</th>
                 <th scope="col">distancia</th>
-                <th scope="col">empresa</th>
                 <th scope="col">encargado</th>
                 <th scope="col">Aceptar</th>
                 <th>Cancelar</th>
@@ -94,16 +91,15 @@
               {% for dato in datos %}
               <tr id=row-{{dato.cliente_id}}>
                 <div>
-                  <td data-priority="1" id={{dato.cliente_id}}-name>{{dato.nombre}} {{dato.apellido}}</td>
-                  <td id={{dato.cliente_id}}-telefono>{{dato.celular}}</td>
+                  <td data-priority="1" id={{dato.cliente_id}}-name>{{dato.nombre}}</td>
                   <td id={{dato.cliente_id}}-producto>
                     <ul>
                       {%for y in dato.pedidos%}
-                      <li style="text-align:left;"><strong>{{y.cantidad}}</strong>{{y.producto}}</li>
+                      <li style="text-align:center;"><strong>{{y.cantidad }}&nbsp;</strong>{{y.producto}}</li>
                       {%endfor%}
                     </ul>
                   </td>
-                  <td id={{dato.cliente_id}}-empresa>{{dato.empresa}}</td>
+                  <td id={{dato.cliente_id}}-distancia>{{dato.distancia}}</td>
                   <td>
                     <div class="">
                       <select id={{dato.cliente_id}}-encargado style="width:150px;" class="custom-select" required>

@@ -11,12 +11,42 @@
     <script type="text/javascript" src="{% static "agregar_nuevo.js" %}"></script>
   </head>
   <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <img src="/static/logito2.png" width="50px">
+      <a id="empresa" class="navbar-brand" href="#"> EMPRESA</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/home/{{page}}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/home/encargados/{{page}}">Despacho pedidos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/home/datos/{{page}}">Datos almacenados</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/home/misproductos/{{page}}">Mis productos</a>
+          </li>
+        </ul>
+        <form  action="{% url 'logout' %}" class="form-inline">
+          <label class="col-sm-8" style="color:white;"><b> Usuario: </b> {{user.username}}</label>
+          <button class="btn btn-outline-light col-sm-4" type="submit">Salir</button>
+        </form>
+      </div>
+    </nav>
+
     <div class="container">
       <div class="card text-white bg-info mb-12" >
         <div class="card-header row">
           <div align=left class="col">
             <h3>Agregar nuevo pedido</h3>
             <span>Empresa:</span>  <span id="empresa">{{empresa}}</span> <span id="page" hidden>{{page}}</span>
+
           </div>
           <div align=right class="col">
             <button  class="btn btn-primary" id='agregar' type="button" name="button">agregar pedido</button>

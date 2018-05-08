@@ -9,13 +9,14 @@ class modelo_empresa(models.Model):
     empresa = models.CharField(max_length=30)
     latitud = models.CharField(max_length=20)
     longitud = models.CharField(max_length=20)
-
+    def __unicode__(self):
+        return '%s %s %s' % (self.empresa, self.latitud, self.longitud)
 class modelo_producto(models.Model):
     empresa = models.ForeignKey(modelo_empresa,related_name='productos',on_delete=models.CASCADE)
     producto = models.CharField(max_length=30)
     precio = models.PositiveIntegerField()
     def __unicode__(self):
-        return '%s %d' % (self.producto, self.precio)
+        return '%s %s %d' % (self.empresa, self.producto, self.precio)
 
 class modelo_cliente(models.Model):
     cliente_id =models.AutoField(primary_key=True)
@@ -31,7 +32,7 @@ class modelo_cliente(models.Model):
     hora = models.TimeField(auto_now_add=True)
     token=models.CharField(max_length=200)
     def __unicode__(self):
-        return '%s %s %d %s %s' % (self.nombre, self.apellido,self.celular,self.ubicacion,self.empresa)
+        return '%s %s %d %s %s %s %s %s %s %s %s' % (self.nombre, self.apellido,self.celular,self.distancia,self.empresa,self.ubicacion,self.encargado,self.status,self.fecha,self.hora,self.token)
 
 
 
@@ -47,7 +48,7 @@ class modelo_encargado(models.Model):
     nombre = models.CharField(max_length=30)
     telefono = models.IntegerField(blank=True)
     def __str__(self):
-             return '%s' % (self.nombre)
+             return '%s %s %d' % (self.nombre,self.empresa,self.telefono)
 
 
 '''

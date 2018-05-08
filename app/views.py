@@ -1,38 +1,28 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.shortcuts import render
-from rest_framework import generics
-#from django.contrib.auth.models import Use
-#from rest_framework import permissions
 from app.models import *
 from app.serializers import *
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from django.shortcuts import get_object_or_404
-from django.shortcuts import redirect
-from django.http import Http404
-from rest_framework import status
+from django.shortcuts import get_object_or_404, redirect,render
+from rest_framework import status, generics
 from rest_framework.renderers import JSONRenderer
 from json import loads,dumps
-from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_protect
-from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login,logout
 from django.http import *
 from custompermissions import levelpermissions,credentials
 from fcm_django.models import FCMDevice
 from django.contrib.auth.models import User
 import threading
-import logging
 from django.contrib.auth import models
-from django.contrib.auth import models
+import datetime
+from milog import write
 
-logger = logging.getLogger(__name__)
 def manifest(request):
    return JsonResponse({"gcm_sender_id": "103953800507"})
 
@@ -49,7 +39,6 @@ def firebase_messaging_sw_js(request):
 def misproductoses(request,offset):
    encargado = ""
    supervisor = ""
-   print request.user
    permisos = credentials(request.user,offset)
    if request.method == 'GET':
       if(permisos['level']>1) and permisos['conexion']==True:
@@ -66,15 +55,12 @@ def misproductoses(request,offset):
             if(cargo=='encargado'):
                encargado = users
 
-         print supervisor
-         print encargado
          productos = modelo_producto.objects.filter(empresa_id=int(offset))
-         return render(request,'misproductos.html',{'productos':productos,'supervisores':supervisor,'encargados':encargado})
+         return render(request,'misproductos.html',{'productos':productos,'supervisores':supervisor,'encargados':encargado,'page':permisos['page']})
       return render(request,"error.html")
 
    elif request.method == 'POST':
       if(permisos['level']>1) and permisos['conexion']==True:
-         print request.data
          if(request.data.get('method') == 'edit'):
             extraer_producto = modelo_producto.objects.get(id=request.data.get('id'))
             extraer_producto.producto = request.data.get('producto')
@@ -97,6 +83,25 @@ def logout_view(request):
     logout(request)
     print "salio"
     return HttpResponseRedirect('/login/')
+
+@login_required(login_url='/login/')
+def admin_site(request):
+   if request.user.is_superuser:
+      if request.method=='GET':
+         empresas = modelo_empresa.objects.all()
+         data = modelo_cliente.objects.filter(status=True)
+         return render(request,'admin.html',{'clientes':data,'empresas':empresas})
+      if request.method=='POST':
+         empresas = modelo_empresa.objects.all()
+         empresa = request.POST['empresa']
+         desde = request.POST['desde'].replace("/","-")
+         hasta = request.POST['hasta'].replace("/","-")
+         print empresa +"--"+desde+"--"+hasta
+         clientes = modelo_cliente.objects.filter(empresa=empresa,fecha__range=[desde,hasta])
+         print clientes
+         return render(request,'admin.html',{'clientes':clientes,'empresas':empresas})
+   return render(request,'error.html')
+
 @api_view(['GET', 'POST'])
 def login_view(request):
     if request.POST:
@@ -106,7 +111,10 @@ def login_view(request):
         if user is not None:
             login(request, user)
             permissions = levelpermissions(user)
-            if permissions['level']>1:
+            if user.is_superuser:
+               return HttpResponseRedirect('/admin_site/')
+
+            elif permissions['level']>1:
                 return HttpResponseRedirect('/home/'+str(permissions['page']))
             elif permissions['level']==1:
                 return HttpResponseRedirect('/home/encargados/'+str(permissions['page']))
@@ -136,7 +144,7 @@ def base_de_datos(request,offset):
             r = modelo_cliente.objects.filter(status=True,empresa=permisos['empresa'])
             a = clienteSerializer(instance=r,many=True)
             json = loads(dumps(a.data))
-            return render(request,'base_de_datos.html',{'clientes': a.data})
+            return render(request,'base_de_datos.html',{'clientes': a.data,'page':permisos['page']})
     return render(request,'base_de_datos.html',{'error': "disculpe, no tiene permisos suficientes para acceder a esta pantalla"})
 
 def respconsumer(device):
@@ -168,14 +176,11 @@ def vista_consulta(request,offset):
 
                if(a.count()==0):
                   device = FCMDevice.objects.create(name=p.nombre,active=True,registration_id=p.token,type='android')
-                  print "1"
                   print device
                elif( a.count()==1):
                   device = FCMDevice.objects.get(registration_id=p.token)
-                  print "2"
                   print device
                else:
-                  print "3"
                   print device
                   device = a.last()
 
@@ -191,7 +196,6 @@ def vista_consulta(request,offset):
       return render(request,'error.html')
 
 
-
 @api_view(['GET'])
 @login_required(login_url='/login/')
 def vista_agregar_nuevo(request,offset):
@@ -205,22 +209,35 @@ def vista_agregar_nuevo(request,offset):
       return render(request,'error.html')
 
 
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 @login_required(login_url='/login/')
 def vista_encargados(request,offset):
 
-   if request.method == 'GET':
-      credential = credentials(request.user,offset)
-      if credential['conexion']==True:
-         r = modelo_cliente.objects.filter(status=True,empresa=credential['empresa']).order_by('-hora')
-         a = clienteSerializer(instance=r,many=True)
-         return render(request,'cliente.html',{'datos': a.data})
-      else:
-         return render(request,'error.html')
+   credential = credentials(request.user,offset)
+   if credential['conexion']==True:
+      if request.method == 'GET':
+         a =  datetime.date.today()
 
+         return render(request,'encargados_table.html',{'datos':modelo_cliente.objects.filter(fecha__range=[a,a],status=True),'page':credential['page']})
+      if request.method == 'POST':
+         desde = request.POST['fecha_desde']
+         hasta = request.POST['fecha_hasta']
+         if desde=="" or hasta=="":
+            print "vacio"
+            return render(request,'encargados_table.html',{'error':"ingrese fechas validas"})
+         clientes = modelo_cliente.objects.filter(fecha__range=[desde, hasta],status=True)
+         return render(request,'encargados_table.html',{'datos':clientes,'page':credential['page']})
+
+   return render(request,'error.html')
 class api_otro(generics.ListCreateAPIView):
     queryset = modelo_cliente.objects.filter(status=False).order_by('encargado')
     serializer_class = clienteSerializer
+
+
+
+def log(texto):
+   hilo = threading.Thread(target=write,args=(texto,))
+   hilo.start()
 
 class api_encargado(APIView):
     def get(self,request,pk):
@@ -237,28 +254,23 @@ class api_token(APIView):
          FCMDevice.objects.create(name=request.user,active=True,user_id=request.data.get('user_id'),registration_id=request.data.get('token'),type=request.data.get('type'))
          print "guardar"
       else:
+         log('actualizar')
          print 'actualizar'
          a = FCMDevice.objects.get(name=request.user,user_id=request.data.get('user_id'))
          a.registration_id = request.data.get('token')
          a.save()
 
       return JsonResponse({'exitoso':'exitoso'})
-   def get(self,request):
-      us = User.objects.get(username='lucio')
-      return render(request,'error.html')
+
 #responde a solicitud de android
 
 def enviar(device):
-
    device.send_message(title='Delivery On',icon='/static/logito2.png', body='Nuevo Pedido')
 
 class api_cliente(APIView):
-
-
    def post(self,request):
       a=clienteSerializer(data=request.data)
       a.is_valid()
-      print a.errors
       if(a.is_valid()):
          a.save()
          if request.is_ajax()==False:
