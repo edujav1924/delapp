@@ -28,10 +28,10 @@ def manifest(request):
 
 def firebase_messaging_sw_js(request):
     filename = '/static/firebase-messaging-sw.js'
-    jsfile = open('/home/edu/scripts/paginaweb/apirest/app/static/firebase-messaging-sw.js', 'rb')
+    jsfile = open('/home/edu/scripts/paginaweb/apirest/static/firebase-messaging-sw.js', 'rb')
     response = HttpResponse(content=jsfile)
     response['Content-Type'] = 'text/javascript'
-    response['Content-Disposition'] = 'attachment; filename="%s"'%('/home/edu/scripts/paginaweb/apirest/app/static/firebase-messaging-sw.js')
+    response['Content-Disposition'] = 'attachment; filename="%s"'%('/home/edu/scripts/paginaweb/apirest/static/firebase-messaging-sw.js')
     return response
 
 @api_view(['GET', 'POST'])
@@ -113,7 +113,6 @@ def login_view(request):
             permissions = levelpermissions(user)
             if user.is_superuser:
                return HttpResponseRedirect('/admin_site/')
-
             elif permissions['level']>1:
                 return HttpResponseRedirect('/home/'+str(permissions['page']))
             elif permissions['level']==1:
@@ -128,8 +127,11 @@ def login_view(request):
          empresas = modelo_empresa.objects.all()
          return render(request,'login.html')
       else:
+
          permissions = levelpermissions(request.user)
-         if permissions['level']>1:
+         if int(permissions['level'])==10:
+            return HttpResponseRedirect('/admin_site/')
+         elif permissions['level']>1:
              return HttpResponseRedirect('/home/'+str(permissions['page']))
          elif permissions['level']==1:
              return HttpResponseRedirect('/home/encargados/'+str(permissions['page']))

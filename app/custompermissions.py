@@ -5,7 +5,7 @@ from app.models import *
 from django.http import HttpResponseRedirect, HttpResponse
 def levelpermissions(user):
     if user.is_superuser:
-        return HttpResponseRedirect('/admin_site/')
+        return{'level':10}
     elif user.is_staff:
         group = Group.objects.filter(user=user)
         group = str(group[0])
