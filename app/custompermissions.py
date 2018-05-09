@@ -2,10 +2,10 @@ from rest_framework import permissions
 from django.contrib.auth.models import User, Group
 from rest_framework import exceptions
 from app.models import *
-
+from django.http import HttpResponseRedirect, HttpResponse
 def levelpermissions(user):
     if user.is_superuser:
-        return {'level':10}
+        return HttpResponseRedirect('/admin_site/')
     elif user.is_staff:
         group = Group.objects.filter(user=user)
         group = str(group[0])
@@ -27,8 +27,12 @@ def levelpermissions(user):
 
 
 def credentials(user,offset):
-    permisos = levelpermissions(user)
-    if(int(permisos['page'])==int(offset)):
-        return {'level':permisos['level'],'page':permisos['page'],'conexion':True,'empresa':permisos['empresa']}
+    if user.is_superuser:
+        print "superiserer"
+        return {'level':10,'conexion':True}
     else:
-        return {'level':0,'conexion':False}
+        permisos = levelpermissions(user)
+        if(int(permisos['page'])==int(offset)):
+            return {'level':permisos['level'],'page':permisos['page'],'conexion':True,'empresa':permisos['empresa']}
+        else:
+            return {'level':0,'conexion':False}

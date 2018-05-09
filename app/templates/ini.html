@@ -2,10 +2,12 @@
 <html class="ui-mobile">
 
   <head>
-    {% include 'bootstrap.html'%}
-    {% include 'includes.html'%}
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {%include 'bootstrap_tables.html'%}
+
+
           {% load static %}
+    <link rel="stylesheet" href="{% static "micss.css" %}">
+    <script type="text/javascript" src="{% static "ajax-setup.js"%}"></script>
     <link rel="stylesheet" href="{% static "iziToast.css" %}">
     <link rel="manifest" href="/manifest.json">
     <script type="text/javascript" src="{% static "script_home2.js" %}"></script>
@@ -30,7 +32,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <img src="/static/logito2.png" width="50px">
-    <a id="empresa" class="navbar-brand" href="#"> EMPRESA</a>
+    <a style="margin-left:5px;" id="empresa" class="navbar-brand" href="#">{{empresa}}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

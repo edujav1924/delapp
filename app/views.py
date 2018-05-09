@@ -97,7 +97,7 @@ def admin_site(request):
          desde = request.POST['desde'].replace("/","-")
          hasta = request.POST['hasta'].replace("/","-")
          print empresa +"--"+desde+"--"+hasta
-         clientes = modelo_cliente.objects.filter(empresa=empresa,fecha__range=[desde,hasta])
+         clientes = modelo_cliente.objects.filter(status=True,empresa=empresa,fecha__range=[desde,hasta])
          print clientes
          return render(request,'admin.html',{'clientes':clientes,'empresas':empresas})
    return render(request,'error.html')
@@ -144,23 +144,25 @@ def base_de_datos(request,offset):
             r = modelo_cliente.objects.filter(status=True,empresa=permisos['empresa'])
             a = clienteSerializer(instance=r,many=True)
             json = loads(dumps(a.data))
-            return render(request,'base_de_datos.html',{'clientes': a.data,'page':permisos['page']})
+            return render(request,'base_de_datos.html',{'clientes': a.data,'page':permisos['page'],'empresa':permisos['empresa']})
     return render(request,'base_de_datos.html',{'error': "disculpe, no tiene permisos suficientes para acceder a esta pantalla"})
 
 def respconsumer(device):
-   device.send_message(title='Delivery On',icon='/static/logito2.png', body='Pedido aceptado')
+   device.send_message(title='Delivery On',icon='/static/logito2.png', body='Pedido aceptado, su pedido le llegara en algunos minutos.')
 @api_view(['GET', 'POST'])
 
 @login_required(login_url='/login/')
 def vista_consulta(request,offset):
    credenciales = credentials(request.user,offset)
-   if credenciales['conexion'] and int(credenciales['level'])>1:
+   if(credenciales['conexion'] and int(credenciales['level'])==10):
+      return HttpResponseRedirect('/admin_site/')
+   elif credenciales['conexion'] and int(credenciales['level'])>1:
       if request.method == 'GET':
          r = modelo_cliente.objects.filter(status=False,empresa=credenciales['empresa'])
          a = clienteSerializer(instance=r,many=True)
       #print json[0]
          queryset2 = modelo_encargado.objects.filter(empresa_id=credenciales['page'])
-         return render(request,'ini.html',{'datos': a.data ,'encargados':queryset2,'valor':r.count(),'page':credenciales['page']})
+         return render(request,'ini.html',{'datos': a.data ,'encargados':queryset2,'valor':r.count(),'page':credenciales['page'],'empresa':credenciales['empresa']})
       #return Response({'datos': a.data ,'encargados':queryset2,'valor':r.count()})
       #preguntar si user es autenticado
       if request.method == 'POST':
