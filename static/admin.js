@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  $("#picker").keydown(false);
   $("#form").submit(function(e) {
     desde = document.querySelector('input[name="desde"]');
     console.log(desde);

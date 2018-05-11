@@ -99,6 +99,7 @@ def admin_site(request):
          print empresa +"--"+desde+"--"+hasta
          clientes = modelo_cliente.objects.filter(status=True,empresa=empresa,fecha__range=[desde,hasta])
          print clientes
+         log(str(clientes))
          return render(request,'admin.html',{'clientes':clientes,'empresas':empresas})
    return render(request,'error.html')
 
@@ -279,9 +280,10 @@ class api_cliente(APIView):
          a.save()
          if request.is_ajax()==False:
              try:
-                device = FCMDevice.objects.filter(user_id=request.data.get('empresa_id'))
-                hilo = threading.Thread(target=enviar,args=(device,))
-                hilo.start()
+                pass
+                #device = FCMDevice.objects.filter(user_id=request.data.get('empresa_id'))
+                #hilo = threading.Thread(target=enviar,args=(device,))
+                #hilo.start()
                 return JsonResponse({'status':'exitoso'})
              except:
                 print "error fcm api_cliente"

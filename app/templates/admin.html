@@ -61,7 +61,13 @@
       <a class="mdl-navigation__link" href="/admin_site">Inicio</a>
       <a class="mdl-navigation__link" href="/admin">Pagina administrador General</a>
 
-    </nav>
+  	<form action="{% url 'logout' %}" class="form-inline my-2 my-md-0">
+          <label class="col-sm-8" style="color:white;"><b> Usuario: </b> {{user.username}}&nbsp;</label>
+          <button class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">power_settings_new</i>
+          </button>
+        </form>
+ </nav>
   </div>
   <main class="mdl-layout__content">
     <div class="page-content">

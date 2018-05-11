@@ -1,11 +1,25 @@
 $(document).ready(function() {
   //pagina inicial
   var ip = window.location.href;
-  console.log(window.location.origin);
   console.log(ip);
+  var table = $('#example').DataTable();
+  $('#example tbody').on( 'click', 'tr', function (e) {
+      pos = e.currentTarget.id;
+      console.log(pos);
+      if ( $(this).hasClass('selected') ) {
+          $(this).removeClass('selected');
+
+
+      }
+      else {
+          table.$('tr.selected').removeClass('selected');
+          $(this).addClass('selected');
+
+      }
+  } );
   $(function() {
     $('.confirm').on('click', function() {
-
+      console.log("click");
       var texto = this.id;
       texto = texto.split("-");
       seleccion = $('#' + texto[1] + '-encargado' + ' option:selected').val();
