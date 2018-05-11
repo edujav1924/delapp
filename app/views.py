@@ -173,8 +173,13 @@ def vista_consulta(request,offset):
          id_local = request.data.get('id')
          try:
             if(request.data.get('comando')!='eliminar'):
+
                p = modelo_cliente.objects.get(cliente_id=id_local)
+               print p
                p.status=True
+               print datetime.datetime.now().time().strftime('%H-%M-%S.%f')
+               p.fecha_aceptado = datetime.datetime.now().strftime('%Y-%m-%d')
+               p.hora_aceptado = datetime.datetime.now().time().strftime('%H:%M:%S.%f')
                p.encargado = request.data.get('encargado')
                p.save()
                a = FCMDevice.objects.filter(registration_id=p.token)
@@ -189,8 +194,8 @@ def vista_consulta(request,offset):
                   print device
                   device = a.last()
 
-               #hilo2 = threading.Thread(target=respconsumer,args=(device,))
-               #hilo2.start()
+               hilo2 = threading.Thread(target=respconsumer,args=(device,))
+               hilo2.start()
             else:
                p = modelo_cliente.objects.get(cliente_id=id_local).delete()
             return Response(status=status.HTTP_201_CREATED)
@@ -231,7 +236,7 @@ def vista_encargados(request,offset):
             print "vacio"
             return render(request,'encargados_table.html',{'error':"ingrese fechas validas"})
          print
-         clientes = modelo_cliente.objects.filter(fecha__range=[desde, hasta],status=True)
+         clientes = modelo_cliente.objects.filter(fecha_aceptado__range=[desde, hasta],status=True)
          return render(request,'encargados_table.html',{'datos':clientes,'page':credential['page']})
 
    return render(request,'error.html')

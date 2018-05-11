@@ -58,6 +58,8 @@
                           <th>celular</th>
                           <th>Pedidos</th>
                           <th>fecha</th>
+                          <th>Fecha confir.</th>
+                          <th>Hora confir.</th>
                       </tr>
                   </thead>
 
@@ -76,6 +78,8 @@
                           </ul>
                       </td>
                       <td>{{dato.fecha}} {{dato.hora}}</td>
+                      <td>{{dato.fecha_aceptado}}</td>
+                      <td>{{dato.hora_aceptado}}</td>
                     </tr>
                     {% endfor%}
 

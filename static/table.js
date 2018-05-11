@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $('#example').DataTable( {
-        "order": [[ 5, "desc" ]],
+        "order": [[ 7, "desc" ]],
         responsive: {
             details: {
 

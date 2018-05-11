@@ -31,8 +31,10 @@ class modelo_cliente(models.Model):
     fecha = models.DateField(auto_now_add=True, blank=True)
     hora = models.TimeField(auto_now_add=True)
     token=models.CharField(max_length=200)
+    fecha_aceptado = models.DateField(blank=True,null=True)
+    hora_aceptado = models.TimeField(blank=True,null=True)
     def __unicode__(self):
-        return '%s %s %d %s %s %s %s %s %s %s %s' % (self.nombre, self.apellido,self.celular,self.distancia,self.empresa,self.ubicacion,self.encargado,self.status,self.fecha,self.hora,self.token)
+        return '%s %s %s %s %s %s %s %s %s %s %s %s %s' % (self.nombre, self.apellido,self.celular,self.distancia,self.empresa,self.ubicacion,self.encargado,self.status,self.fecha,self.hora,self.fecha_aceptado,self.hora_aceptado,self.token)
 
 
 

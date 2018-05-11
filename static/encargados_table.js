@@ -1,8 +1,9 @@
 $(document).ready(function() {
     $('#example').DataTable( {
-        responsive: {
-            
-        }
+      "order": [[ 6, "desc" ]],
+      responsive: {
+
+      }
     } );
 
   $("#form").submit(function(e) {

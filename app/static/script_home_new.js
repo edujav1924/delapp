@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    console.log(window.location.href);
     document.getElementById("nuevo").disabled = true;
     var pos = 0;
     var edit = false;
@@ -51,7 +52,7 @@ $(document).ready(function() {
         modal.find('#selectencargado').attr('class','custom-select form-control');
 
     });
-    $('#myModal_2').on("click", "#submit", function(){
+    $('#myModal_2').on("click", "#enviar", function(){
         console.log('click');
 
         var forms = document.getElementsByClassName('form-signin');
@@ -103,5 +104,7 @@ $(document).ready(function() {
               }
             });
     });
-
+$('#btn-noti').on('click', function() {
+  location.reload()
+});
 });
