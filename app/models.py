@@ -49,29 +49,3 @@ class modelo_encargado(models.Model):
     telefono = models.IntegerField(blank=True)
     def __str__(self):
              return '%s %s %d' % (self.nombre,self.empresa,self.telefono)
-
-
-'''
-class modelo_ (models.Model):
-    pedido_tipo = models.CharField(max_length=10);
-    pedido_cantidad = models.IntegerField()
-
-class modelo_cliente(models.Model):
-    cliente_nombre = models.CharField(max_length=30, blank=True, default='')
-    cliente_ubicacion = models.CharField(max_length=30, blank=True, default='')
-    cliente_status = models.BooleanField(default=False)
-    def __str__(self):
-        return '%s %s %s'% (self.cliente_nombre,self.cliente_ubicacion,self.cliente_status)
-
-class modeloempresa(models.Model):
-    empresa_nombre = models.CharField(max_length=30, blank=True, default='')
-    def __str__(self):
-        return '%s' % (self.empresa_nombre)
-
-class modelodespachopedido(models.Model):
-    pedido_id = models.AutoField(primary_key=True)
-    encargado = models.CharField(max_length=30,blank=True)
-    pedido_cliente = models.CharField(max_length=30,blank=True)
-    pedido_cliente_nombre = models.CharField(max_length=30,blank=True)
-    def __str__(self):
-        return '%d %s %s' % (self.pedido_id,self.encargado,self.pedido_cliente)'''

@@ -189,8 +189,8 @@ def vista_consulta(request,offset):
                   print device
                   device = a.last()
 
-               hilo2 = threading.Thread(target=respconsumer,args=(device,))
-               hilo2.start()
+               #hilo2 = threading.Thread(target=respconsumer,args=(device,))
+               #hilo2.start()
             else:
                p = modelo_cliente.objects.get(cliente_id=id_local).delete()
             return Response(status=status.HTTP_201_CREATED)
@@ -230,6 +230,7 @@ def vista_encargados(request,offset):
          if desde=="" or hasta=="":
             print "vacio"
             return render(request,'encargados_table.html',{'error':"ingrese fechas validas"})
+         print
          clientes = modelo_cliente.objects.filter(fecha__range=[desde, hasta],status=True)
          return render(request,'encargados_table.html',{'datos':clientes,'page':credential['page']})
 
@@ -281,9 +282,9 @@ class api_cliente(APIView):
          if request.is_ajax()==False:
              try:
                 pass
-                #device = FCMDevice.objects.filter(user_id=request.data.get('empresa_id'))
-                #hilo = threading.Thread(target=enviar,args=(device,))
-                #hilo.start()
+                device = FCMDevice.objects.filter(user_id=request.data.get('empresa_id'))
+                hilo = threading.Thread(target=enviar,args=(device,))
+                hilo.start()
                 return JsonResponse({'status':'exitoso'})
              except:
                 print "error fcm api_cliente"

@@ -18,7 +18,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'l-&rv#hckq#5k$oj!!6mp20gayzi2or8^o#w4awa8)bw1)ko47'
 
@@ -35,7 +34,7 @@ REST_FRAMEWORK = {
 
 
     ),
-    'DATETIME_FORMAT': "%m/%d/%Y %H:%M:%S",
+    'DATETIME_FORMAT': "%m/%d/%Y",
     'TIME_FORMAT':"%H:%M:%S",
 }
 
@@ -135,7 +134,7 @@ USE_I18N = True
 
 USE_L10N = False
 
-USE_TZ = False
+USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
