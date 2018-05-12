@@ -22,16 +22,17 @@ import threading
 from django.contrib.auth import models
 import datetime
 from milog import write
-
+import os
 def manifest(request):
    return JsonResponse({"gcm_sender_id": "103953800507"})
 
 def firebase_messaging_sw_js(request):
     filename = '/static/firebase-messaging-sw.js'
-    jsfile = open('/home/edu/scripts/paginaweb/apirest/static/firebase-messaging-sw.js', 'rb')
+    jsfile = open(os.getcwd()+'/static/firebase-messaging-sw.js', 'rb')
     response = HttpResponse(content=jsfile)
     response['Content-Type'] = 'text/javascript'
-    response['Content-Disposition'] = 'attachment; filename="%s"'%('/home/edu/scripts/paginaweb/apirest/static/firebase-messaging-sw.js')
+    response['Content-Disposition'] = 'attachment; filename="%s"'%(os.getcwd()+'/static/firebase-messaging-sw.js')
+    log(os.getcwd()+'/static/firebase-messaging-sw.js')
     return response
 
 @api_view(['GET', 'POST'])
