@@ -57,7 +57,7 @@ def misproductoses(request,offset):
                encargado = users
 
          productos = modelo_producto.objects.filter(empresa_id=int(offset))
-         return render(request,'misproductos.html',{'productos':productos,'supervisores':supervisor,'encargados':encargado,'page':permisos['page']})
+         return render(request,'misproductos.html',{'productos':productos,'supervisores':supervisor,'encargados':encargado,'page':permisos['page'],'empresa':permisos['empresa']})
       return render(request,"error.html")
 
    elif request.method == 'POST':
@@ -146,9 +146,8 @@ def base_de_datos(request,offset):
     if(permisos['level']>1 and permisos['conexion']==True):
         if request.method == 'GET':
             r = modelo_cliente.objects.filter(status=True,empresa=permisos['empresa'])
-            a = clienteSerializer(instance=r,many=True)
-            json = loads(dumps(a.data))
-            return render(request,'base_de_datos.html',{'clientes': a.data,'page':permisos['page'],'empresa':permisos['empresa']})
+
+            return render(request,'base_de_datos.html',{'clientes': r ,'page':permisos['page'],'empresa':permisos['empresa']})
     return render(request,'base_de_datos.html',{'error': "disculpe, no tiene permisos suficientes para acceder a esta pantalla"})
 
 def respconsumer(device):
@@ -166,7 +165,7 @@ def vista_consulta(request,offset):
          a = clienteSerializer(instance=r,many=True)
       #print json[0]
          queryset2 = modelo_encargado.objects.filter(empresa_id=credenciales['page'])
-         return render(request,'ini.html',{'datos': a.data ,'encargados':queryset2,'valor':r.count(),'page':credenciales['page'],'empresa':credenciales['empresa']})
+         return render(request,'ini.html',{'datos': r ,'encargados':queryset2,'valor':r.count(),'page':credenciales['page'],'empresa':credenciales['empresa']})
       #return Response({'datos': a.data ,'encargados':queryset2,'valor':r.count()})
       #preguntar si user es autenticado
       if request.method == 'POST':
@@ -226,7 +225,7 @@ def vista_encargados(request,offset):
    if credential['conexion']==True:
       if request.method == 'GET':
          a =  datetime.date.today()
-         return render(request,'encargados_table.html',{'datos':modelo_cliente.objects.filter(fecha__range=[a,a],status=True),'page':credential['page']})
+         return render(request,'encargados_table.html',{'datos':modelo_cliente.objects.filter(fecha__range=[a,a],status=True),'empresa':credential['empresa'],'page':credential['page']})
       if request.method == 'POST':
          desde = request.POST['fecha_desde']
          hasta = request.POST['fecha_hasta']

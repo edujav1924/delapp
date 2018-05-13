@@ -2,9 +2,7 @@ $(document).ready(function() {
     console.log(window.location.href);
     document.getElementById("nuevo").disabled = true;
     var pos = 0;
-    var edit = false;
-    var newe = false;
-    var erase = false;
+
     var method = "";
 
     var table = $('#example').DataTable({
@@ -37,19 +35,31 @@ $(document).ready(function() {
 
 
     $('#myModal_2').on('show.bs.modal', function (event) {
-        var modal = $(this);
-        $('#modalprod').empty();
-        $('#modalencar').empty();
-        modal.find('#selectnombre').val(document.getElementById(pos+'-name').innerHTML);
-        modal.find('#selectdist').val(document.getElementById(pos+'-distancia').innerHTML);
-        modal.find('#fechamodal').text(document.getElementById(pos+'-fecha').innerHTML);
-        modal.find('#horamodal').text(document.getElementById(pos+'-hora').innerHTML);
-        $('.po-'+pos).clone().appendTo('#modalprod');
-        $('#encargado').clone().appendTo('#modalencar');
-        modal.find('#encar').removeAttr('hidden');
-        modal.find('#encargado').attr('id','selectencargado');
-        modal.find('#selectencargado').attr('required');
-        modal.find('#selectencargado').attr('class','custom-select form-control');
+        try {
+            var modal = $(this);
+            $('#modalprod').empty();
+            $('#modalencar').empty();
+            modal.find('#selectnombre').val(document.getElementById(pos+'-name').innerHTML);
+            modal.find('#selectdist').val(document.getElementById(pos+'-distancia').innerHTML);
+            modal.find('#fechamodal').text(document.getElementById(pos+'-fecha').innerHTML);
+            modal.find('#horamodal').text(document.getElementById(pos+'-hora').innerHTML);
+            $('#'+pos+'-lista').clone().appendTo('#modalprod');
+            $('#encargado').clone().appendTo('#modalencar');
+            modal.find('#encar').removeAttr('hidden');
+            modal.find('#encargado').attr('id','selectencargado');
+            modal.find('#selectencargado').attr('required');
+            modal.find('#selectencargado').attr('class','custom-select form-control');
+        } catch (e) {
+
+            iziToast.warning({
+                timeout: 3000,
+                title: 'Alerta',
+                message: 'Seleccione la fila correspondiente por favor.',
+            });
+            $('#myModal_2').modal('dispose');
+
+        }
+
 
     });
     $('#myModal_2').on("click", "#enviar", function(){
@@ -59,6 +69,11 @@ $(document).ready(function() {
         var validation = Array.prototype.filter.call(forms, function(form) {
             if (form.checkValidity() === false) {
                 if($('#selectencargado').val().localeCompare("")==0){
+                    iziToast.warning({
+                        timeout: 3000,
+                        title: 'Alerta',
+                        message: 'Seleccione un encargado',
+                    });
                     $('#selectencargado').css('border-color','#fc661c');
                 }
                 console.log('false');
@@ -104,7 +119,7 @@ $(document).ready(function() {
               }
             });
     });
-$('#btn-noti').on('click', function() {
-  location.reload()
-});
+    $('#btn-noti').on('click', function() {
+      location.reload()
+    });
 });

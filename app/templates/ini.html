@@ -109,13 +109,13 @@
                   <td id={{dato.cliente_id}}-name name={{dato.cliente_id}}-name>{{dato.nombre}}</td>
                   <td id={{dato.cliente_id}}-producto class="po-{{dato.cliente_id}}">
                     <ul id={{dato.cliente_id}}-lista>
-                      {%for y in dato.pedidos%}
+                      {%for y in dato.pedidos.all%}
                       <li style="text-align:center;"><strong>{{y.cantidad }}&nbsp;</strong>{{y.producto}}</li>
                       {%endfor%}
                     </ul>
                   </td>
                   <td id={{dato.cliente_id}}-distancia name={{dato.cliente_id}}-distancia>{{dato.distancia}}</td>
-                  <td id={{dato.cliente_id}}-fecha>{{dato.fecha}}</td>
+                  <td id={{dato.cliente_id}}-fecha>{{dato.fecha|date:"d M, Y"}}</td>
                   <td id={{dato.cliente_id}}-hora>{{dato.hora}}</td>
                 </div>
               </tr>
@@ -180,7 +180,7 @@
       k=k+1
       document.getElementById("noti").innerHTML = k;
       iziToast.show({
-      
+
       title: 'Nuevo Pedido',
       message: 'Agregado recientemente'
     });

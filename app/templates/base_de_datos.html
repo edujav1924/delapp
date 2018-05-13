@@ -72,7 +72,7 @@
                     <td id={{cliente.cliente_id}}-telefono>{{cliente.celular}}</td>
                     <td id={{cliente.cliente_id}}-producto>
                       <ul>
-                        {%for y in cliente.pedidos%}
+                        {%for y in cliente.pedidos.all%}
                         <li style="text-align:left;"> <strong>{{y.cantidad}}</strong> {{y.producto}}</li>
                         {%endfor%}
                       </ul>
@@ -81,9 +81,9 @@
                     <td>
                       {{cliente.encargado}}
                     </td>
-                    <td>{{cliente.fecha}}</td>
+                    <td>{{cliente.fecha|date:"d M, Y"}}</td>
                     <td>{{cliente.hora}}</td>
-                    <td>{{cliente.fecha_aceptado}}</td>
+                    <td>{{cliente.fecha_aceptado|date:"d M, Y"}}</td>
                     <td>{{cliente.hora_aceptado}}</td>
                   </div>
                 </tr>

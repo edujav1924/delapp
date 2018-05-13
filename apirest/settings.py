@@ -34,7 +34,7 @@ REST_FRAMEWORK = {
 
 
     ),
-    'DATETIME_FORMAT': "%m/%d/%Y",
+    'DATE_FORMAT': "%d-%m-%Y",
     'TIME_FORMAT':"%H:%M:%S",
 }
 
