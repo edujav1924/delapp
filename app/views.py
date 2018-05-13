@@ -98,7 +98,7 @@ def admin_site(request):
          desde = request.POST['desde'].replace("/","-")
          hasta = request.POST['hasta'].replace("/","-")
          print empresa +"--"+desde+"--"+hasta
-         clientes = modelo_cliente.objects.filter(status=True,empresa=empresa,fecha__range=[desde,hasta])
+         clientes = modelo_cliente.objects.filter(status=True,empresa=empresa,fecha_aceptado__range=[desde,hasta])
          print clientes
          log(str(clientes))
          return render(request,'admin.html',{'clientes':clientes,'empresas':empresas})
@@ -225,7 +225,7 @@ def vista_encargados(request,offset):
    if credential['conexion']==True:
       if request.method == 'GET':
          a =  datetime.date.today()
-         return render(request,'encargados_table.html',{'datos':modelo_cliente.objects.filter(fecha__range=[a,a],status=True),'empresa':credential['empresa'],'page':credential['page']})
+         return render(request,'encargados_table.html',{'datos':modelo_cliente.objects.filter(fecha_aceptado__range=[a,a],status=True),'empresa':credential['empresa'],'page':credential['page']})
       if request.method == 'POST':
          desde = request.POST['fecha_desde']
          hasta = request.POST['fecha_hasta']
