@@ -184,7 +184,6 @@ def vista_consulta(request,offset):
                p.encargado = request.data.get('encargado')
                p.save()
                a = FCMDevice.objects.filter(registration_id=p.token)
-
                if(a.count()==0):
                   device = FCMDevice.objects.create(name=p.nombre,active=True,registration_id=p.token,type='android')
                   print device
@@ -219,7 +218,6 @@ def vista_agregar_nuevo(request,offset):
    else:
       return render(request,'error.html')
 
-
 @api_view(['GET', 'POST'])
 @login_required(login_url='/login/')
 def vista_encargados(request,offset):
@@ -228,7 +226,6 @@ def vista_encargados(request,offset):
    if credential['conexion']==True:
       if request.method == 'GET':
          a =  datetime.date.today()
-
          return render(request,'encargados_table.html',{'datos':modelo_cliente.objects.filter(fecha__range=[a,a],status=True),'page':credential['page']})
       if request.method == 'POST':
          desde = request.POST['fecha_desde']
@@ -239,7 +236,6 @@ def vista_encargados(request,offset):
          print
          clientes = modelo_cliente.objects.filter(fecha_aceptado__range=[desde, hasta],status=True)
          return render(request,'encargados_table.html',{'datos':clientes,'page':credential['page']})
-
    return render(request,'error.html')
 class api_otro(generics.ListCreateAPIView):
     queryset = modelo_cliente.objects.filter(status=False).order_by('encargado')
