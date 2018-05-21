@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'app.apps.AppConfig',
     'fcm_django',
     "sslserver",
+
 ]
 FCM_DJANGO_SETTINGS = {
         "FCM_SERVER_KEY":"AAAA5Gz-YNA:APA91bE6V7GiseQU0a2zGSDwhDxaNRzGMdCe8U5OEEtKetNhbeoiDLE1ESZeqQ8WNXUBWUNOOfeBzU29E06jSPbbQEWCzQgGbICR71zMN1l_IIVwV6Y89kpZysa6YGYOQLE9qxUe2TYv",
@@ -92,6 +93,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'apirest.wsgi.application'
+SENDSMS_BACKEND = 'app.mysmsbackend.SmsBackend'
 
 
 # Database

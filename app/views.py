@@ -23,6 +23,7 @@ from django.contrib.auth import models
 import datetime
 from milog import write
 import os
+import sys
 def manifest(request):
    return JsonResponse({"gcm_sender_id": "103953800507"})
 
@@ -161,7 +162,7 @@ def vista_consulta(request,offset):
       return HttpResponseRedirect('/admin_site/')
    elif credenciales['conexion'] and int(credenciales['level'])>1:
       if request.method == 'GET':
-         r = modelo_cliente.objects.filter(status=False,empresa=credenciales['empresa'])
+         r = modelo_cliente.objects.filter(status=False,empresa=credenciales['empresa']).order_by('-cliente_id')
          a = clienteSerializer(instance=r,many=True)
       #print json[0]
          queryset2 = modelo_encargado.objects.filter(empresa_id=credenciales['page'])
@@ -173,9 +174,11 @@ def vista_consulta(request,offset):
          id_local = request.data.get('id')
          try:
             if(request.data.get('comando')!='eliminar'):
-
+               print id_local
                p = modelo_cliente.objects.get(cliente_id=id_local)
+
                print p
+
                p.status=True
                print datetime.datetime.now().time().strftime('%H-%M-%S.%f')
                p.fecha_aceptado = datetime.datetime.now().strftime('%Y-%m-%d')
@@ -198,7 +201,8 @@ def vista_consulta(request,offset):
             else:
                p = modelo_cliente.objects.get(cliente_id=id_local).delete()
             return Response(status=status.HTTP_201_CREATED)
-         except:
+         except AttributeError as b:
+            print b
             return Response(status=status.HTTP_404_NOT_FOUND)
    else:
       print "error"
@@ -278,6 +282,7 @@ class api_cliente(APIView):
    def post(self,request):
       a=clienteSerializer(data=request.data)
       a.is_valid()
+      print request.data
       if(a.is_valid()):
          a.save()
          if request.is_ajax()==False:

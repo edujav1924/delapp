@@ -13,7 +13,7 @@ $(document).ready(function() {
              b = b + '<option value="'+value.producto+'">'+value.producto+'</option>'
            }
            else {
-             a = a + '<option value="'+value.nombre+'">'+value.nombre+'</option>'
+             a = a + '<option value="'+value.username+'">'+value.username+'</option>'
            }
         });
      });
