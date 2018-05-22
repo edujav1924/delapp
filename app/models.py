@@ -5,6 +5,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from fcm_django.models import FCMDevice
 from django.contrib.auth.models import User
+from django.core.validators import MaxValueValidator, MinValueValidator
+
 
 class modelo_empresa(models.Model):
     empresa = models.CharField(max_length=30)
@@ -38,17 +40,17 @@ class modelo_cliente(models.Model):
     empresa = models.CharField(max_length=30,blank=True,null=True)
     ubicacion = models.CharField(max_length=100,blank=True,null=True)
     encargado = models.CharField(max_length=30,blank=True,null=True)
-    status = models.BooleanField(default=False)
+    status = models.IntegerField(default=0,validators=[MaxValueValidator(3), MinValueValidator(0)])
     fecha = models.DateField(auto_now_add=True)
     hora = models.TimeField(auto_now_add=True)
     token = models.CharField(max_length=200)
-    fecha_programado = models.CharField(max_length=12,blank=True,null=True)
-    hora_programado = models.CharField(max_length=12,blank=True,null=True)
+    fecha_programado = models.DateField(null=True)
+    hora_programado = models.TimeField(null=True)
     fecha_aceptado = models.DateField(blank=True,null=True)
     hora_aceptado = models.TimeField(blank=True,null=True)
     def __unicode__(self):
-        return '%s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s' % (self.nombre, self.apellido,self.celular,self.latitud,self.longitud,self.precio_total,self.distancia,self.tipo_pedido,self.empresa,
-                                                                             self.ubicacion,self.encargado,self.status,self.fecha,self.hora,self.fecha_aceptado,self.hora_aceptado,self.fecha_programado,self.hora_programado,self.token)
+        return '%s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s' % (self.nombre,self.apellido,self.celular,self.latitud,self.longitud,self.precio_total,self.distancia,self.tipo_pedido,self.empresa,
+                                                                             self.ubicacion,self.fecha,self.hora,self.token,self.encargado,self.status,self.fecha_aceptado,self.hora_aceptado,self.fecha_programado,self.hora_programado)
 
 class modelo_pedido(models.Model):
     cliente = models.ForeignKey(modelo_cliente, related_name='pedidos', on_delete=models.CASCADE)

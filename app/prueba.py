@@ -167,7 +167,7 @@ modelo_encargado.objects.create(nombre="ROJO",telefono=2)
     </div>
 </div>
     {% else %}
-    <p>no hay pedidos disponibles</p>
+    <p>no hay p6edidos disponibles</p>
     {% endif %}
   </body>
 from rest_framework import *

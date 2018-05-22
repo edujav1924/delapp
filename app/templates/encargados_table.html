@@ -2,6 +2,8 @@
 <html>
   <head>
     {%include 'bootstrap_tables.html'%}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/colreorder/1.4.1/css/colReorder.dataTables.min.css">
+    <script type="text/javascript" src="https://cdn.datatables.net/colreorder/1.4.1/js/dataTables.colReorder.min.js"></script>
     <style>
       .ul{
         padding-top:2%;
@@ -33,6 +35,9 @@
       </div>
     </nav>
     <div class="container-fluid">
+      <div class="fixed-bottom" align=center>
+        <button id='nuevo' type="button" class="btn btn btn-success">Confirmar entrega</button>
+      </div>
       <div class="ul" align="center">
         <form id="form" class="" action="/home/encargados/1" method="post">{% csrf_token %}
           <div class="form-row">
@@ -47,17 +52,22 @@
           </div>
           <input id="submit"type="submit" class="btn btn-primary" value="buscar">
         </form>
+
       </div>
       <div>
           <table id="example" class="table table-bordered " style="text-align: center;">
                   <thead>
                       <tr>
-                          <th>nombre</th>
-                          <th>distancia</th>
-                          <th>ubicacion</th>
-                          <th>celular</th>
+                          <th>Nombre</th>
+                          <th>Distancia</th>
+                          <th>Ubicacion</th>
+                          <th>Precio</th>
+                          <th>Tipo</th>
+                          <th>Encargado</th>
+                          <th>Celular</th>
                           <th>Pedidos</th>
                           <th>fecha recibido</th>
+                          <th>Fecha Prog.</th>
                           <th>Fecha confir.</th>
                           <th>Hora confir.</th>
                       </tr>
@@ -65,10 +75,13 @@
 
                   <tbody>
                     {% for dato in datos %}
-                    <tr>
+                    <tr id={{dato.cliente_id}}>
                       <td>{{dato.nombre}} {{dato.apellido}}</td>
                       <td>{{dato.distancia}}</td>
                       <td><a id={{dato.cliente_id}}-ubicacion href={{dato.ubicacion}} target="_blank">Ubicacion</a></td>
+                      <td>{{dato.precio_total}} Gs.</td>
+                      <td>{{dato.tipo_pedido}}</td>
+                      <td>{{dato.encargado}}</td>
                       <td>{{dato.celular}}</td>
                       <td>
                           <ul>
@@ -78,13 +91,13 @@
                           </ul>
                       </td>
                       <td>{{dato.fecha|date:"d M, Y"}} - {{dato.hora}}</td>
+                      <td>{{dato.fecha_programado|date:"d M, Y"}} - {{dato.hora_programado}}</td>
                       <td>{{dato.fecha_aceptado|date:"d M, Y"}}</td>
                       <td>{{dato.hora_aceptado}}</td>
                     </tr>
                     {% endfor%}
 
                   </tbody>
-
               </table>
       </div>
       {% if error %}
@@ -93,6 +106,5 @@
         </script>
       {%endif%}
     </div>
-
   </body>
 </html>

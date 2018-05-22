@@ -32,5 +32,5 @@ admin.site.register(modelo_pedido,pedidos_admin)
 
 class clientes_admin(admin.ModelAdmin):
     list_display = ('nombre','apellido','celular','distancia','ubicacion','encargado','status','fecha','hora','token')
-    
+
 admin.site.register(modelo_cliente,clientes_admin)

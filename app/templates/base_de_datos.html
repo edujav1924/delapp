@@ -9,7 +9,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <img src="/static/logito2.png" width="50px">
-      <a style="margin-left:5px;" id="empresa" class="navbar-brand" href="#">{{empresa}}</a>
+      <a style="margin-left:5px;" id="empresa" class="navbar-brand" href="/home/{{page}}">{{empresa}}</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -55,12 +55,14 @@
                   <th scope="col">Nombre</th>
                   <th scope="col">Celular</th>
                   <th scope="col">producto</th>
+                  <th>Tipo</th>
+                  <th>Precio Total</th>
                   <th scope="col">ubicacion</th>
                   <th scope="col">encargado</th>
-                  <th scope="col">fecha</th>
-                  <th scope="col">hora</th>
-                  <th scope="col">Fecha confir.</th>
-                  <th scope="col">Hora confir.</th>
+                  <th scope="col">fecha Recibido</th>
+                  <th>Fecha confirmado</th>
+                  <th scope="col">Fecha Prog.</th>
+                  <th>Estado</th>
                 </tr>
               </thead>
               <tbody>
@@ -77,18 +79,23 @@
                         {%endfor%}
                       </ul>
                     </td>
+                    <td>{{cliente.tipo_pedido}}</td>
+                    <td>{{cliente.precio_total}} Gs.</td>
                     <td><a id={{cliente.cliente_id}}-ubicacion href={{cliente.ubicacion}} target="_blank">Ubicacion</a></td>
                     <td>
                       {{cliente.encargado}}
                     </td>
-                    <td>{{cliente.fecha|date:"d M, Y"}}</td>
-                    <td>{{cliente.hora}}</td>
-                    <td>{{cliente.fecha_aceptado|date:"d M, Y"}}</td>
-                    <td>{{cliente.hora_aceptado}}</td>
+                    <td>{{cliente.fecha|date:"d M, Y"}} - {{cliente.hora}}</td>
+                    <td>{{cliente.fecha_aceptado|date:"d M, Y"}} - {{cliente.hora_aceptado}}</td>
+                    <td>{{cliente.fecha_programado}} - {{cliente.hora_programado}}</td>
+                    {% if cliente.status == 1 %}
+                      <td> <strong style="color:red;">Pendiente</strong> </td>
+                    {% elif cliente.status == 2 %}
+                      <td> <strong style="color:green;">Entregado</strong> </td>
+                    {% endif %}
                   </div>
                 </tr>
                 {% endfor %}
-                <span id="jola" hidden>{{valor}}</span>
               </tbody>
             </table>
           </div>

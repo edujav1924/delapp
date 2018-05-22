@@ -53,10 +53,8 @@ def misproductoses(request,offset):
             cargo = group.name[a+1:]
             if(cargo=='supervisor'):
                supervisor = users
-
             if(cargo=='encargado'):
                encargado = users
-
          productos = modelo_producto.objects.filter(empresa_id=int(offset))
          return render(request,'misproductos.html',{'productos':productos,'supervisores':supervisor,'encargados':encargado,'page':permisos['page'],'empresa':permisos['empresa']})
       return render(request,"error.html")
@@ -91,7 +89,7 @@ def admin_site(request):
    if request.user.is_superuser:
       if request.method=='GET':
          empresas = modelo_empresa.objects.all()
-         data = modelo_cliente.objects.filter(status=True)
+         data = modelo_cliente.objects.filter(status=1).order_by('-cliente_id')
          return render(request,'admin.html',{'clientes':data,'empresas':empresas})
       if request.method=='POST':
          empresas = modelo_empresa.objects.all()
@@ -99,8 +97,7 @@ def admin_site(request):
          desde = request.POST['desde'].replace("/","-")
          hasta = request.POST['hasta'].replace("/","-")
          print empresa +"--"+desde+"--"+hasta
-         clientes = modelo_cliente.objects.filter(status=True,empresa=empresa,fecha_aceptado__range=[desde,hasta])
-         print clientes
+         clientes = modelo_cliente.objects.filter(empresa=empresa,fecha_aceptado__range=[desde,hasta]).exclude(status=0).order_by('-cliente_id')
          log(str(clientes))
          return render(request,'admin.html',{'clientes':clientes,'empresas':empresas})
    return render(request,'error.html')
@@ -130,7 +127,6 @@ def login_view(request):
          empresas = modelo_empresa.objects.all()
          return render(request,'login.html')
       else:
-
          permissions = levelpermissions(request.user)
          if int(permissions['level'])==10:
             return HttpResponseRedirect('/admin_site/')
@@ -146,7 +142,7 @@ def base_de_datos(request,offset):
     permisos = credentials(request.user,offset)
     if(permisos['level']>1 and permisos['conexion']==True):
         if request.method == 'GET':
-            r = modelo_cliente.objects.filter(status=True,empresa=permisos['empresa'])
+            r = modelo_cliente.objects.filter(empresa=permisos['empresa']).exclude(status=0).order_by('-cliente_id')
 
             return render(request,'base_de_datos.html',{'clientes': r ,'page':permisos['page'],'empresa':permisos['empresa']})
     return render(request,'base_de_datos.html',{'error': "disculpe, no tiene permisos suficientes para acceder a esta pantalla"})
@@ -162,9 +158,7 @@ def vista_consulta(request,offset):
       return HttpResponseRedirect('/admin_site/')
    elif credenciales['conexion'] and int(credenciales['level'])>1:
       if request.method == 'GET':
-         r = modelo_cliente.objects.filter(status=False,empresa=credenciales['empresa']).order_by('-cliente_id')
-         a = clienteSerializer(instance=r,many=True)
-      #print json[0]
+         r = modelo_cliente.objects.filter(status=0,empresa=credenciales['empresa']).order_by('-cliente_id')
          queryset2 = modelo_encargado.objects.filter(empresa_id=credenciales['page'])
          return render(request,'ini.html',{'datos': r ,'encargados':queryset2,'valor':r.count(),'page':credenciales['page'],'empresa':credenciales['empresa']})
       #return Response({'datos': a.data ,'encargados':queryset2,'valor':r.count()})
@@ -174,13 +168,8 @@ def vista_consulta(request,offset):
          id_local = request.data.get('id')
          try:
             if(request.data.get('comando')!='eliminar'):
-               print id_local
                p = modelo_cliente.objects.get(cliente_id=id_local)
-
-               print p
-
-               p.status=True
-               print datetime.datetime.now().time().strftime('%H-%M-%S.%f')
+               p.status=1
                p.fecha_aceptado = datetime.datetime.now().strftime('%Y-%m-%d')
                p.hora_aceptado = datetime.datetime.now().time().strftime('%H:%M:%S.%f')
                p.encargado = request.data.get('encargado')
@@ -199,7 +188,11 @@ def vista_consulta(request,offset):
                hilo2 = threading.Thread(target=respconsumer,args=(device,))
                hilo2.start()
             else:
-               p = modelo_cliente.objects.get(cliente_id=id_local).delete()
+               p = modelo_cliente.objects.get(cliente_id=id_local)
+               p.status=3
+               p.fecha_aceptado = datetime.datetime.now().strftime('%Y-%m-%d')
+               p.hora_aceptado = datetime.datetime.now().time().strftime('%H:%M:%S.%f')
+               p.save()
             return Response(status=status.HTTP_201_CREATED)
          except AttributeError as b:
             print b
@@ -224,24 +217,33 @@ def vista_agregar_nuevo(request,offset):
 @api_view(['GET', 'POST'])
 @login_required(login_url='/login/')
 def vista_encargados(request,offset):
-
    credential = credentials(request.user,offset)
    if credential['conexion']==True:
       if request.method == 'GET':
          a =  datetime.date.today()
-         return render(request,'encargados_table.html',{'datos':modelo_cliente.objects.filter(fecha_aceptado__range=[a,a],status=True),'empresa':credential['empresa'],'page':credential['page']})
+         return render(request,'encargados_table.html',{'datos':
+                                                        modelo_cliente.objects.filter(fecha_aceptado__range=[a,a],
+                                                        status=1).order_by('cliente_id'),'empresa':credential['empresa'],
+                                                        'page':credential['page']})
       if request.method == 'POST':
-         desde = request.POST['fecha_desde']
-         hasta = request.POST['fecha_hasta']
-         if desde=="" or hasta=="":
-            print "vacio"
-            return render(request,'encargados_table.html',{'error':"ingrese fechas validas"})
-         print
-         clientes = modelo_cliente.objects.filter(fecha_aceptado__range=[desde, hasta],status=True)
-         return render(request,'encargados_table.html',{'datos':clientes,'page':credential['page']})
+         if request.is_ajax()==True:
+            if request.data.get('method')=="confirmar":
+               print request.data.get('id')
+               cliente = modelo_cliente.objects.get(cliente_id=request.data.get('id'))
+               cliente.status = 2
+               cliente.save()
+               return Response(status=status.HTTP_201_CREATED)
+         else:
+            desde = request.POST['fecha_desde']
+            hasta = request.POST['fecha_hasta']
+            if desde=="" or hasta=="":
+               print "vacio"
+               return render(request,'encargados_table.html',{'error':"ingrese fechas validas"})
+            clientes = modelo_cliente.objects.filter(fecha_aceptado__range=[desde, hasta],status=1).order_by('-cliente_id')
+            return render(request,'encargados_table.html',{'datos':clientes,'page':credential['page'],'empresa':credential['empresa']})
    return render(request,'error.html')
 class api_otro(generics.ListCreateAPIView):
-    queryset = modelo_cliente.objects.filter(status=False).order_by('encargado')
+    queryset = modelo_cliente.objects.filter(status=0).order_by('encargado')
     serializer_class = clienteSerializer
 
 
@@ -282,7 +284,6 @@ class api_cliente(APIView):
    def post(self,request):
       a=clienteSerializer(data=request.data)
       a.is_valid()
-      print request.data
       if(a.is_valid()):
          a.save()
          if request.is_ajax()==False:
@@ -297,7 +298,7 @@ class api_cliente(APIView):
 
       return JsonResponse({'status':'error'})
    def get(self,request):
-      r = modelo_cliente.objects.filter(status=False)
+      r = modelo_cliente.objects.filter(status=0)
       a = clienteSerializer(instance=r,many=True)
       json = loads(dumps(a.data))
       #print json[0]

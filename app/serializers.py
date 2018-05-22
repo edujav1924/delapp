@@ -37,8 +37,8 @@ class clienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = modelo_cliente
         fields = ('cliente_id','nombre', 'apellido', 'celular',
-                  'distancia','tipo_pedido','pedidos','empresa','ubicacion',
-                  'encargado','longitud','latitud','precio_total','status','fecha','hora','token',
+                  'distancia','tipo_pedido','pedidos','empresa','ubicacion','fecha','hora',
+                  'encargado','longitud','latitud','precio_total','status','token',
                   'fecha_programado','hora_programado','fecha_aceptado','hora_aceptado')
 
     def create(self, validated_data):

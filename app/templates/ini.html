@@ -70,8 +70,12 @@
     </select>
   </div>
 
-  <div class="container">
-    <div class="fixed-bottom"><button id='nuevo' type="button" class="btn btn btn-success">Aceptar Pedido</button></div>
+  <div class="container-fluid">
+    <div class="fixed-bottom" align=center>
+      <button id='nuevo' type="button" class="btn btn btn-success">Aceptar Pedido</button>
+      <button id='eliminar' type="button" class="btn btn btn-danger">Eliminar Pedido</button>
+    </div>
+    <div class="fixed-bottom"></div>
     {% csrf_token %}
     <div class="card">
       <div class="card-header card text-white bg-dark ">
@@ -82,7 +86,7 @@
             </button>
           </div>
           <div id="header" class="col" align="center">
-            <input  onclick="window.open('/home/nuevo/{{page}}')" type="button"  class="btn btn-outline-warning" value="+ Nuevo Pedido" />
+            <input   type="button"  class="btn btn-outline-warning" value="+ Nuevo Pedido" />
           </div>
         </div>
       </div>
@@ -96,9 +100,13 @@
               <tr>
                 <th  data-priority="1" >Nombre</th>
                 <th>producto</th>
-                <th data-priority="2">distancia</th>
-                <th>Fecha</th>
-                <th>Hora</th>
+                <th data-priority="2">Distancia</th>
+                <th>Precio</th>
+                <th>Tipo Pedido</th>
+                <th>Fecha prog</th>
+                <th>Hora prog</th>
+                <th>Recibido el:</th>
+                <th>Recibido a las:</th>
               </tr>
             </thead>
             <tbody>
@@ -115,9 +123,22 @@
                     </ul>
                   </td>
                   <td id={{dato.cliente_id}}-distancia name={{dato.cliente_id}}-distancia>{{dato.distancia}}</td>
+                  <td>{{dato.precio_total}} Gs.</td>
+                  <td id={{dato.cliente_id}}-tipo>{{dato.tipo_pedido}}</td>
+                  {% if dato.fecha_programado == None %}
+                    <td id={{dato.cliente_id}}-fecha_prog>-----</td>
+                  {% else %}
+                    <td id={{dato.cliente_id}}-fecha_prog>{{dato.fecha_programado|date:"d M, Y"}}</td>
+                  {%endif%}
+                  {% if dato.hora_programado == None %}
+                    <td id={{dato.cliente_id}}-hora_prog>-----</td>
+                  {% else %}
+                    <td id={{dato.cliente_id}}-hora_prog>{{dato.hora_programado}}</td>
+                  {%endif%}
                   <td id={{dato.cliente_id}}-fecha>{{dato.fecha|date:"d M, Y"}}</td>
                   <td id={{dato.cliente_id}}-hora>{{dato.hora}}</td>
                 </div>
+
               </tr>
               </form>
               {% endfor %}
