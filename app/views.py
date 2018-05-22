@@ -45,16 +45,8 @@ def misproductoses(request,offset):
    if request.method == 'GET':
       if(permisos['level']>1) and permisos['conexion']==True:
          empresa = modelo_empresa.objects.get(id=offset)
-         namegroup = models.Group.objects.filter(name__startswith=empresa.empresa)
-         for i in range(0,namegroup.count()):
-            group = models.Group.objects.get(name=namegroup[i])
-            users = group.user_set.all()
-            a = group.name.find('_')
-            cargo = group.name[a+1:]
-            if(cargo=='supervisor'):
-               supervisor = users
-            if(cargo=='encargado'):
-               encargado = users
+         supervisor = modelo_encargado.objects.filter(empresa_id=offset,puesto='Sp')
+         encargado = modelo_encargado.objects.filter(empresa_id=offset,puesto='En')
          productos = modelo_producto.objects.filter(empresa_id=int(offset))
          return render(request,'misproductos.html',{'productos':productos,'supervisores':supervisor,'encargados':encargado,'page':permisos['page'],'empresa':permisos['empresa']})
       return render(request,"error.html")
@@ -90,7 +82,8 @@ def admin_site(request):
       if request.method=='GET':
          empresas = modelo_empresa.objects.all()
          data = modelo_cliente.objects.filter(status=1).order_by('-cliente_id')
-         return render(request,'admin.html',{'clientes':data,'empresas':empresas})
+         contador = modelo_contador.objects.all()
+         return render(request,'admin.html',{'clientes':data,'empresas':empresas,'contador':contador})
       if request.method=='POST':
          empresas = modelo_empresa.objects.all()
          empresa = request.POST['empresa']
@@ -99,7 +92,8 @@ def admin_site(request):
          print empresa +"--"+desde+"--"+hasta
          clientes = modelo_cliente.objects.filter(empresa=empresa,fecha_aceptado__range=[desde,hasta]).exclude(status=0).order_by('-cliente_id')
          log(str(clientes))
-         return render(request,'admin.html',{'clientes':clientes,'empresas':empresas})
+         contador = modelo_contador.objects.all()
+         return render(request,'admin.html',{'clientes':clientes,'empresas':empresas,'contador':contador})
    return render(request,'error.html')
 
 @api_view(['GET', 'POST'])
@@ -111,29 +105,35 @@ def login_view(request):
         if user is not None:
             login(request, user)
             permissions = levelpermissions(user)
+            print permissions
             if user.is_superuser:
                return HttpResponseRedirect('/admin_site/')
-            elif permissions['level']>1:
-                return HttpResponseRedirect('/home/'+str(permissions['page']))
+            elif permissions['level']==2:
+               return HttpResponseRedirect('/home/'+str(permissions['page']))
             elif permissions['level']==1:
-                return HttpResponseRedirect('/home/encargados/'+str(permissions['page']))
+               return HttpResponseRedirect('/home/encargados/'+str(permissions['page']))
+            elif permissions['level']==0:
+               print "auqi"
+               return render(request,'login.html',{'error':'no existe este encargado'})
             else:
-                return render(request,'login.html',{'error':'usuario o contrasenha no valida'})
+               return render(request,'login.html',{'error':'error en contrasenha o username'})
         else:
             return render(request,'login.html',{'error':'usuario o contrasenha no valida'})
 
     elif request.method == 'GET':
       if(request.user.is_anonymous):
-         empresas = modelo_empresa.objects.all()
          return render(request,'login.html')
       else:
          permissions = levelpermissions(request.user)
          if int(permissions['level'])==10:
             return HttpResponseRedirect('/admin_site/')
-         elif permissions['level']>1:
+         elif permissions['level']==2:
              return HttpResponseRedirect('/home/'+str(permissions['page']))
          elif permissions['level']==1:
              return HttpResponseRedirect('/home/encargados/'+str(permissions['page']))
+         else:
+            logout(request)
+            return render(request,'login.html',{'error':'no hemos encontrado a ningun grupo al que pertenezca'})
 
 
 @api_view(['GET'])
@@ -159,7 +159,7 @@ def vista_consulta(request,offset):
    elif credenciales['conexion'] and int(credenciales['level'])>1:
       if request.method == 'GET':
          r = modelo_cliente.objects.filter(status=0,empresa=credenciales['empresa']).order_by('-cliente_id')
-         queryset2 = modelo_encargado.objects.filter(empresa_id=credenciales['page'])
+         queryset2 = modelo_encargado.objects.filter(empresa_id=credenciales['page'],puesto='En')
          return render(request,'ini.html',{'datos': r ,'encargados':queryset2,'valor':r.count(),'page':credenciales['page'],'empresa':credenciales['empresa']})
       #return Response({'datos': a.data ,'encargados':queryset2,'valor':r.count()})
       #preguntar si user es autenticado
@@ -208,7 +208,7 @@ def vista_agregar_nuevo(request,offset):
    credenciales = credentials(request.user,offset)
    if credenciales['conexion'] and int(credenciales['level'])>1:
       if request.method == 'GET':
-         encargados = modelo_encargado.objects.all()
+         encargados = modelo_encargado.objects.filter(empresa_id=offset,puesto='En')
          productos = modelo_producto.objects.filter(empresa_id=credenciales['page'])
          return render(request,'agregar_nuevo.html',{'encargados':encargados,'productos':productos,'empresa':credenciales['empresa'],'page':credenciales['page']})
    else:
@@ -302,6 +302,7 @@ class api_cliente(APIView):
       a = clienteSerializer(instance=r,many=True)
       json = loads(dumps(a.data))
       #print json[0]
+
       return Response(json)
 
 
@@ -314,6 +315,17 @@ class api_productos(generics.ListCreateAPIView):
     queryset = modelo_producto.objects.all()
     serializer_class = productoSerializer
 
-class api_empresa(generics.ListCreateAPIView):
-    queryset = modelo_empresa.objects.all()
-    serializer_class = empresaSerializer
+class api_empresa(APIView):
+   def get(self,request):
+      try:
+         user = modelo_contador.objects.get(fecha=datetime.datetime.now().strftime('%Y-%m-%d'))
+         user.cantidad = user.cantidad+1
+         user.save()
+      except modelo_contador.DoesNotExist:
+         modelo_contador.objects.create(fecha=datetime.datetime.now().strftime('%Y-%m-%d'),cantidad=1)
+      queryset = modelo_empresa.objects.all()
+      a = empresaSerializer(queryset,many=True)
+      json = loads(dumps(a.data))
+      return JsonResponse(json,safe=False)
+
+   #

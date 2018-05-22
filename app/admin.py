@@ -19,7 +19,7 @@ class empresasadmin(admin.ModelAdmin):
 admin.site.register(modelo_empresa,empresasadmin)
 
 class encargados_admin(admin.ModelAdmin):
-    list_display=('nombre','empresas','telefono')
+    list_display=('nombre','empresa','puesto','telefono')
     def empresas(self, encargados):
         return encargados.empresa.empresa
 admin.site.register(modelo_encargado,encargados_admin)

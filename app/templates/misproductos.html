@@ -82,13 +82,13 @@
         <tbody>
           {% for encargado in encargados %}
           <tr id={{encargado.id}}>
-            <td id={{encargado.id}}-name>{{encargado.username}}</td>
+            <td id={{encargado.id}}-name>{{encargado.nombre}}</td>
             <td id={{encargado.id}}-cargo>Encargado delivery</td>
           </tr>
           {%endfor%}
           {% for supervisor in supervisores %}
           <tr id={{supervisor.id}}>
-            <td id={{supervisor.id}}-name>{{supervisor.username}}</td>
+            <td id={{supervisor.id}}-name>{{supervisor.nombre}}</td>
             <td id={{supervisor.id}}-cargo>Supervisor</td>
           </tr>
           {%endfor%}

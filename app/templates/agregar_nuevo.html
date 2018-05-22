@@ -9,6 +9,7 @@
 
     {% load static %}
     <script type="text/javascript" src="{% static "agregar_nuevo.js" %}"></script>
+    
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -87,8 +88,14 @@
                       Por favor complete este campo
                     </div>
                   </div>
-                  <div id="encargado" class="col-md-4 mb-3">
+                  <div  class="col-md-4 mb-3">
                     <label for="validationCustom05">Encargado</label>
+                    <select id="select-encargado" class="custom-select" name="" required>
+                      <option value="" selected>--seleccione--</option>
+                      {%for e in encargados %}
+                      <option value={{e.nombre}}>{{e.nombre}}</option>
+                      {%endfor%}
+                    </select>
                     <div class="invalid-feedback">
                       Por favor complete este campo
                     </div>

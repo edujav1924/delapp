@@ -60,10 +60,22 @@ class modelo_pedido(models.Model):
         return '%s %s %d' % (self.cliente, self.producto, self.cantidad)
 
 class modelo_encargado(models.Model):
+    cargo= (
+    ('Sp', 'Supervisor'),
+    ('En', 'Encargado'),
+)
     nombre = models.ForeignKey(User)
     telefono = models.IntegerField(blank=True)
+    puesto = models.CharField(max_length=15,choices=cargo)
     empresa = models.ForeignKey(modelo_empresa,related_name='encargado',on_delete=models.CASCADE)
     class Meta:
             unique_together = (("nombre", "empresa"),)
     def __str__(self):
-             return '%s %s %s' % (self.nombre,self.telefono,self.empresa)
+             return '%s %s %s %s' % (self.nombre,self.telefono,self.puesto,self.empresa)
+
+class modelo_contador(models.Model):
+    fecha = models.DateField(auto_now_add=True)
+    hora = models.TimeField(auto_now_add=True)
+    cantidad = models.PositiveIntegerField( default=0 , null=True)
+    def __str__(self):
+             return '%s %s %d' % (self.fecha,self.hora,self.cantidad)

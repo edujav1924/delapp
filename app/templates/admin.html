@@ -16,6 +16,15 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.material.min.js"></script>
     {% load static %}
+    <script type="text/javascript" src="{% static "export/button.js" %}"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+
+
     <link rel="stylesheet" href="{%static "getmdl-select.min.css"%}">
     <script defer src="{% static "dataTables.responsive.min.js" %}"></script>
     <script defer src="{% static "getmdl-select.min.js" %}"></script>
@@ -225,13 +234,59 @@
               }
           });
         </script>
+        <canvas id="myChart_2"></canvas>
+        <script>
+        var label=[];
+        var count = [];
+        var k = 0,aux=-1;
+        var fecha = "",ser_fecha="";
+        {%for dato in contador %}
+          console.log("{{dato.fecha|date:"d-M"}}");
+          label.push("{{dato.fecha}}")
+          count.push("{{dato.cantidad}}")
+        {% endfor %}
+
+          var ctx = document.getElementById("myChart_2");
+          var myChart = new Chart(ctx, {
+              type: 'line',
+              data: {
+                  labels: label.reverse(),
+                  datasets: [{
+                      label: 'Consultas',
+                      data: count.reverse(),
+                      backgroundColor: [
+                          'rgba(229, 233, 10, 0.2)',
+                      ],
+                      borderColor: [
+                          'rgba(255,99,132,1)',
+
+                      ],
+                      borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero:true
+                          }
+                      }]
+                  }
+              }
+          });
+        </script>
       </div>
+
     </div>
 
       <script type="text/javascript">
         $(document).ready(function() {
           $('#example').DataTable({
         responsive:true,
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'excel', 'pdf', 'print'
+        ]
         })
 
       } );
