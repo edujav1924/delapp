@@ -92,14 +92,14 @@
       </div>
       <div class="card-body">
         <div class="table-responsive">
-
-
+          {% if datos %}
           <table id="example" class="table table-striped table-bordered " style="text-align: center;">
-            {% if datos %}
             <thead>
               <tr>
-                <th  data-priority="1" >Nombre</th>
-                <th>producto</th>
+                <th data-priority="1">Pedido_id</th>
+                <th>Nombre</th>
+                <th>Producto</th>
+                <th>Comentario</th>
                 <th data-priority="2">Distancia</th>
                 <th>Precio</th>
                 <th>Tipo Pedido</th>
@@ -114,6 +114,7 @@
               <form id='form'>
               <tr id={{dato.cliente_id}}>
                 <div>
+                  <td>{{dato.cliente_id}}</td>
                   <td id={{dato.cliente_id}}-name name={{dato.cliente_id}}-name>{{dato.nombre}}</td>
                   <td id={{dato.cliente_id}}-producto class="po-{{dato.cliente_id}}">
                     <ul id={{dato.cliente_id}}-lista>
@@ -122,6 +123,12 @@
                       {%endfor%}
                     </ul>
                   </td>
+                  {% if dato.comentario == "" %}
+                  <td>----</td>
+                  {% else %}
+                  <td>{{dato.comentario}}</td>
+                  {% endif %}
+
                   <td id={{dato.cliente_id}}-distancia name={{dato.cliente_id}}-distancia>{{dato.distancia}}</td>
                   <td>{{dato.precio_total}} Gs.</td>
                   <td id={{dato.cliente_id}}-tipo>{{dato.tipo_pedido}}</td>
@@ -161,11 +168,12 @@
     var k = 0;
     document.getElementById("noti").innerHTML = k;
     var config = {
-      apiKey: "AIzaSyDvNc7ZjM4pZXHmtVGqPZHKX4bBv_Bv-rA",
-      authDomain: "deliverynotifications-f1722.firebaseapp.com",
-      projectId: "deliverynotifications-f1722",
-      messagingSenderId: "981081153744",
-      storageBucket: "deliverynotifications-f1722.appspot.com"
+      apiKey: "AIzaSyBh-rsShtgZ-GDTyOLgzCytDy17ECYQRZ4",
+      authDomain: "deliveryon-notifications.firebaseapp.com",
+      databaseURL: "https://deliveryon-notifications.firebaseio.com",
+      projectId: "deliveryon-notifications",
+      storageBucket: "deliveryon-notifications.appspot.com",
+      messagingSenderId: "707176257212"
     };
     firebase.initializeApp(config);
     const messaging = firebase.messaging();

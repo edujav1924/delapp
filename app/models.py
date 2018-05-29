@@ -7,18 +7,24 @@ from fcm_django.models import FCMDevice
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 
-
+class modelo_comentario(models.Model):
+    nombre = models.CharField(max_length=30)
+    apellido = models.CharField(max_length=30)
+    comentario = models.CharField(max_length=200)
 class modelo_empresa(models.Model):
     empresa = models.CharField(max_length=30)
     latitud = models.CharField(max_length=20)
     longitud = models.CharField(max_length=20)
     telefono = models.CharField(max_length=20)
-    tipo_pago = models.CharField(max_length=20,null=True)
-    hora_atencion_inicio = models.CharField(max_length=20,null=True)
-    hora_atencion_fin = models.CharField(max_length=20,null=True)
-    fechas_de_atencion = models.CharField(max_length=25,null=True)
+    tipo_pago = models.CharField(max_length=20)
+    hora_atencion_inicio = models.TimeField(max_length=20)
+    hora_atencion_fin = models.TimeField(max_length=20)
+    fechas_de_atencion = models.CharField(max_length=25)
+    rango_delivery = models.CharField(max_length=10)
+    costo_delivery = models.CharField(max_length=20)
     def __unicode__(self):
-        return '%s %s %s' % (self.empresa, self.latitud, self.longitud)
+        return '%s %s %s %s %s %s %s %s %s %s' % (self.empresa, self.latitud, self.longitud,self.telefono,self.tipo_pago,self.hora_atencion_inicio,self.hora_atencion_fin
+                                                     ,self.fechas_de_atencion,self.rango_delivery,self.costo_delivery)
 
 class modelo_producto(models.Model):
     empresa = models.ForeignKey(modelo_empresa,related_name='productos',on_delete=models.CASCADE)
@@ -29,17 +35,18 @@ class modelo_producto(models.Model):
 
 class modelo_cliente(models.Model):
     cliente_id =models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=30,blank=True,null=True)
-    apellido = models.CharField(max_length=30,blank=True,null=True)
-    celular = models.IntegerField(blank=True,null=True)
-    latitud = models.CharField(max_length=30,blank=True,null=True)
-    longitud = models.CharField(max_length=30,blank=True,null=True)
-    precio_total = models.CharField(max_length=30,blank=True,null=True)
+    nombre = models.CharField(max_length=30)
+    apellido = models.CharField(max_length=30)
+    celular = models.IntegerField(blank=True)
+    latitud = models.CharField(max_length=30)
+    longitud = models.CharField(max_length=30)
+    precio_total = models.CharField(max_length=30)
     distancia = models.CharField(max_length=10,blank=True,null=True)
-    tipo_pedido = models.CharField(max_length=15,blank=True,null=True)
-    empresa = models.CharField(max_length=30,blank=True,null=True)
+    tipo_pedido = models.CharField(max_length=15)
+    empresa = models.CharField(max_length=30)
     ubicacion = models.CharField(max_length=100,blank=True,null=True)
     encargado = models.CharField(max_length=30,blank=True,null=True)
+    comentario = models.CharField(max_length=200,blank=True,null=True)
     status = models.IntegerField(default=0,validators=[MaxValueValidator(3), MinValueValidator(0)])
     fecha = models.DateField(auto_now_add=True)
     hora = models.TimeField(auto_now_add=True)
@@ -49,7 +56,7 @@ class modelo_cliente(models.Model):
     fecha_aceptado = models.DateField(blank=True,null=True)
     hora_aceptado = models.TimeField(blank=True,null=True)
     def __unicode__(self):
-        return '%s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s' % (self.nombre,self.apellido,self.celular,self.latitud,self.longitud,self.precio_total,self.distancia,self.tipo_pedido,self.empresa,
+        return '%s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s' % (self.nombre,self.apellido,self.celular,self.latitud,self.longitud,self.precio_total,self.distancia,self.tipo_pedido,self.empresa,self.comentario,
                                                                              self.ubicacion,self.fecha,self.hora,self.token,self.encargado,self.status,self.fecha_aceptado,self.hora_aceptado,self.fecha_programado,self.hora_programado)
 
 class modelo_pedido(models.Model):

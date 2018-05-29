@@ -9,7 +9,7 @@ importScripts('https://www.gstatic.com/firebasejs/3.9.0/firebase-messaging.js');
 // Initialize the Firebase app in the service worker by passing in the
 // messagingSenderId.
 firebase.initializeApp({
-  'messagingSenderId': "981081153744"
+  'messagingSenderId': "707176257212"
 });
 
 // Retrieve an instance of Firebase Messaging so that it can handle background
@@ -24,12 +24,11 @@ const messaging = firebase.messaging();
 
 messaging.setBackgroundMessageHandler(function(payload) {
   console.log('[firebase-messaging-sw.js] Received background message ', payload);
-  console.log("nuevo pediso");
-  document.getElementById("noti").innerHTML = 1;
+  // Customize notification here
   const notificationTitle = 'A recibido un mensaje';
   const notificationOptions = {
     body: 'Background Message body.',
-    icon: '/delivery.png'
+    icon: '/firebase-logo.png'
   };
 
   return self.registration.showNotification(notificationTitle,

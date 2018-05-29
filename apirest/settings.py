@@ -55,7 +55,7 @@ INSTALLED_APPS = [
 
 ]
 FCM_DJANGO_SETTINGS = {
-        "FCM_SERVER_KEY":"AAAA5Gz-YNA:APA91bE6V7GiseQU0a2zGSDwhDxaNRzGMdCe8U5OEEtKetNhbeoiDLE1ESZeqQ8WNXUBWUNOOfeBzU29E06jSPbbQEWCzQgGbICR71zMN1l_IIVwV6Y89kpZysa6YGYOQLE9qxUe2TYv",
+        "FCM_SERVER_KEY":"AAAApKb9Vrw:APA91bE1H9t6nljgfd_saQhTO0XYhovDIo3RnPHwsg9q9Xs2g_4AbB4LsKVbXt_523HT3iKG15S2oJGLv0YFrVS77MGxPcdgm-f3BJ85rhPWhrXP6Ryy_psYEZWAV4qaAZND0k4y38ZU",
          # true if you want to have only one active device per registered user at a time
          # default: False
         "ONE_DEVICE_PER_USER": True,
@@ -138,6 +138,12 @@ USE_I18N = True
 USE_L10N = False
 
 USE_TZ = True
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'deliveryonpy@gmail.com'
+EMAIL_HOST_PASSWORD = 'nosemeocurrenada+'
+EMAIL_PORT = 587
 
 
 # Static files (CSS, JavaScript, Images)

@@ -52,6 +52,7 @@
               {% if clientes %}
               <thead>
                 <tr>
+                  <th>Pedido_id</th>
                   <th scope="col">Nombre</th>
                   <th scope="col">Celular</th>
                   <th scope="col">producto</th>
@@ -70,7 +71,8 @@
 
                 <tr id=row-{{cliente.cliente_id}}>
                   <div>
-                    <td data-priority="1" id={{cliente.cliente_id}}-name>{{cliente.nombre}} {{cliente.apellido}}</td>
+                    <td data-priority="1">{{cliente.cliente_id}}</td>
+                    <td id={{cliente.cliente_id}}-name>{{cliente.nombre}} {{cliente.apellido}}</td>
                     <td id={{cliente.cliente_id}}-telefono>{{cliente.celular}}</td>
                     <td id={{cliente.cliente_id}}-producto>
                       <ul>
@@ -92,6 +94,8 @@
                       <td> <strong style="color:red;">Pendiente</strong> </td>
                     {% elif cliente.status == 2 %}
                       <td> <strong style="color:green;">Entregado</strong> </td>
+                    {% elif cliente.status == 3 %}
+                      <td> <strong style="color:blue;">Eliminado</strong> </td>
                     {% endif %}
                   </div>
                 </tr>

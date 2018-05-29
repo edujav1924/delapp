@@ -12,18 +12,9 @@ $(document).ready(function() {
            if (index.localeCompare("productos")==0) {
              b = b + '<option value="'+value.producto+'">'+value.producto+'</option>'
            }
-           else {
-             a = a + '<option value="'+value.username+'">'+value.username+'</option>'
-           }
         });
      });
-     var objTo = document.getElementById("encargado");
-     var divtest = document.createElement("select");
-     divtest.setAttribute("class","custom-select");
-     divtest.setAttribute("id","select-encargado");
-     divtest.setAttribute("required","");
-     divtest.innerHTML = a
-     objTo.appendChild(divtest);
+
   });
 
 

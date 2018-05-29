@@ -7,6 +7,7 @@ $(document).ready(function() {
     var method = "";
 
     var table = $('#example').DataTable({
+        "order": [],
         columnDefs: [
             { responsivePriority: 1, targets: 0 },
             { responsivePriority: 2, targets: -1 }
@@ -180,6 +181,6 @@ $(document).ready(function() {
             });
     });
     $('#btn-noti').on('click', function() {
-      location.reload()
+      location.reload();
     });
 });

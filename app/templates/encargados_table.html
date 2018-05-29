@@ -58,6 +58,7 @@
           <table id="example" class="table table-bordered " style="text-align: center;">
                   <thead>
                       <tr>
+                          <th>Pedido_id</th>
                           <th>Nombre</th>
                           <th>Distancia</th>
                           <th>Ubicacion</th>
@@ -66,6 +67,7 @@
                           <th>Encargado</th>
                           <th>Celular</th>
                           <th>Pedidos</th>
+                          <th>Comentario</th>
                           <th>fecha recibido</th>
                           <th>Fecha Prog.</th>
                           <th>Fecha confir.</th>
@@ -76,6 +78,7 @@
                   <tbody>
                     {% for dato in datos %}
                     <tr id={{dato.cliente_id}}>
+                      <td>{{dato.cliente_id}}</td>
                       <td>{{dato.nombre}} {{dato.apellido}}</td>
                       <td>{{dato.distancia}}</td>
                       <td><a id={{dato.cliente_id}}-ubicacion href={{dato.ubicacion}} target="_blank">Ubicacion</a></td>
@@ -90,6 +93,11 @@
                             {%endfor%}
                           </ul>
                       </td>
+                      {% if dato.comentario == None %}
+                      <td>----</td>
+                      {% else %}
+                      <td>{{dato.comentario}}</td>
+                      {% endif %}
                       <td>{{dato.fecha|date:"d M, Y"}} - {{dato.hora}}</td>
                       <td>{{dato.fecha_programado|date:"d M, Y"}} - {{dato.hora_programado}}</td>
                       <td>{{dato.fecha_aceptado|date:"d M, Y"}}</td>

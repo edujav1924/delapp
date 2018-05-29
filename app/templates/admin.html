@@ -145,6 +145,7 @@
       <table id="example" class="display nowrap" style="width:100%;">
         <thead>
           <tr>
+            <th scope="col">Pedido_id</th>
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
             <th scope="col">Celular</th>
@@ -154,12 +155,16 @@
             <th scope="col">encargado</th>
             <th scope="col">fecha</th>
             <th scope="col">hora</th>
+            <th>Estado</th>
           </tr>
         </thead>
         <tbody style="text-align:center;" align="center">
           {% for cliente in clientes %}
+
           <div align="center">
+
           <tr id=row-{{cliente.cliente_id}} >
+              <td>{{cliente.cliente_id}}</td>
               <td id={{cliente.cliente_id}}-name >{{cliente.nombre}}</td>
               <td> {{cliente.apellido}}</td>
               <td id={{cliente.cliente_id}}-telefono>{{cliente.celular}}</td>
@@ -177,6 +182,13 @@
               </td>
               <td>{{cliente.fecha}}</td>
               <td>{{cliente.hora}}</td>
+            {% if cliente.status == 1 %}
+              <td> <strong style="color:red;">Pendiente</strong> </td>
+            {% elif cliente.status == 2 %}
+              <td> <strong style="color:green;">Entregado</strong> </td>
+            {% elif cliente.status == 3 %}
+              <td> <strong style="color:blue;">Eliminado</strong> </td>
+            {% endif %}
           </tr>
 
           {% endfor %}
@@ -209,10 +221,10 @@
           var myChart = new Chart(ctx, {
               type: 'line',
               data: {
-                  labels: label.reverse(),
+                  labels: label,
                   datasets: [{
-                      label: '# consultas',
-                      data: count.reverse(),
+                      label: '# Pedidos',
+                      data: count,
                       backgroundColor: [
                           'rgba(229, 233, 10, 0.0)',
                       ],
@@ -224,6 +236,7 @@
                   }]
               },
               options: {
+
                   scales: {
                       yAxes: [{
                           ticks: {
@@ -241,8 +254,7 @@
         var k = 0,aux=-1;
         var fecha = "",ser_fecha="";
         {%for dato in contador %}
-          console.log("{{dato.fecha|date:"d-M"}}");
-          label.push("{{dato.fecha}}")
+          label.push("{{dato.fecha|date:"d-M"}}")
           count.push("{{dato.cantidad}}")
         {% endfor %}
 
@@ -251,9 +263,11 @@
               type: 'line',
               data: {
                   labels: label.reverse(),
+
                   datasets: [{
-                      label: 'Consultas',
+                      label: '# Consultas',
                       data: count.reverse(),
+                      fill: false,
                       backgroundColor: [
                           'rgba(229, 233, 10, 0.2)',
                       ],
@@ -265,6 +279,11 @@
                   }]
               },
               options: {
+                  elements: {
+                    line: {
+                      tension: 0, // disables bezier curves
+                    }
+                  },
                   scales: {
                       yAxes: [{
                           ticks: {
@@ -282,6 +301,7 @@
       <script type="text/javascript">
         $(document).ready(function() {
           $('#example').DataTable({
+        "order": [],
         responsive:true,
         dom: 'Bfrtip',
         buttons: [

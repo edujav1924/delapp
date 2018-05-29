@@ -2,6 +2,7 @@ $(document).ready(function() {
   document.getElementById("nuevo").disabled = true;
   pos = 0;
   var table = $('#example').DataTable( {
+  "order": [],
   responsive: true,
 } );
 

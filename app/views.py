@@ -20,7 +20,7 @@ from fcm_django.models import FCMDevice
 from django.contrib.auth.models import User
 import threading
 from django.contrib.auth import models
-import datetime
+from datetime import datetime,date
 from milog import write
 import os
 import sys
@@ -147,8 +147,8 @@ def base_de_datos(request,offset):
             return render(request,'base_de_datos.html',{'clientes': r ,'page':permisos['page'],'empresa':permisos['empresa']})
     return render(request,'base_de_datos.html',{'error': "disculpe, no tiene permisos suficientes para acceder a esta pantalla"})
 
-def respconsumer(device):
-   device.send_message(title='Delivery On',icon='/static/logito2.png', body='Pedido aceptado, su pedido le llegara en algunos minutos.')
+def respconsumer(device,text):
+   device.send_message(title='Delivery On',icon='/static/logito2.png', body=text)
 @api_view(['GET', 'POST'])
 
 @login_required(login_url='/login/')
@@ -170,8 +170,8 @@ def vista_consulta(request,offset):
             if(request.data.get('comando')!='eliminar'):
                p = modelo_cliente.objects.get(cliente_id=id_local)
                p.status=1
-               p.fecha_aceptado = datetime.datetime.now().strftime('%Y-%m-%d')
-               p.hora_aceptado = datetime.datetime.now().time().strftime('%H:%M:%S.%f')
+               p.fecha_aceptado = datetime.now().strftime('%Y-%m-%d')
+               p.hora_aceptado = datetime.now().time().strftime('%H:%M:%S.%f')
                p.encargado = request.data.get('encargado')
                p.save()
                a = FCMDevice.objects.filter(registration_id=p.token)
@@ -184,21 +184,25 @@ def vista_consulta(request,offset):
                else:
                   print device
                   device = a.last()
-
-               hilo2 = threading.Thread(target=respconsumer,args=(device,))
+               text = 'Pedido Aceptado! '+u'\U0001F60A'
+               hilo2 = threading.Thread(target=respconsumer,args=(device,text))
                hilo2.start()
-            else:
+            elif request.data.get('comando')=='eliminar':
                p = modelo_cliente.objects.get(cliente_id=id_local)
                p.status=3
-               p.fecha_aceptado = datetime.datetime.now().strftime('%Y-%m-%d')
-               p.hora_aceptado = datetime.datetime.now().time().strftime('%H:%M:%S.%f')
+               p.fecha_aceptado = datetime.now().strftime('%Y-%m-%d')
+               p.hora_aceptado = datetime.now().time().strftime('%H:%M:%S.%f')
+               text = 'Lo sentimos, pedido Rechazado. '+u'\U0001F614'
+               device = FCMDevice.objects.get(registration_id=p.token)
+               hilo2 = threading.Thread(target=respconsumer,args=(device,text))
+               hilo2.start()
                p.save()
             return Response(status=status.HTTP_201_CREATED)
          except AttributeError as b:
-            print b
+            log(b)
             return Response(status=status.HTTP_404_NOT_FOUND)
    else:
-      print "error"
+      log("error")
       return render(request,'error.html')
 
 
@@ -220,10 +224,10 @@ def vista_encargados(request,offset):
    credential = credentials(request.user,offset)
    if credential['conexion']==True:
       if request.method == 'GET':
-         a =  datetime.date.today()
+         a =  date.today()
          return render(request,'encargados_table.html',{'datos':
                                                         modelo_cliente.objects.filter(fecha_aceptado__range=[a,a],
-                                                        status=1).order_by('cliente_id'),'empresa':credential['empresa'],
+                                                        status=1).order_by('-cliente_id'),'empresa':credential['empresa'],
                                                         'page':credential['page']})
       if request.method == 'POST':
          if request.is_ajax()==True:
@@ -278,38 +282,164 @@ class api_token(APIView):
 #responde a solicitud de android
 
 def enviar(device):
-   device.send_message(title='Delivery On',icon='/static/logito2.png', body='Nuevo Pedido')
+   h = device.send_message(title='Delivery On',icon='/static/logito2.png', body='Nuevo Pedido')
+
+def fecha_valida(fecha,dias):
+    try:
+        if fecha >= date.today():
+            print "la fecha seleccionada es: "+str(fecha)
+            dia_prog= fecha.isoweekday()
+            print "dia programada: "+str(dia_prog)
+            print "dias disponibles: "+str(dias)
+            if dias.find(str(dia_prog))!=-1:
+                return 1
+            else:
+                return 2
+        else:
+            return 3
+    except:
+        log("error de fecha")
+        return 5
+
+def hora_valida(hora_ini,hora_fin,actual):
+    am = datetime.strptime("23:59:59",'%H:%M:%S').time()
+    pm = datetime.strptime("00:00:00",'%H:%M:%S').time()
+    print "hora apertura empresa: "+str(hora_ini)
+    print "hora cierre empresa: "+str(hora_fin)
+    print "hora programada por usuario: "+str(actual)
+    if hora_ini<hora_fin:
+        if actual>=hora_ini and actual<hora_fin:
+            return 1
+        else: return 2
+    elif hora_ini>hora_fin:
+        if (actual>=hora_ini and actual<am) or (actual>=pm and actual<hora_fin):
+            return 3
+        else: return 2
+    else:
+        return 4
+
 
 class api_cliente(APIView):
-   def post(self,request):
-      a=clienteSerializer(data=request.data)
-      a.is_valid()
-      if(a.is_valid()):
-         a.save()
-         if request.is_ajax()==False:
-             try:
-                pass
-                device = FCMDevice.objects.filter(user_id=request.data.get('empresa_id'))
-                hilo = threading.Thread(target=enviar,args=(device,))
-                hilo.start()
-                return JsonResponse({'status':'exitoso'})
-             except:
-                print "error fcm api_cliente"
+    def post(self,request):
+        a=clienteSerializer(data=request.data)
+        a.is_valid()
+        print a.is_valid()
+        if(a.is_valid()):
+            if request.is_ajax()==False:
+                print "ajax false"
+                try:
+                    hora = request.data.get('fecha_programado')
+                    fecha = request.data.get('hora_programado')
+                    consulta = modelo_empresa.objects.get(id=request.data.get('empresa_id'))
+                    hora_ini = consulta.hora_atencion_inicio
+                    hora_fin =consulta.hora_atencion_fin
+                    dia =consulta.fechas_de_atencion
+                    buscar = modelo_cliente.objects.filter(token=request.data.get('token'))
+                except Exception as e:
+                    return JsonResponse({'status':1,'msj':'hubo un error al procesar su solicitud, reintente'})
+                    log("error al recibir pedido,1")
+                    print "error 1"
+                if hora==None and fecha==None:
+                    print "hora none"
+                    try:
+                        fecha = date.today()
+                        hora_actual = datetime.time(datetime.now())
+                        fechaisValid = fecha_valida(fecha,dia)
+                        hora_isValid = hora_valida(hora_ini,hora_fin,hora_actual)
+                        print "hora is valid: "+str(hora_isValid)
+                        print "fecha is valid: "+str(fechaisValid)
+                    except Exception as e:
+                        print e
+                        return JsonResponse({'status':1,'msj':'hubo un error al procesar su solicitud, reintente'})
+                        log(e)
+                    if fechaisValid == 3:
+                        print "error fecha pasada"
+                        return JsonResponse({'status':1,'msj':'Fecha pasada seleccionada, elija de nuevo.'})
+                    elif fechaisValid == 2:
+                        return JsonResponse({'status':1,'msj':'Dia no esta disponible para atencion al cliente.'})
+                    elif fechaisValid == 5:
+                        print "hubo un error al procesar su solicitud"
+                        return JsonResponse({'status':1,'msj':'hubo un error al procesar su solicitud, reintente'})
+                    elif fechaisValid == 1:
+                        if hora_isValid == 3 or hora_isValid==1:
+                            print 'exitoso'
+                            a.save()
+                            try:
+                                device = FCMDevice.objects.filter(user_id=request.data.get('empresa_id'))
+                                print device
+                                hilo = threading.Thread(target=enviar,args=(device,))
+                                hilo.start()
+                                return JsonResponse({'status':0,'msj': 'Pedido enviado!, pedido_id ='+str(buscar.last().cliente_id)})
+                            except Exception as b:
+                                print b
+                                log("error envio de respuesta,2")
+                        elif hora_isValid == 2:
+                            return JsonResponse({'status':1,'msj': 'Horario fuera de rango de atencion al cliente.'})
 
-      return JsonResponse({'status':'error'})
-   def get(self,request):
-      r = modelo_cliente.objects.filter(status=0)
-      a = clienteSerializer(instance=r,many=True)
-      json = loads(dumps(a.data))
-      #print json[0]
+                elif hora!=None and fecha!=None:
+                    try:
+                        fecha = datetime.date(datetime.strptime(request.data.get('fecha_programado'),'%Y-%m-%d'))
+                        hora_actual = datetime.strptime(request.data.get('hora_programado'),'%H:%M').time()
+                        fechaisValid = fecha_valida(fecha,dia)
+                        hora_isValid = hora_valida(hora_ini,hora_fin,hora_actual)
+                        print "hora is valid: "+str(hora_isValid)
+                        print "fecha is valid: "+str(fechaisValid)
 
-      return Response(json)
+                    except Exception as e:
+                        log(e)
+                        print "hubo un error al procesar su solicitud"
+                        return JsonResponse({'status':1,'msj':'hubo un error al procesar su solicitud, reintente'})
 
+                    if fechaisValid == 3:
+                        print "error fecha pasada"
+                        return JsonResponse({'status':1,'msj':'Fecha pasada seleccionada, elija de nuevo.'})
+                    elif fechaisValid == 2:
+                        print "error  dia no disponible"
+                        return JsonResponse({'status':1,'msj':'Dia no esta disponible para atencion al cliente.'})
+                    elif fechaisValid == 5:
+                        print "hubo un error al procesar su solicitud"
+                        return JsonResponse({'status':1,'msj':'hubo un error al procesar su solicitud, reintente'})
+                    elif fechaisValid == 1:
+                        if hora_isValid == 3 or hora_isValid==1:
+                            a.save()
+                            try:
+                                device = FCMDevice.objects.filter(user_id=request.data.get('empresa_id'))
+                                print device
+                                hilo = threading.Thread(target=enviar,args=(device,))
+                                hilo.start()
+                                return JsonResponse({'status':0,'msj': 'Exitoso, pedido_id ='+str(buscar.last().cliente_id)})
+                            except:
+                                print "error fcm api_cliente"
+                        elif hora_isValid == 2:
+                            print "hora no esta en el rango"
+                            return JsonResponse({'status':1,'msj': 'Horario fuera de rango de atencion al cliente.'})
+            return JsonResponse({'status':1,'msj':'error'})
 
+    def get(self,request):
+        r = modelo_cliente.objects.filter(status=0)
+        a = clienteSerializer(instance=r,many=True)
+        json = loads(dumps(a.data))
+        #print json[0]
+        return Response(json)
 
+#df7800
+#f21010
 class api_cliente_2(generics.ListCreateAPIView):
     queryset = modelo_cliente.objects.all()
     serializer_class = clienteSerializer
+
+class api_comentarios(APIView):
+    def post(self,request):
+        comentario = comentarioSerializer(data = request.data)
+        if comentario.is_valid():
+            comentario.save()
+            return JsonResponse({'status':0})
+        else:
+            return JsonResponse({'status':1})
+        return JsonResponse({'status':1})
+    def get(self,request):
+        return render(request,'error.html')
+
 
 class api_productos(generics.ListCreateAPIView):
     queryset = modelo_producto.objects.all()
@@ -318,11 +448,11 @@ class api_productos(generics.ListCreateAPIView):
 class api_empresa(APIView):
    def get(self,request):
       try:
-         user = modelo_contador.objects.get(fecha=datetime.datetime.now().strftime('%Y-%m-%d'))
+         user = modelo_contador.objects.get(fecha=datetime.now().strftime('%Y-%m-%d'))
          user.cantidad = user.cantidad+1
          user.save()
       except modelo_contador.DoesNotExist:
-         modelo_contador.objects.create(fecha=datetime.datetime.now().strftime('%Y-%m-%d'),cantidad=1)
+         modelo_contador.objects.create(fecha=datetime.now().strftime('%Y-%m-%d'),cantidad=1)
       queryset = modelo_empresa.objects.all()
       a = empresaSerializer(queryset,many=True)
       json = loads(dumps(a.data))
