@@ -20,15 +20,15 @@ class modelo_empresa(models.Model):
     hora_atencion_inicio = models.TimeField(max_length=20)
     hora_atencion_fin = models.TimeField(max_length=20)
     fechas_de_atencion = models.CharField(max_length=25)
-    rango_delivery = models.CharField(max_length=10)
-    costo_delivery = models.CharField(max_length=20)
+    rango_delivery = models.CharField(max_length=200)
+    costo_delivery = models.CharField(max_length=200)
     def __unicode__(self):
         return '%s %s %s %s %s %s %s %s %s %s' % (self.empresa, self.latitud, self.longitud,self.telefono,self.tipo_pago,self.hora_atencion_inicio,self.hora_atencion_fin
                                                      ,self.fechas_de_atencion,self.rango_delivery,self.costo_delivery)
 
 class modelo_producto(models.Model):
     empresa = models.ForeignKey(modelo_empresa,related_name='productos',on_delete=models.CASCADE)
-    producto = models.CharField(max_length=30)
+    producto = models.CharField(max_length=200)
     precio = models.PositiveIntegerField()
     def __unicode__(self):
         return '%s %s %d' % (self.empresa, self.producto, self.precio)
@@ -56,15 +56,16 @@ class modelo_cliente(models.Model):
     fecha_aceptado = models.DateField(blank=True,null=True)
     hora_aceptado = models.TimeField(blank=True,null=True)
     def __unicode__(self):
-        return '%s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s' % (self.nombre,self.apellido,self.celular,self.latitud,self.longitud,self.precio_total,self.distancia,self.tipo_pedido,self.empresa,self.comentario,
+        return '%s %s %d %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s' % (self.nombre,self.apellido,self.celular,self.latitud,self.longitud,self.precio_total,self.distancia,self.tipo_pedido,self.empresa,self.comentario,
                                                                              self.ubicacion,self.fecha,self.hora,self.token,self.encargado,self.status,self.fecha_aceptado,self.hora_aceptado,self.fecha_programado,self.hora_programado)
 
 class modelo_pedido(models.Model):
     cliente = models.ForeignKey(modelo_cliente, related_name='pedidos', on_delete=models.CASCADE)
-    producto = models.CharField(max_length=30, blank=True,null=True)
+    producto = models.CharField(max_length=200, blank=True,null=True)
     cantidad = models.CharField(max_length=30, blank=True,null=True)
     def __unicode__(self):
-        return '%s %s %d' % (self.cliente, self.producto, self.cantidad)
+        return '%s %s %s' % (self.cliente, self.producto, self.cantidad)
+
 
 class modelo_encargado(models.Model):
     cargo= (
@@ -78,7 +79,7 @@ class modelo_encargado(models.Model):
     class Meta:
             unique_together = (("nombre", "empresa"),)
     def __str__(self):
-             return '%s %s %s %s' % (self.nombre,self.telefono,self.puesto,self.empresa)
+             return '%s %d %s %s' % (self.nombre,self.telefono,self.puesto,self.empresa)
 
 class modelo_contador(models.Model):
     fecha = models.DateField(auto_now_add=True)

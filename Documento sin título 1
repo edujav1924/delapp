@@ -1,0 +1,8 @@
+comandos utiles
+sudo tail -F /var/log/nginx/error.log
+sudo service nginx start/stop/status
+sudo service gunicorn start/stop/status
+sudo service mysql start/stop/status
+mysql -u username -p
+DROP DATABASE NOMBREBASE;
+CREATE DATABASE NOMBRE;

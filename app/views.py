@@ -24,6 +24,8 @@ from datetime import datetime,date
 from milog import write
 import os
 import sys
+from django.core.mail import send_mail
+
 def manifest(request):
    return JsonResponse({"gcm_sender_id": "103953800507"})
 
@@ -158,6 +160,8 @@ def vista_consulta(request,offset):
       return HttpResponseRedirect('/admin_site/')
    elif credenciales['conexion'] and int(credenciales['level'])>1:
       if request.method == 'GET':
+         #report_tread = threading.Thread(target=reportar,args=(str(request.data),str(request.META)))
+         #report_tread.start()
          r = modelo_cliente.objects.filter(status=0,empresa=credenciales['empresa']).order_by('-cliente_id')
          queryset2 = modelo_encargado.objects.filter(empresa_id=credenciales['page'],puesto='En')
          return render(request,'ini.html',{'datos': r ,'encargados':queryset2,'valor':r.count(),'page':credenciales['page'],'empresa':credenciales['empresa']})
@@ -200,11 +204,14 @@ def vista_consulta(request,offset):
             return Response(status=status.HTTP_201_CREATED)
          except AttributeError as b:
             log(b)
+
             return Response(status=status.HTTP_404_NOT_FOUND)
    else:
       log("error")
       return render(request,'error.html')
 
+def reportar(request,meta):
+    send_mail("Error",request+" "+meta,"deliveryon.gmail.com",["edujav22@gmail.com"],fail_silently=False)
 
 @api_view(['GET'])
 @login_required(login_url='/login/')
@@ -457,5 +464,3 @@ class api_empresa(APIView):
       a = empresaSerializer(queryset,many=True)
       json = loads(dumps(a.data))
       return JsonResponse(json,safe=False)
-
-   #

@@ -51,9 +51,18 @@ INSTALLED_APPS = [
     'dynamic_rest',
     'app.apps.AppConfig',
     'fcm_django',
-    "sslserver",
+    'sslserver',
+    'dbbackup',
+    'django_crontab',
 
 ]
+CRONJOBS = [
+    ('00 13 * * *', 'app.cron.my_scheduled_job')
+]
+DBBACKUP_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+DBBACKUP_STORAGE_OPTIONS = {
+'oauth2_access_token': 'qxDmkC2oQ0AAAAAAAAAACIpJXwDA4OVZ0ronEVggJ40gZzoqRE_UlszhjBpbBMa-'
+}
 FCM_DJANGO_SETTINGS = {
         "FCM_SERVER_KEY":"AAAApKb9Vrw:APA91bE1H9t6nljgfd_saQhTO0XYhovDIo3RnPHwsg9q9Xs2g_4AbB4LsKVbXt_523HT3iKG15S2oJGLv0YFrVS77MGxPcdgm-f3BJ85rhPWhrXP6Ryy_psYEZWAV4qaAZND0k4y38ZU",
          # true if you want to have only one active device per registered user at a time
@@ -101,8 +110,12 @@ SENDSMS_BACKEND = 'app.mysmsbackend.SmsBackend'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'apirest_db',
+        'USER': 'root',
+        'PASSWORD': '5112734',
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
     }
 }
 

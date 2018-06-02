@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^comentarios/$',views.api_comentarios.as_view()),
     url(r'^en/(?P<pk>[0-9]+)/$', views.api_encargado.as_view()),
     url(r'^token/$', views.api_token.as_view()),
+    
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
