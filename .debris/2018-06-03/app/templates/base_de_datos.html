@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <title>Datos</title>
+    {%include 'bootstrap_tables.html'%}
+    {% load static %}
+    <script type="text/javascript" src="{% static 'table.js' %}"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <img src="/static/logito2.png" width="50px">
+      <a style="margin-left:5px;" id="empresa" class="navbar-brand" href="/home/{{page}}">{{empresa}}</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/home/{{page}}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/home/encargados/{{page}}">Despacho pedidos</a>
+          </li>
+          <li class="nav-item  active">
+            <a class="nav-link" href="/home/datos/{{page}}">Datos almacenados</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/home/misproductos/{{page}}">Mis productos</a>
+          </li>
+        </ul>
+        <form   action="{% url 'logout' %}" class="form-inline my-2 my-md-0">
+          <label class="col-sm-8" style="color:white;"><b> Usuario: </b> {{user.username}}</label>
+          <button class="btn btn-outline-light col-sm-4" type="submit">Salir</button>
+        </form>
+      </div>
+    </nav>
+  {% if error %}
+  <div class="alert alert-success">
+      <a class="close" href="#" data-dismiss="alert">×</a>
+
+      {{ error }}
+
+  </div>
+  {%else%}
+    <div class="container-fluid">
+      <div class="card">
+
+        <div class="card-body">
+          <div class="">
+            <table id="example" class="table table-striped table-bordered nowrap" style="text-align:center;" style="width:100%">
+              {% if clientes %}
+              <thead>
+                <tr>
+                  <th>Pedido_id</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Celular</th>
+                  <th scope="col">producto</th>
+                  <th>Tipo</th>
+                  <th>Precio Total</th>
+                  <th scope="col">ubicacion</th>
+                  <th scope="col">encargado</th>
+                  <th scope="col">fecha Recibido</th>
+                  <th>Fecha confirmado</th>
+                  <th scope="col">Fecha Prog.</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for cliente in clientes %}
+
+                <tr id=row-{{cliente.cliente_id}}>
+                  <div>
+                    <td data-priority="1">{{cliente.cliente_id}}</td>
+                    <td id={{cliente.cliente_id}}-name>{{cliente.nombre}} {{cliente.apellido}}</td>
+                    <td id={{cliente.cliente_id}}-telefono>{{cliente.celular}}</td>
+                    <td id={{cliente.cliente_id}}-producto>
+                      <ul>
+                        {%for y in cliente.pedidos.all%}
+                        <li style="text-align:left;"> <strong>{{y.cantidad}}</strong> {{y.producto}}</li>
+                        {%endfor%}
+                      </ul>
+                    </td>
+                    <td>{{cliente.tipo_pedido}}</td>
+                    <td>{{cliente.precio_total}} Gs.</td>
+                    <td><a id={{cliente.cliente_id}}-ubicacion href={{cliente.ubicacion}} target="_blank">Ubicacion</a></td>
+                    <td>
+                      {{cliente.encargado}}
+                    </td>
+                    <td>{{cliente.fecha|date:"d M, Y"}} - {{cliente.hora}}</td>
+                    <td>{{cliente.fecha_aceptado|date:"d M, Y"}} - {{cliente.hora_aceptado}}</td>
+                    <td>{{cliente.fecha_programado}} - {{cliente.hora_programado}}</td>
+                    {% if cliente.status == 1 %}
+                      <td> <strong style="color:red;">Pendiente</strong> </td>
+                    {% elif cliente.status == 2 %}
+                      <td> <strong style="color:green;">Entregado</strong> </td>
+                    {% elif cliente.status == 3 %}
+                      <td> <strong style="color:blue;">Eliminado</strong> </td>
+                    {% endif %}
+                  </div>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+  </div>
+      {% else %}
+      <p>no hay pedidos disponibles</p>
+      {% endif %}
+    </body>
+{%endif%}
+</html>

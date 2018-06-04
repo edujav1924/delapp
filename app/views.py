@@ -27,7 +27,7 @@ import sys
 from django.core.mail import send_mail
 
 def manifest(request):
-   return JsonResponse({"gcm_sender_id": "103953800507"})
+   return JsonResponse({"gcm_sender_id": "113198272779"})
 
 def firebase_messaging_sw_js(request):
     filename = '/static/firebase-messaging-sw.js'
@@ -75,7 +75,6 @@ def misproductoses(request,offset):
 
 def logout_view(request):
     logout(request)
-    print "salio"
     return HttpResponseRedirect('/login/')
 
 @login_required(login_url='/login/')
@@ -115,7 +114,6 @@ def login_view(request):
             elif permissions['level']==1:
                return HttpResponseRedirect('/home/encargados/'+str(permissions['page']))
             elif permissions['level']==0:
-               print "auqi"
                return render(request,'login.html',{'error':'no existe este encargado'})
             else:
                return render(request,'login.html',{'error':'error en contrasenha o username'})
@@ -150,7 +148,9 @@ def base_de_datos(request,offset):
     return render(request,'base_de_datos.html',{'error': "disculpe, no tiene permisos suficientes para acceder a esta pantalla"})
 
 def respconsumer(device,text):
-   device.send_message(title='Delivery On',icon='/static/logito2.png', body=text)
+   a = device.send_message(title='Delivery On',icon='/static/logito2.png', body=text)
+   print a
+
 @api_view(['GET', 'POST'])
 
 @login_required(login_url='/login/')
@@ -192,12 +192,22 @@ def vista_consulta(request,offset):
                hilo2 = threading.Thread(target=respconsumer,args=(device,text))
                hilo2.start()
             elif request.data.get('comando')=='eliminar':
+               print "comado eliminar"
                p = modelo_cliente.objects.get(cliente_id=id_local)
                p.status=3
                p.fecha_aceptado = datetime.now().strftime('%Y-%m-%d')
                p.hora_aceptado = datetime.now().time().strftime('%H:%M:%S.%f')
                text = 'Lo sentimos, pedido Rechazado. '+u'\U0001F614'
-               device = FCMDevice.objects.get(registration_id=p.token)
+               a = FCMDevice.objects.filter(registration_id=p.token)
+               if(a.count()==0):
+                  device = FCMDevice.objects.create(name=p.nombre,active=True,registration_id=p.token,type='android')
+                  print device
+               elif( a.count()==1):
+                  device = FCMDevice.objects.get(registration_id=p.token)
+                  print device
+               else:
+                  print device
+                  device = a.last()
                hilo2 = threading.Thread(target=respconsumer,args=(device,text))
                hilo2.start()
                p.save()
@@ -331,6 +341,7 @@ class api_cliente(APIView):
         a=clienteSerializer(data=request.data)
         a.is_valid()
         print a.is_valid()
+        print a.errors
         if(a.is_valid()):
             if request.is_ajax()==False:
                 print "ajax false"
@@ -420,7 +431,8 @@ class api_cliente(APIView):
                         elif hora_isValid == 2:
                             print "hora no esta en el rango"
                             return JsonResponse({'status':1,'msj': 'Horario fuera de rango de atencion al cliente.'})
-            return JsonResponse({'status':1,'msj':'error'})
+        print request.data
+        return JsonResponse({'status':1,'msj':'error'})
 
     def get(self,request):
         r = modelo_cliente.objects.filter(status=0)

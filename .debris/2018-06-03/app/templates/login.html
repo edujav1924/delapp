@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+
+
+    <title></title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "/login/css/style.css"%}">
+    <link rel="stylesheet" href="{% static "iziToast.css" %}">
+    <script  src="{% static "login/js/jquery-3.2.1.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "iziToast.js" %}"></script>
+
+  </head>
+  <body >
+
+  {% if error %}
+    <script type="text/javascript">
+          iziToast.error({
+        title: 'Error',
+        message: "{{error}}",
+    });
+    </script>
+    {%endif%}
+    <div class="wrapper">
+    <div class="container">
+      <h1>Bienvenido</h1>
+      <form class="form" method="post">{% csrf_token %}
+        <input type="text" name="username" placeholder="Nombre de usuario" required>
+        <input type="password"name="password" placeholder="Contraseña" required>
+        <button type="submit" id="login-button">Iniciar Sesión</button>
+      </form>
+    </div>
+
+    <ul class="bg-bubbles">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    </div>
+
+
+
+
+  </body>
+</html>

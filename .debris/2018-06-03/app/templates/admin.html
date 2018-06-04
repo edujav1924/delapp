@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/colreorder/1.4.1/css/colReorder.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/FreddyFY/material-datepicker/master/dist/material-datepicker.css">
+    <script type="text/javascript" src="https://cdn.rawgit.com/FreddyFY/material-datepicker/master/dist/material-datepicker-with-moment-js.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.material.min.js"></script>
+    {% load static %}
+    <script type="text/javascript" src="{% static "export/button.js" %}"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+
+
+    <link rel="stylesheet" href="{%static "getmdl-select.min.css"%}">
+    <script defer src="{% static "dataTables.responsive.min.js" %}"></script>
+    <script defer src="{% static "getmdl-select.min.js" %}"></script>
+    <script defer src="{% static "admin.js" %}"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/colreorder/1.4.1/js/dataTables.colReorder.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+
+    <title>Administrador</title>
+    <style>
+      .child,.dtr-details{
+        align-items: center;
+        align-self: center;
+        text-align: center;
+        align: center;
+      }
+      #filtro{
+        background-color: #ecfaf7;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">Administrador</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation. We hide it in small screens. -->
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a class="mdl-navigation__link" href="/admin_site">Inicio</a>
+        <a class="mdl-navigation__link" href="/admin">Pagina administrador General</a>
+        <form   action="{% url 'logout' %}" class="form-inline my-2 my-md-0">
+          <label class="col-sm-8" style="color:white;"><b> Usuario: </b> {{user.username}}&nbsp;</label>
+          <button class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">power_settings_new</i>
+          </button>
+        </form>
+      </nav>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Administrador</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="/admin_site">Inicio</a>
+      <a class="mdl-navigation__link" href="/admin">Pagina administrador General</a>
+
+  	<form action="{% url 'logout' %}" class="form-inline my-2 my-md-0">
+          <label class="col-sm-8" style="color:white;"><b> Usuario: </b> {{user.username}}&nbsp;</label>
+          <button class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">power_settings_new</i>
+          </button>
+        </form>
+ </nav>
+  </div>
+  <main class="mdl-layout__content">
+    <div class="page-content">
+
+      <div class="container">
+        <div class="mdl-grid" id="filtro">
+          <div class="mdl-cell mdl-cell--12-col" align="center" >
+            <h4>Filtro</h4>
+            <form id="form" class="" action="/admin_site/" method="post">{% csrf_token %}
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select" style="display:inline-block;">
+                  <input type="text" value="" name="empresa" class="mdl-textfield__input" id="sample4" readonly>
+                  <input type="hidden" value="" name="sample4">
+                  <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                  <label for="sample4" class="mdl-textfield__label" >Empresa</label>
+                  <ul for="sample4" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                    {%for empresa in empresas %}
+                      <li class="mdl-menu__item" data-val="DEU">{{empresa.empresa}}</li>
+                    {% endfor %}
+
+                  </ul>
+                  <!-- Colored FAB button with ripple -->
+                </div>
+                <div style="display:inline-block;">
+                     <div class="mdl-textfield mdl-js-textfield">
+                       <label for="sample1">
+                         <span style="font-size:15px;">
+                           Desde
+                         </span>
+                       </label>
+                        <input readonly="true" id="picker" class="mdl-textfield__input" type="text" id="sample1" name="desde" style="text-align:center;color:#30b90e;">
+                      </div>
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <label for="sample1" >
+                          <span style="font-size:15px;">
+                            Hasta
+                          </span>
+                        </label>
+                         <input readonly="true" id="picker2" class="mdl-textfield__input" type="text" id="sample1" name="hasta" style="text-align:center;color:#30b90e;">
+                       </div>
+                  <button class="mdl-button  mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" style="margin-bottom:2%;">
+                    <i class="material-icons">search</i>
+                  </button>
+                  <script type="text/javascript">
+                    var materialPicker001 = new MaterialDatepicker('#picker',{
+                       lang: "es",
+                       type: 'date',
+                       color: "#62b22f",
+                    });
+                    var materialPicker002 = new MaterialDatepicker('#picker2',{
+                       lang: "es",
+                       type: 'date',
+                       color: "#62b22f"
+                    });
+                  </script>
+                </div>
+                  </form>
+              </div>
+        </div>
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--12-col" align="center" >
+      <table id="example" class="display nowrap" style="width:100%;">
+        <thead>
+          <tr>
+            <th scope="col">Pedido_id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Celular</th>
+            <th scope="col">Empresa</th>
+            <th scope="col" style="text-align:center; width:20px;">producto</th>
+            <th scope="col">ubicacion</th>
+            <th scope="col">encargado</th>
+            <th scope="col">fecha</th>
+            <th scope="col">hora</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody style="text-align:center;" align="center">
+          {% for cliente in clientes %}
+
+          <div align="center">
+
+          <tr id=row-{{cliente.cliente_id}} >
+              <td>{{cliente.cliente_id}}</td>
+              <td id={{cliente.cliente_id}}-name >{{cliente.nombre}}</td>
+              <td> {{cliente.apellido}}</td>
+              <td id={{cliente.cliente_id}}-telefono>{{cliente.celular}}</td>
+              <td>{{cliente.empresa}}</td>
+              <td style="text-align:center;" id={{cliente.cliente_id}}-producto>
+                <ul >
+                  {%for y in cliente.pedidos.all%}
+                  <li> <strong>{{y.cantidad}}</strong> {{y.producto}}</li>
+                  {%endfor%}
+                </ul>
+              </td>
+              <td><a id={{cliente.cliente_id}}-ubicacion href={{cliente.ubicacion}} target="_blank">Ubicacion</a></td>
+              <td>
+                {{cliente.encargado}}
+              </td>
+              <td>{{cliente.fecha}}</td>
+              <td>{{cliente.hora}}</td>
+            {% if cliente.status == 1 %}
+              <td> <strong style="color:red;">Pendiente</strong> </td>
+            {% elif cliente.status == 2 %}
+              <td> <strong style="color:green;">Entregado</strong> </td>
+            {% elif cliente.status == 3 %}
+              <td> <strong style="color:blue;">Eliminado</strong> </td>
+            {% endif %}
+          </tr>
+
+          {% endfor %}
+          </div>
+        </tbody>
+      </table>
+      <div class="chart-container" style="position: relative; height:40vh; width:80vw">
+        <canvas id="myChart"></canvas>
+        <script>
+        var label=[];
+        var count = [];
+        var k = 0,aux=-1;
+        var fecha = "",ser_fecha="";
+        {%for cliente in clientes %}
+          ser_fecha = "{{cliente.fecha|date:"d"}}";
+          if (ser_fecha.localeCompare(fecha)!=0) {
+            fecha = ser_fecha;
+            k=1;
+            aux = aux+1;
+            count.push(k);
+            label.push("{{cliente.fecha|date:"d-M"}}");
+          }else {
+            count[aux]= count[aux]+1;
+          }
+
+        {% endfor %}
+        console.log(label);
+        console.log(count);
+          var ctx = document.getElementById("myChart");
+          var myChart = new Chart(ctx, {
+              type: 'line',
+              data: {
+                  labels: label,
+                  datasets: [{
+                      label: '# Pedidos',
+                      data: count,
+                      backgroundColor: [
+                          'rgba(229, 233, 10, 0.0)',
+                      ],
+                      borderColor: [
+                          'rgba(255,99,132,1)',
+
+                      ],
+                      borderWidth: 1
+                  }]
+              },
+              options: {
+
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero:true
+                          }
+                      }]
+                  }
+              }
+          });
+        </script>
+        <canvas id="myChart_2"></canvas>
+        <script>
+        var label=[];
+        var count = [];
+        var k = 0,aux=-1;
+        var fecha = "",ser_fecha="";
+        {%for dato in contador %}
+          label.push("{{dato.fecha|date:"d-M"}}")
+          count.push("{{dato.cantidad}}")
+        {% endfor %}
+
+          var ctx = document.getElementById("myChart_2");
+          var myChart = new Chart(ctx, {
+              type: 'line',
+              data: {
+                  labels: label.reverse(),
+
+                  datasets: [{
+                      label: '# Consultas',
+                      data: count.reverse(),
+                      fill: false,
+                      backgroundColor: [
+                          'rgba(229, 233, 10, 0.2)',
+                      ],
+                      borderColor: [
+                          'rgba(255,99,132,1)',
+
+                      ],
+                      borderWidth: 1
+                  }]
+              },
+              options: {
+                  elements: {
+                    line: {
+                      tension: 0, // disables bezier curves
+                    }
+                  },
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero:true
+                          }
+                      }]
+                  }
+              }
+          });
+        </script>
+      </div>
+
+    </div>
+
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $('#example').DataTable({
+        "order": [],
+        responsive:true,
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'excel', 'pdf', 'print'
+        ]
+        })
+
+      } );
+    </script>
+    </div>
+
+    </div>
+  </main>
+</div>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.9/angular.min.js"></script>
+    <script type="text/javascript">
+        var app = angular.module('MyApp', [])
+        app.controller('MyController', function ($scope, $window) {
+            $scope.Fruits = [{
+                Id: 1,
+                Name: 'Apple'
+            }, {
+                Id: 2,
+                Name: 'Mango'
+            }, {
+                Id: 3,
+                Name: 'Orange'
+            }];
+
+            $scope.GetValue = function () {
+                var fruitId = $scope.ddlFruits;
+                console.log(fruitId);
+                var fruitName = $.grep($scope.Fruits, function (fruit) {
+                    return fruit.Id == fruitId;
+                })[0].Name;
+                $window.alert("Selected Value: " + fruitId + "\nSelected Text: " + fruitName);
+            }
+        });
+    </script>
+    <div ng-app="MyApp" ng-controller="MyController">
+        <select ng-model="ddlFruits" ng-options="fruit.Id as fruit.Name for fruit in Fruits track by fruit.Id"
+            ng-change="GetValue()">
+        </select>
+    </div>
+</body>
+</html>

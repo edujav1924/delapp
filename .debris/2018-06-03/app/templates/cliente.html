@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encargado</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "otro/themes/custom.css" %}">
+    
+
+  </head>
+  <body id="body">
+    <div data-role="header" role="banner" class="ui-header ui-bar-inherit">
+			<h1 class="ui-title" role="heading" aria-level="1">Encargados</h1>
+				<a id="button" href="#" class="ui-btn-right ui-btn ui-icon-refresh ui-btn-icon-right ui-btn-inline ui-corner-all ui-mini" data-role="button" role="button">Actualizar</a>
+				<a id="button" href="{% url 'logout' %}" rel="external" class="ui-btn-left ui-btn ui-icon-power ui-btn-icon-left ui-btn-inline ui-corner-all ui-mini" data-role="button" role="button">Salir</a>
+        <label for="[object Object]"><b>Usuario:</b>{{user.username}}</label>
+
+      <!--  <form  action="{% url 'logout' %}" class="form-inline">
+          <label class="col-sm-8" style="color:white;"><b> Usuario: </b> {{user.username}}</label>
+          <button class="btn btn-outline-light col-sm-4" type="submit">Salir</button>
+        </form>-->
+      </div>
+      <div id="table" >
+        {% if datos %}
+          {% for dato in datos %}
+        <div class="h" data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-inset="false">
+            <h4> <div align="left" class="">{{dato.encargado}}</div> <div align="right" class="">{{ dato.fecha}}--{{dato.hora}}</div> </h4>
+
+            <ul data-role="listview" data-inset="false">
+                <ul>
+                  <strong>Datos</strong>
+                  <li>{{dato.nombre}} {{dato.apellido}}</li>
+                  <li>{{dato.celular}}</li>
+                  <li><a id={{dato.cliente_id}}-ubicacion href={{dato.ubicacion}} target="_blank" >Ubicacion</a></li>
+                  <br>
+                  <strong>Pedidos</strong>
+                  <ul>
+                    {% for d in dato.pedidos %}
+                      <li>{{d.cantidad}} {{d.producto}}</li>
+                      {%endfor%}
+                  </ul>
+                </ul>
+            </ul>
+        </div>
+        <div >
+
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>Aun no hay pedidos confirmados.</p>
+      {% endif %}
+    </div>
+  </body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {%include 'bootstrap_tables.html'%}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/colreorder/1.4.1/css/colReorder.dataTables.min.css">
+    <script type="text/javascript" src="https://cdn.datatables.net/colreorder/1.4.1/js/dataTables.colReorder.min.js"></script>
+    <style>
+      .ul{
+        padding-top:2%;
+        padding-bottom: 2%;
+        width: 100%;
+        clear: both;
+        text-align: center;
+      }
+    </style>
+
+    {% load static %}
+      <script type="text/javascript" src="{%static "ajax-setup.js" %}"></script>
+      <script type="text/javascript" src="{%static "encargados_table.js" %}"></script>
+    <title>Encargado</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <img src="/static/logito2.png" width="50px">
+      <a id="empresa" class="navbar-brand" href="/home/{{page}}">{{empresa}}</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarColor02">
+        <form  action="{% url 'logout' %}" class="form-inline">
+          <label class="col-sm-8" style="color:white;"><b> Usuario: </b> {{user.username}}</label>
+          <button class="btn btn-outline-light col-sm-4" type="submit">Salir</button>
+        </form>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="fixed-bottom" align=center>
+        <button id='nuevo' type="button" class="btn btn btn-success">Confirmar entrega</button>
+      </div>
+      <div class="ul" align="center">
+        <form id="form" class="" action="/home/encargados/1" method="post">{% csrf_token %}
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="desde">desde:&nbsp;</label>
+              <input id="desde" type="date" name="fecha_desde" value="">&nbsp;
+            </div>
+            <div class="form-group col-md-6">
+              <label for="hasta">hasta: &nbsp;</label>
+              <input id="hasta" type="date" name="fecha_hasta" value="">&nbsp;
+            </div>
+          </div>
+          <input id="submit"type="submit" class="btn btn-primary" value="buscar">
+        </form>
+
+      </div>
+      <div>
+          <table id="example" class="table table-bordered " style="text-align: center;">
+                  <thead>
+                      <tr>
+                          <th>Pedido_id</th>
+                          <th>Nombre</th>
+                          <th>Distancia</th>
+                          <th>Ubicacion</th>
+                          <th>Precio</th>
+                          <th>Tipo</th>
+                          <th>Encargado</th>
+                          <th>Celular</th>
+                          <th>Pedidos</th>
+                          <th>Comentario</th>
+                          <th>fecha recibido</th>
+                          <th>Fecha Prog.</th>
+                          <th>Fecha confir.</th>
+                          <th>Hora confir.</th>
+                      </tr>
+                  </thead>
+
+                  <tbody>
+                    {% for dato in datos %}
+                    <tr id={{dato.cliente_id}}>
+                      <td>{{dato.cliente_id}}</td>
+                      <td>{{dato.nombre}} {{dato.apellido}}</td>
+                      <td>{{dato.distancia}}</td>
+                      <td><a id={{dato.cliente_id}}-ubicacion href={{dato.ubicacion}} target="_blank">Ubicacion</a></td>
+                      <td>{{dato.precio_total}} Gs.</td>
+                      <td>{{dato.tipo_pedido}}</td>
+                      <td>{{dato.encargado}}</td>
+                      <td>{{dato.celular}}</td>
+                      <td>
+                          <ul>
+                            {%for x in dato.pedidos.all%}
+                            <li><strong>{{x.cantidad }}&nbsp;</strong>{{x.producto}}</li>
+                            {%endfor%}
+                          </ul>
+                      </td>
+                      {% if dato.comentario == None %}
+                      <td>----</td>
+                      {% else %}
+                      <td>{{dato.comentario}}</td>
+                      {% endif %}
+                      <td>{{dato.fecha|date:"d M, Y"}} - {{dato.hora}}</td>
+                      <td>{{dato.fecha_programado|date:"d M, Y"}} - {{dato.hora_programado}}</td>
+                      <td>{{dato.fecha_aceptado|date:"d M, Y"}}</td>
+                      <td>{{dato.hora_aceptado}}</td>
+                    </tr>
+                    {% endfor%}
+
+                  </tbody>
+              </table>
+      </div>
+      {% if error %}
+        <script type="text/javascript">
+          alert("error")
+        </script>
+      {%endif%}
+    </div>
+  </body>
+</html>
